@@ -97,21 +97,21 @@
             
             <form id="loginForm" class="p-8 space-y-5">
                 <div id="loginError" class="hidden bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400 p-3 rounded-lg text-xs font-medium text-center border border-red-100 dark:border-red-800">
-                    ID Pengguna atau Kata Laluan salah.
+                    E-mel atau Kata Laluan salah. <br><span class="text-[10px]">Jika ini log masuk pertama anda, sila guna 'Lupa Kata Laluan'.</span>
                 </div>
                 <div>
-                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5">ID Pengguna</label>
+                    <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5">E-mel Pengguna</label>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-regular fa-user text-slate-400 group-focus-within:text-infaq-DEFAULT transition-colors"></i>
+                            <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-infaq-DEFAULT transition-colors"></i>
                         </div>
-                        <input type="text" id="loginId" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT focus:border-infaq-DEFAULT outline-none text-sm transition-all" placeholder="Masukkan ID anda">
+                        <input type="email" id="loginEmail" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT focus:border-infaq-DEFAULT outline-none text-sm transition-all" placeholder="E-mel anda">
                     </div>
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-1.5">
                         <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Kata Laluan</label>
-                        <a href="#" class="text-[10px] font-medium text-infaq-DEFAULT hover:text-infaq-dark hover:underline transition-colors">Lupa Kata Laluan?</a>
+                        <button type="button" onclick="forgotPassword()" class="text-[10px] font-medium text-infaq-DEFAULT hover:text-infaq-dark hover:underline transition-colors outline-none">Lupa Kata Laluan?</button>
                     </div>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -127,22 +127,13 @@
                     <input type="checkbox" id="remember" class="w-3.5 h-3.5 text-infaq-DEFAULT bg-slate-50 border-slate-300 rounded focus:ring-infaq-DEFAULT focus:ring-2 cursor-pointer transition-colors">
                     <label for="remember" class="ml-2 text-xs font-medium text-slate-500 dark:text-slate-400 cursor-pointer select-none hover:text-slate-700 dark:hover:text-slate-200 transition-colors">Ingat saya di peranti ini</label>
                 </div>
-                <button type="submit" class="w-full py-3 bg-infaq-light hover:bg-infaq-DEFAULT text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
+                <button type="submit" id="loginBtn" class="w-full py-3 bg-infaq-light hover:bg-infaq-DEFAULT text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
                     Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
                 </button>
             </form>
 
             <div class="bg-slate-50 dark:bg-slate-900/40 p-4 text-center border-t border-slate-100 dark:border-slate-700/50">
                 <p class="text-[10px] font-medium text-slate-400 dark:text-slate-500">© 2026 Infaq Consultancy. Hak Cipta Terpelihara.</p>
-            </div>
-        </div>
-        
-        <div class="mt-6 text-[10px] text-slate-400 text-center max-w-xs bg-white/50 dark:bg-slate-800/50 p-3 rounded-lg backdrop-blur-sm border border-slate-200 dark:border-slate-700">
-            <span class="font-bold block mb-1 text-slate-500 dark:text-slate-300"><i class="fa-solid fa-circle-info text-blue-500 mr-1"></i> Dummy Logins:</span>
-            <div class="grid grid-cols-2 gap-x-4 gap-y-1 text-left px-2">
-                <span><b>Superadmin:</b></span><span><code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-infaq-DEFAULT">admin / admin123</code></span>
-                <span><b>Leader:</b></span><span><code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-infaq-DEFAULT">leader1 / leader123</code></span>
-                <span><b>Agent:</b></span><span><code class="bg-slate-200 dark:bg-slate-700 px-1 rounded text-infaq-DEFAULT">agent1 / agent123</code></span>
             </div>
         </div>
     </div>
@@ -167,7 +158,7 @@
                     <span class="hidden sm:flex bg-white/20 px-3 py-1.5 rounded-full items-center">
                         <img id="headerAvatarImg" src="" class="w-6 h-6 rounded-full mr-2 object-cover hidden border border-white/50 bg-white">
                         <i id="headerAvatarIcon" class="fa-solid fa-user-tie mr-2"></i>
-                        <span id="headerUserName">Ejen: -</span>
+                        <span id="headerUserName">Sistem...</span>
                     </span>
                     
                     <button onclick="toggleTheme()" class="p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors outline-none focus:ring-2 focus:ring-white flex items-center justify-center h-9 w-9">
@@ -185,37 +176,36 @@
         <nav class="bg-white dark:bg-slate-800 border-t md:border-t-0 md:border-b border-slate-200 dark:border-slate-700 fixed bottom-0 w-full md:relative md:bottom-auto z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:shadow-none overflow-x-auto">
             <div class="container mx-auto px-0 md:px-8 min-w-max md:min-w-0">
                 <ul class="flex justify-between md:justify-start">
-                    <li class="flex-1 md:flex-none">
+                    <li class="flex-1 md:flex-none" id="li-dashboard">
                         <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-chart-line text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Dashboard</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none">
+                    <li class="flex-1 md:flex-none" id="li-form">
                         <button onclick="switchTab('form')" id="nav-form" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-user-plus text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Prospek Baharu</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none">
+                    <li class="flex-1 md:flex-none" id="li-ads">
                         <button onclick="switchTab('ads')" id="nav-ads" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-bullhorn text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Kos Ads</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none">
+                    <li class="flex-1 md:flex-none" id="li-list">
                         <button onclick="switchTab('list')" id="nav-list" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-users text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Semua Prospek</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none">
+                    <li class="flex-1 md:flex-none" id="li-reports">
                         <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-file-invoice text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Laporan</span>
                         </button>
                     </li>
-                    <!-- TETAPAN & PROFIL (Visible to all) -->
                     <li class="flex-1 md:flex-none" id="navItemManagement">
                         <button onclick="switchTab('management')" id="nav-management" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium border-l border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30">
                             <i class="fa-solid fa-user-gear text-lg md:text-base text-infaq-DEFAULT"></i>
@@ -269,7 +259,7 @@
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-column text-infaq-DEFAULT mr-2"></i> Sumber Lead Terbaik</h3>
                         <div class="relative h-64 w-full flex justify-center"><canvas id="sourceChart"></canvas></div>
                     </div>
-                    <div class="md:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                    <div class="md:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors" id="costAdsChartContainer">
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq-DEFAULT mr-2"></i> Rumusan Kos Pengiklanan (Ads Cost)</h3>
                         <div class="relative h-72 w-full flex justify-center"><canvas id="costAdsChart"></canvas></div>
                     </div>
@@ -332,25 +322,13 @@
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Source 1 (Punca Lead)</label>
                                     <select id="source1" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
-                                        <option value="">Pilih Sumber...</option>
-                                        <option value="Tiktok Ads">Tiktok Ads</option>
-                                        <option value="FB Ads">FB Ads (Facebook/IG)</option>
-                                        <option value="Social Media">Media Sosial Biasa</option>
-                                        <option value="Referral">Referral / Rujukan</option>
-                                        <option value="Cold Call">Cold Call</option>
-                                        <option value="Booth">Booth / Event</option>
-                                        <option value="Existing Client">Pelanggan Sedia Ada</option>
+                                        <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Source 2 (Kategori Produk)</label>
                                     <select id="source2" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
-                                        <option value="">Pilih Kategori...</option>
-                                        <option value="Hibah">Hibah Takaful</option>
-                                        <option value="Medical Card">Medical Card</option>
-                                        <option value="Education">Pelan Pendidikan</option>
-                                        <option value="Investment">Pelaburan / Simpanan</option>
-                                        <option value="MLTT/MRTT">Perlindungan Hartanah</option>
+                                        <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 <div>
@@ -440,11 +418,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Remark Kes</label>
                                     <select id="remark" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
-                                        <option value="">Pilih Remark...</option>
-                                        <option value="Berminat Submit">Berminat / Submit</option>
-                                        <option value="KIV">KIV (Keep In View)</option>
-                                        <option value="Tidak Berminat">Tidak Berminat</option>
-                                        <option value="Rejected">Ditolak (Rejected)</option>
+                                        <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 
@@ -456,7 +430,9 @@
                                 <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Nama Produk</label>
-                                        <input type="text" id="product" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" placeholder="Cth: i-Great Amal">
+                                        <select id="product" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                            <option value="">Memuatkan data...</option>
+                                        </select>
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">ACE / APE</label>
@@ -465,11 +441,7 @@
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Mod Bayaran</label>
                                         <select id="paymentMode" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
-                                            <option value="">Pilih Mod...</option>
-                                            <option value="Monthly">Bulanan</option>
-                                            <option value="Quarterly">Suku Tahunan</option>
-                                            <option value="Half-Yearly">Setengah Tahun</option>
-                                            <option value="Annually">Tahunan</option>
+                                            <option value="">Memuatkan data...</option>
                                         </select>
                                     </div>
                                 </div>
@@ -485,10 +457,7 @@
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Status Polisi</label>
                                     <select id="status" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
-                                        <option value="Pending">Menunggu (Pending)</option>
-                                        <option value="Enforce">Lulus & Enforce</option>
-                                        <option value="Postponed">Ditangguhkan (Postponed)</option>
-                                        <option value="Cancelled">Dibatalkan (Cancelled/Declined)</option>
+                                        <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
 
@@ -751,16 +720,12 @@
                         <!-- Profile Info Section -->
                         <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">ID Sistem</label>
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">ID Sistem / E-mel</label>
                                 <input type="text" id="myId" readonly class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 rounded-lg text-sm text-slate-500 dark:text-slate-400 cursor-not-allowed">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nama Penuh</label>
                                 <input type="text" id="myName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
-                            </div>
-                            <div class="sm:col-span-2">
-                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Tukar Kata Laluan (Opsional)</label>
-                                <input type="password" id="myNewPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Biarkan kosong jika tidak mahu tukar">
                             </div>
                             <div class="sm:col-span-2 mt-2">
                                 <button type="submit" class="w-full md:w-auto px-6 py-2.5 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
@@ -778,16 +743,16 @@
                         <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-user-plus text-infaq-DEFAULT mr-2"></i>Tambah Pengguna</h2>
                         <form id="addUserForm" class="space-y-4">
                             <div>
-                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">ID Pengguna (Sistem)</label>
-                                <input type="text" id="newUserId" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Cth: ejen001">
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">E-mel Pengguna</label>
+                                <input type="email" id="newUserEmail" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Cth: ejen@infaq.com">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nama Penuh / Paparan</label>
                                 <input type="text" id="newUserName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Cth: Ejen Ali Bin Abu">
                             </div>
                             <div>
-                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan</label>
-                                <input type="text" id="newUserPass" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Tetapkan password">
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Sementara</label>
+                                <input type="text" id="newUserPass" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Tetapkan password (min 6 aksara)">
                             </div>
                             
                             <!-- Admin Only Fields -->
@@ -819,7 +784,7 @@
                                 <thead>
                                     <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider transition-colors border-b border-slate-200 dark:border-slate-700">
                                         <th class="p-3 font-medium">Nama Paparan</th>
-                                        <th class="p-3 font-medium">ID Pengguna</th>
+                                        <th class="p-3 font-medium">E-mel</th>
                                         <th class="p-3 font-medium">Tahap</th>
                                         <th class="p-3 font-medium">Pasukan</th>
                                         <th class="p-3 font-medium text-center">Tindakan</th>
@@ -858,51 +823,295 @@
 
     </div> <!-- END APP CONTENT -->
 
-    <!-- Vanilla Javascript Logic -->
+    <!-- ================= FIREBASE & APP LOGIC ================= -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
     <script>
-        // ================= DUMMY AUTH & ROLE LOGIC =================
-        let usersData = JSON.parse(localStorage.getItem('infaq_users'));
-        if (!usersData) {
-            usersData = {
-                'admin':   { id: 'admin',   pass: 'admin123', role: 'superadmin', name: 'Bos Besar (Admin)', profilePic: null },
-                'leader1': { id: 'leader1', pass: 'leader123', role: 'leader',     name: 'Leader Ahmad', profilePic: null },
-                'agent1':  { id: 'agent1',  pass: 'agent123', role: 'agent',      leaderId: 'leader1', name: 'Ejen Ali', profilePic: null },
-                'agent2':  { id: 'agent2',  pass: 'agent123', role: 'agent',      leaderId: 'leader1', name: 'Ejen Abu', profilePic: null } 
-            };
-            localStorage.setItem('infaq_users', JSON.stringify(usersData));
+        // 1. Firebase Config
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIVnK42hjFpXqM6T7Q4UbmOVL-6AHIXPo",
+            authDomain: "takafultracker.firebaseapp.com",
+            projectId: "takafultracker",
+            storageBucket: "takafultracker.firebasestorage.app",
+            messagingSenderId: "237848929718",
+            appId: "1:237848929718:web:790d12bee4a9492af88d17"
+        };
+
+        // 2. Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        let prospectsData = [];
+        let tiktokAdsData = [];
+        let fbAdsData = [];
+        
+        let filteredProspects = [];
+        let filteredTkAds = [];
+        let filteredFbAds = [];
+
+        let statusChartInstance = null;
+        let sourceChartInstance = null;
+        let costAdsChartInstance = null;
+
+        let currentUser = null;
+        let currentEditId = null;
+
+        // ================= FETCH GOOGLE SHEET DROPDOWNS =================
+        async function fetchGoogleSheetDropdowns() {
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=475370971&single=true&output=csv";
+            try {
+                const res = await fetch(url);
+                const csv = await res.text();
+                
+                const rows = [];
+                let currentRow = [];
+                let currentCell = '';
+                let inQuotes = false;
+
+                for (let i = 0; i < csv.length; i++) {
+                    const c = csv[i];
+                    if (c === '"' && csv[i+1] === '"') {
+                        currentCell += '"';
+                        i++;
+                    } else if (c === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (c === ',' && !inQuotes) {
+                        currentRow.push(currentCell.trim());
+                        currentCell = '';
+                    } else if (c === '\n' && !inQuotes) {
+                        currentRow.push(currentCell.trim());
+                        rows.push(currentRow);
+                        currentRow = [];
+                        currentCell = '';
+                    } else if (c !== '\r') {
+                        currentCell += c;
+                    }
+                }
+                if (currentRow.length > 0 || currentCell !== '') {
+                    currentRow.push(currentCell.trim());
+                    rows.push(currentRow);
+                }
+                
+                const sources1 = new Set();
+                const sources2 = new Set();
+                const remarks = new Set();
+                const products = new Set();
+                const payments = new Set();
+                const statuses = new Set();
+
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i];
+                    if (cols[0] && cols[0].trim()) sources1.add(cols[0].trim());
+                    if (cols[1] && cols[1].trim()) sources2.add(cols[1].trim());
+                    if (cols[2] && cols[2].trim()) remarks.add(cols[2].trim());
+                    if (cols[3] && cols[3].trim()) products.add(cols[3].trim());
+                    if (cols[4] && cols[4].trim()) payments.add(cols[4].trim());
+                    if (cols[5] && cols[5].trim()) statuses.add(cols[5].trim());
+                }
+
+                populateDropdown('source1', sources1, 'Pilih Sumber...');
+                populateDropdown('source2', sources2, 'Pilih Kategori...');
+                populateDropdown('remark', remarks, 'Pilih Remark...');
+                populateDropdown('product', products, 'Pilih Produk...');
+                populateDropdown('paymentMode', payments, 'Pilih Mod...');
+                populateDropdown('status', statuses, 'Pilih Status...');
+
+            } catch (err) {
+                console.error("Gagal memuat turun data dari Google Sheet", err);
+            }
         }
 
-        let currentUser = JSON.parse(localStorage.getItem('infaq_currentUser')) || null;
-        let currentEditId = null; // Variable to hold prospect ID when editing
+        function populateDropdown(id, dataSet, placeholder) {
+            const select = document.getElementById(id);
+            if (!select) return;
+            select.innerHTML = `<option value="">${placeholder}</option>`;
+            dataSet.forEach(val => {
+                select.innerHTML += `<option value="${val}">${val}</option>`;
+            });
+        }
+
+        // ================= AUTH & APP STARTUP =================
+        
+        firebase.auth().onAuthStateChanged(async (user) => {
+            if (user) {
+                const loginScreen = document.getElementById('loginScreen');
+                const btn = document.getElementById('loginBtn');
+                if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyemak data pengguna...`;
+
+                try {
+                    let userDoc = await db.collection('users').doc(user.uid).get();
+                    
+                    // JIKA PROFIL TIADA DI FIRESTORE (DATABASE)
+                    if (!userDoc.exists) {
+                        // BINA PROFIL AUTOMATIK UNTUK CEO DAN SUPERADMIN
+                        if (user.email === 'infaqsmartbook@gmail.com' || user.email === 'annurprosolutions@gmail.com') {
+                            const role = user.email === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
+                            const name = user.email === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
+                            
+                            await db.collection('users').doc(user.uid).set({
+                                id: user.uid,
+                                email: user.email,
+                                name: name,
+                                role: role,
+                                profilePic: null,
+                                leaderId: null
+                            });
+                            
+                            // Tarik semula data yang baru dicipta
+                            userDoc = await db.collection('users').doc(user.uid).get();
+                        } else {
+                            // Jika ejen biasa tiada profil, sekat mereka
+                            firebase.auth().signOut();
+                            alert("Akaun anda wujud di Authentication tetapi belum dikonfigurasikan di Firestore (Database). Sila lapor kepada Admin.");
+                            return;
+                        }
+                    }
+                    
+                    currentUser = userDoc.data();
+                    initApp();
+                } catch (err) {
+                    console.error("Auth state error: ", err);
+                    alert("Ralat semasa log masuk: " + err.message);
+                }
+            } else {
+                currentUser = null;
+                const loginScreen = document.getElementById('loginScreen');
+                const appContent = document.getElementById('appContent');
+                if (loginScreen) {
+                    loginScreen.classList.remove('hidden');
+                    loginScreen.style.opacity = '1';
+                }
+                if (appContent) appContent.classList.add('hidden');
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchGoogleSheetDropdowns(); 
+            updateThemeIcon(); 
+        });
 
         const loginFormEl = document.getElementById('loginForm');
         if (loginFormEl) {
-            loginFormEl.addEventListener('submit', function(e) {
+            loginFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const idEl = document.getElementById('loginId');
+                const emailEl = document.getElementById('loginEmail');
                 const passEl = document.getElementById('loginPass');
-                const id = idEl ? idEl.value.trim() : '';
+                const email = emailEl ? emailEl.value.trim() : '';
                 const pass = passEl ? passEl.value.trim() : '';
                 const errorDiv = document.getElementById('loginError');
+                const btn = document.getElementById('loginBtn');
 
-                if (usersData[id] && usersData[id].pass === pass) {
-                    currentUser = usersData[id];
-                    localStorage.setItem('infaq_currentUser', JSON.stringify(currentUser));
-                    
-                    if (errorDiv) errorDiv.classList.add('hidden');
-                    loginFormEl.reset();
-                    initApp(); 
-                } else {
-                    if (errorDiv) errorDiv.classList.remove('hidden');
+                if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sedang log masuk...`;
+                if (errorDiv) errorDiv.classList.add('hidden');
+
+                try {
+                    await firebase.auth().signInWithEmailAndPassword(email, pass);
+                } catch (err) {
+                    console.error("Login Error: ", err);
+                    if (errorDiv) {
+                        errorDiv.classList.remove('hidden');
+                        errorDiv.innerHTML = "E-mel atau Kata Laluan salah. <br><span class='text-[10px]'>Jika ini log masuk pertama anda, sila guna butang 'Lupa Kata Laluan'.</span>";
+                    }
+                    if (btn) btn.innerHTML = `Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>`;
                 }
             });
         }
 
+        async function forgotPassword() {
+            const email = prompt("Sila masukkan e-mel pendaftaran anda:");
+            if (email && email.trim() !== "") {
+                const targetEmail = email.trim();
+                try {
+                    // SILENTLY CREATE CEO/ADMIN IF THEY DON'T EXIST YET
+                    // This allows them to use "Forgot Password" to set their first password
+                    if (targetEmail === 'infaqsmartbook@gmail.com' || targetEmail === 'annurprosolutions@gmail.com') {
+                        try {
+                            const tempApp = firebase.initializeApp(firebaseConfig, "TempApp");
+                            const dummyPass = "Temp" + Math.random().toString(36).slice(-8) + "!";
+                            const userCred = await tempApp.auth().createUserWithEmailAndPassword(targetEmail, dummyPass);
+                            
+                            const role = targetEmail === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
+                            const name = targetEmail === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
+                            
+                            await db.collection('users').doc(userCred.user.uid).set({
+                                id: userCred.user.uid,
+                                email: targetEmail,
+                                name: name,
+                                role: role,
+                                profilePic: null
+                            });
+                            
+                            await tempApp.auth().signOut();
+                            tempApp.delete();
+                        } catch (e) {
+                            // If account already exists, it will throw an error and we just ignore it
+                            console.log("Bootstrap check: User might already exist.");
+                        }
+                    }
+
+                    await firebase.auth().sendPasswordResetEmail(targetEmail);
+                    alert("Pautan untuk menetapkan semula kata laluan telah dihantar ke e-mel anda. Sila semak peti masuk (inbox) atau kotak spam.");
+                } catch (err) {
+                    alert("Gagal menghantar e-mel reset. Pastikan e-mel tersebut sah dan wujud dalam sistem.");
+                    console.error(err);
+                }
+            }
+        }
+
+        async function initApp() {
+            const loginScreen = document.getElementById('loginScreen');
+            if (loginScreen) loginScreen.style.opacity = '0';
+            
+            const headerUserName = document.getElementById('headerUserName');
+            if(headerUserName) headerUserName.innerText = "Memuatkan data...";
+            
+            try {
+                const prospectSnap = await db.collection('prospects').get();
+                prospectsData = [];
+                prospectSnap.forEach(doc => prospectsData.push(doc.data()));
+                prospectsData.sort((a, b) => b.id - a.id); 
+
+                const tkSnap = await db.collection('tiktok_ads').get();
+                tiktokAdsData = [];
+                tkSnap.forEach(doc => tiktokAdsData.push(doc.data()));
+
+                const fbSnap = await db.collection('fb_ads').get();
+                fbAdsData = [];
+                fbSnap.forEach(doc => fbAdsData.push(doc.data()));
+
+            } catch (err) {
+                console.error("Gagal memuat turun data", err);
+                alert("Terdapat ralat semasa menarik data dari Firebase.");
+            }
+
+            setTimeout(() => {
+                if (loginScreen) loginScreen.classList.add('hidden');
+                const appContent = document.getElementById('appContent');
+                if (appContent) appContent.classList.remove('hidden');
+                
+                setupRoleUI();
+                setupManagementUI(); 
+                applyFilter(); 
+                toggleConditionalFields();
+                
+                if (currentUser.role === 'ceo') {
+                    switchTab('dashboard');
+                } else {
+                    if (filteredProspects.length === 0) switchTab('form');
+                    else switchTab('dashboard');
+                }
+            }, 300); 
+        }
+
         function logOutApp() {
             if(confirm('Adakah anda pasti mahu log keluar?')) {
-                currentUser = null;
-                localStorage.removeItem('infaq_currentUser');
-                window.location.reload();
+                firebase.auth().signOut().then(() => {
+                    window.location.reload();
+                }).catch((error) => {
+                    console.error("Sign out error", error);
+                });
             }
         }
 
@@ -910,15 +1119,8 @@
             const passInput = document.getElementById('loginPass');
             const icon = document.getElementById('eyeIcon');
             if (passInput && icon) {
-                if (passInput.type === "password") {
-                    passInput.type = "text";
-                    icon.classList.remove('fa-eye');
-                    icon.classList.add('fa-eye-slash');
-                } else {
-                    passInput.type = "password";
-                    icon.classList.remove('fa-eye-slash');
-                    icon.classList.add('fa-eye');
-                }
+                if (passInput.type === "password") { passInput.type = "text"; icon.classList.remove('fa-eye'); icon.classList.add('fa-eye-slash'); } 
+                else { passInput.type = "password"; icon.classList.remove('fa-eye-slash'); icon.classList.add('fa-eye'); }
             }
         }
 
@@ -930,21 +1132,14 @@
             updateThemeIcon();
             
             const tabDash = document.getElementById('tab-dashboard');
-            if(currentUser && tabDash && tabDash.classList.contains('active')){
-                renderCharts(); 
-            }
+            if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
 
         function updateThemeIcon() {
             const icon = document.getElementById('themeIcon');
             if (!icon) return;
-            if (document.documentElement.classList.contains('dark')) {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-            } else {
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-            }
+            if (document.documentElement.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+            else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
         }
 
         function updateHeaderProfile() {
@@ -956,10 +1151,7 @@
             if(headerUserName) headerUserName.innerText = currentUser.name;
 
             if(currentUser.profilePic) {
-                if(avatarImg) {
-                    avatarImg.src = currentUser.profilePic;
-                    avatarImg.classList.remove('hidden');
-                }
+                if(avatarImg) { avatarImg.src = currentUser.profilePic; avatarImg.classList.remove('hidden'); }
                 if(avatarIcon) avatarIcon.classList.add('hidden');
             } else {
                 if(avatarImg) avatarImg.classList.add('hidden');
@@ -967,16 +1159,48 @@
             }
         }
 
-        function setupRoleUI() {
+        async function setupRoleUI() {
             updateHeaderProfile();
 
             const roleFilter = document.getElementById('roleBasedFilter');
+            const navManagement = document.getElementById('navItemManagement');
+            const liForm = document.getElementById('li-form');
+            const liAds = document.getElementById('li-ads');
+            const liList = document.getElementById('li-list');
+
+            if (liForm) liForm.style.display = 'block';
+            if (liAds) liAds.style.display = 'block';
+            if (liList) liList.style.display = 'block';
+
             if (!roleFilter) return;
 
-            if (currentUser.role === 'superadmin') {
+            let allUsers = [];
+            try {
+                const snap = await db.collection('users').get();
+                snap.forEach(d => allUsers.push(d.data()));
+            } catch(e) { console.error(e); }
+
+            if (currentUser.role === 'ceo') {
+                if (liForm) liForm.style.display = 'none';
+                if (liAds) liAds.style.display = 'none';
+                if (liList) liList.style.display = 'none';
+                if (navManagement) navManagement.style.display = 'block';
+
+                roleFilter.classList.remove('hidden');
+                let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
+                allUsers.forEach(u => {
+                    if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`;
+                });
+                roleFilter.innerHTML = `
+                    <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label>
+                    <select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                        ${options}
+                    </select>
+                `;
+            } else if (currentUser.role === 'superadmin') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Cawangan (Global)</option>`;
-                Object.values(usersData).forEach(u => {
+                allUsers.forEach(u => {
                     if(u.role === 'leader') options += `<option value="${u.id}">Pasukan ${u.name} (Leader)</option>`;
                     if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`;
                 });
@@ -986,10 +1210,11 @@
                         ${options}
                     </select>
                 `;
+                if (navManagement) navManagement.style.display = 'block';
             } else if (currentUser.role === 'leader') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan Saya</option>`;
-                Object.values(usersData).forEach(u => {
+                allUsers.forEach(u => {
                     if(u.role === 'agent' && u.leaderId === currentUser.id) {
                         options += `<option value="${u.id}">Ejen ${u.name}</option>`;
                     }
@@ -1000,66 +1225,31 @@
                         ${options}
                     </select>
                 `;
+                if (navManagement) navManagement.style.display = 'block';
             } else {
                 roleFilter.classList.add('hidden');
                 roleFilter.innerHTML = ''; 
+                if (navManagement) navManagement.style.display = 'block'; 
             }
         }
 
-        // ================= APP LOGIC =================
-        let prospectsData = JSON.parse(localStorage.getItem('infaq_prospects')) || [];
-        let tiktokAdsData = JSON.parse(localStorage.getItem('infaq_tiktok_ads')) || [];
-        let fbAdsData = JSON.parse(localStorage.getItem('infaq_fb_ads')) || [];
-        
-        let filteredProspects = [];
-        let filteredTkAds = [];
-        let filteredFbAds = [];
-
-        let statusChartInstance = null;
-        let sourceChartInstance = null;
-        let costAdsChartInstance = null;
-
-        function initApp() {
-            const loginScreen = document.getElementById('loginScreen');
-            if (loginScreen) loginScreen.style.opacity = '0';
-            
-            setTimeout(() => {
-                if (loginScreen) loginScreen.classList.add('hidden');
-                const appContent = document.getElementById('appContent');
-                if (appContent) appContent.classList.remove('hidden');
-                
-                setupRoleUI();
-                setupManagementUI(); 
-                applyFilter(); 
-                toggleConditionalFields();
-                
-                if (filteredProspects.length === 0) switchTab('form');
-                else switchTab('dashboard');
-            }, 300); 
-        }
-
-        // --- MANAGE USERS LOGIC ---
-        function setupManagementUI() {
+        // ================= USER MANAGEMENT & PROFILE =================
+        async function setupManagementUI() {
             if(!currentUser) return;
             
-            const myId = document.getElementById('myId'); if(myId) myId.value = currentUser.id;
+            const myId = document.getElementById('myId'); if(myId) myId.value = currentUser.email; 
             const myName = document.getElementById('myName'); if(myName) myName.value = currentUser.name;
-            const myNewPass = document.getElementById('myNewPass'); if(myNewPass) myNewPass.value = '';
             
             if(currentUser.profilePic) {
                 const imgPrev = document.getElementById('myAvatarPreview');
                 const imgIcon = document.getElementById('myAvatarIcon');
-                if(imgPrev && imgIcon) {
-                    imgPrev.src = currentUser.profilePic;
-                    imgPrev.classList.remove('hidden');
-                    imgIcon.classList.add('hidden');
-                }
+                if(imgPrev && imgIcon) { imgPrev.src = currentUser.profilePic; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
             }
 
             const adminSection = document.getElementById('adminLeaderManagementSection');
             if(!adminSection) return;
 
-            if(currentUser.role === 'agent') {
+            if(currentUser.role === 'agent' || currentUser.role === 'ceo') {
                 adminSection.classList.add('hidden');
             } else {
                 adminSection.classList.remove('hidden');
@@ -1073,79 +1263,67 @@
                     
                     if(leaderSelect) {
                         leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Direct Admin)</option>`;
-                        Object.values(usersData).filter(u => u.role === 'leader').forEach(l => {
-                            leaderSelect.innerHTML += `<option value="${l.id}">${l.name}</option>`;
-                        });
+                        try {
+                            const snap = await db.collection('users').where('role', '==', 'leader').get();
+                            snap.forEach(doc => {
+                                leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`;
+                            });
+                        } catch(e) { console.error(e); }
                     }
                 } else if (currentUser.role === 'leader') {
                     if(roleDiv) roleDiv.classList.add('hidden');
                     if(leaderDiv) leaderDiv.classList.add('hidden');
                 }
-                
                 renderUsersTable();
             }
         }
 
-        // PROFILE LOGIC
         function previewProfilePic(event) {
             const file = event.target.files[0];
             if (file) {
-                if (file.size > 2 * 1024 * 1024) { 
-                    alert("Amaran: Saiz gambar terlalu besar. Sila guna gambar di bawah 2MB untuk mengelakkan ralat storage.");
-                }
+                if (file.size > 2 * 1024 * 1024) alert("Amaran: Saiz gambar terlalu besar. Sila guna gambar di bawah 2MB.");
                 const reader = new FileReader();
                 reader.onload = function(e) {
                     const imgPrev = document.getElementById('myAvatarPreview');
                     const imgIcon = document.getElementById('myAvatarIcon');
-                    if(imgPrev && imgIcon) {
-                        imgPrev.src = e.target.result;
-                        imgPrev.classList.remove('hidden');
-                        imgIcon.classList.add('hidden');
-                    }
+                    if(imgPrev && imgIcon) { imgPrev.src = e.target.result; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
                 }
                 reader.readAsDataURL(file);
             }
         }
 
-        function updateMyProfile(e) {
+        async function updateMyProfile(e) {
             e.preventDefault();
             const newName = document.getElementById('myName').value.trim();
-            const newPass = document.getElementById('myNewPass').value.trim();
             const picInput = document.getElementById('myProfilePic');
 
-            if(newName) {
-                currentUser.name = newName;
-                usersData[currentUser.id].name = newName;
-            }
-
-            if(newPass) {
-                currentUser.pass = newPass;
-                usersData[currentUser.id].pass = newPass;
-            }
+            const updates = {};
+            if(newName) { currentUser.name = newName; updates.name = newName; }
 
             if(picInput.files && picInput.files[0]) {
                 const reader = new FileReader();
-                reader.onload = function(e) {
+                reader.onload = async function(e) {
                     const base64Img = e.target.result;
                     currentUser.profilePic = base64Img;
-                    usersData[currentUser.id].profilePic = base64Img;
-                    finalizeProfileUpdate();
+                    updates.profilePic = base64Img;
+                    await saveProfileToFirebase(updates);
                 };
                 reader.readAsDataURL(picInput.files[0]);
             } else {
-                finalizeProfileUpdate();
+                await saveProfileToFirebase(updates);
             }
         }
 
-        function finalizeProfileUpdate() {
-            localStorage.setItem('infaq_users', JSON.stringify(usersData));
-            localStorage.setItem('infaq_currentUser', JSON.stringify(currentUser));
-            document.getElementById('myNewPass').value = ''; 
-            alert('Profil berjaya dikemas kini!');
-            setupRoleUI(); 
-            if(currentUser.role !== 'agent') renderUsersTable();
+        async function saveProfileToFirebase(updates) {
+            try {
+                await db.collection('users').doc(currentUser.id).update(updates);
+                alert('Profil berjaya dikemas kini!');
+                setupRoleUI(); 
+                if(currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
+            } catch(e) {
+                console.error(e); alert('Gagal menyimpan profil.');
+            }
         }
-
 
         function handleRoleChange() {
             const roleEl = document.getElementById('newUserRole');
@@ -1159,16 +1337,11 @@
 
         const addUserFormEl = document.getElementById('addUserForm');
         if(addUserFormEl) {
-            addUserFormEl.addEventListener('submit', function(e) {
+            addUserFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const newId = document.getElementById('newUserId').value.trim();
-                const newName = document.getElementById('newUserName').value.trim();
-                const newPass = document.getElementById('newUserPass').value.trim();
-                
-                if(usersData[newId]) {
-                    alert("Ralat: ID Pengguna telah wujud! Sila gunakan ID yang lain.");
-                    return;
-                }
+                const email = document.getElementById('newUserEmail').value.trim();
+                const name = document.getElementById('newUserName').value.trim();
+                const pass = document.getElementById('newUserPass').value.trim();
                 
                 let role = 'agent';
                 let leaderId = currentUser.id; 
@@ -1179,101 +1352,93 @@
                     if(role === 'agent') {
                         const leaderEl = document.getElementById('newUserLeader');
                         leaderId = leaderEl ? leaderEl.value : null;
-                    } else {
-                        leaderId = null; 
-                    }
+                    } else { leaderId = null; }
                 }
-                
-                usersData[newId] = { id: newId, name: newName, pass: newPass, role: role, leaderId: leaderId, profilePic: null };
-                localStorage.setItem('infaq_users', JSON.stringify(usersData));
-                
-                alert("Berjaya: Pengguna baharu didaftarkan!");
-                this.reset();
-                setupRoleUI(); 
-                setupManagementUI(); 
+
+                try {
+                    const secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
+                    const userCredential = await secondaryApp.auth().createUserWithEmailAndPassword(email, pass);
+                    const newUid = userCredential.user.uid;
+                    
+                    await db.collection('users').doc(newUid).set({ 
+                        id: newUid, 
+                        email: email, 
+                        name: name, 
+                        role: role, 
+                        leaderId: leaderId, 
+                        profilePic: null 
+                    });
+                    
+                    await secondaryApp.auth().signOut();
+                    secondaryApp.delete();
+                    
+                    alert("Berjaya: Pengguna baharu didaftarkan!");
+                    this.reset();
+                    setupRoleUI(); 
+                    setupManagementUI(); 
+                } catch(err) {
+                    console.error(err); 
+                    alert("Gagal mendaftar pengguna. " + err.message);
+                }
             });
         }
 
-        function renderUsersTable() {
+        async function renderUsersTable() {
             const tbody = document.getElementById('usersTableBody');
             if(!tbody) return;
-            tbody.innerHTML = '';
+            tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
             
-            let usersList = Object.values(usersData);
-            if(currentUser.role === 'leader') {
-                usersList = usersList.filter(u => u.leaderId === currentUser.id);
-            } else {
-                usersList = usersList.filter(u => u.id !== 'admin');
-            }
-            
-            if(usersList.length === 0) {
-                tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`;
-                return;
-            }
+            try {
+                const snap = await db.collection('users').get();
+                let usersList = [];
+                const allUsersMap = {};
+                snap.forEach(doc => {
+                    const u = doc.data();
+                    allUsersMap[u.id] = u;
+                    usersList.push(u);
+                });
 
-            usersList.forEach(u => {
-                let leaderName = '-';
-                if(u.role === 'agent' && u.leaderId && usersData[u.leaderId]) leaderName = usersData[u.leaderId].name;
-                else if (u.role === 'agent' && u.leaderId === 'admin') leaderName = 'Admin';
+                if(currentUser.role === 'leader') {
+                    usersList = usersList.filter(u => u.leaderId === currentUser.id);
+                } else if (currentUser.role === 'superadmin') {
+                    usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
+                }
                 
-                const roleBadge = u.role === 'leader' ? 
-                    '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>' : 
-                    '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>';
+                if(usersList.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`;
+                    return;
+                }
 
-                const tr = document.createElement('tr');
-                tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
-                tr.innerHTML = `
-                    <td class="p-3 text-slate-800 dark:text-slate-200 font-medium flex items-center gap-2">
-                        ${u.profilePic ? `<img src="${u.profilePic}" class="w-6 h-6 rounded-full object-cover border border-slate-200 dark:border-slate-600">` : `<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>`}
-                        ${u.name}
-                    </td>
-                    <td class="p-3 text-slate-500 dark:text-slate-400 font-mono text-xs">${u.id}</td>
-                    <td class="p-3">${roleBadge}</td>
-                    <td class="p-3 text-slate-600 dark:text-slate-400 text-xs">${leaderName}</td>
-                    <td class="p-3 text-center">
-                        <button onclick="resetUserPassword('${u.id}')" class="text-blue-500 hover:text-blue-700 transition mr-2" title="Reset Kata Laluan">
-                            <i class="fa-solid fa-key"></i>
-                        </button>
-                        <button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna">
-                            <i class="fa-solid fa-trash"></i>
-                        </button>
-                    </td>
-                `;
-                tbody.appendChild(tr);
-            });
-        }
+                tbody.innerHTML = '';
+                usersList.forEach(u => {
+                    let leaderName = '-';
+                    if(u.role === 'agent' && u.leaderId && allUsersMap[u.leaderId]) leaderName = allUsersMap[u.leaderId].name;
+                    else if (u.role === 'agent' && u.leaderId === 'admin') leaderName = 'Admin';
+                    
+                    const roleBadge = u.role === 'leader' ? '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>' : 
+                                      (u.role === 'ceo' ? '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>' :
+                                      '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>');
 
-        function deleteUser(userId) {
-            if(confirm("Adakah anda pasti mahu memadam pengguna ini? Segala akses mereka akan ditamatkan. Tindakan ini tidak boleh diundur.")) {
-                delete usersData[userId];
-                localStorage.setItem('infaq_users', JSON.stringify(usersData));
-                setupRoleUI();
-                setupManagementUI();
-                alert("Pengguna telah dipadam.");
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
+                    tr.innerHTML = `
+                        <td class="p-3 text-slate-800 dark:text-slate-200 font-medium flex items-center gap-2">
+                            ${u.profilePic ? `<img src="${u.profilePic}" class="w-6 h-6 rounded-full object-cover border border-slate-200 dark:border-slate-600">` : `<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>`}
+                            ${u.name}
+                        </td>
+                        <td class="p-3 text-slate-500 dark:text-slate-400 font-mono text-xs">${u.email || u.id}</td>
+                        <td class="p-3">${roleBadge}</td>
+                        <td class="p-3 text-slate-600 dark:text-slate-400 text-xs">${leaderName}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) {
+                console.error(err);
+                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`;
             }
         }
 
-        function resetUserPassword(userId) {
-            const newPass = prompt(`Sila masukkan kata laluan baharu untuk pengguna ID: ${userId}\n(Kosongkan untuk batal)`);
-            if (newPass && newPass.trim() !== "") {
-                usersData[userId].pass = newPass.trim();
-                localStorage.setItem('infaq_users', JSON.stringify(usersData));
-                alert(`Berjaya! Kata laluan baharu untuk ${userId} telah ditetapkan.`);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (currentUser) {
-                initApp(); 
-            } else {
-                const loginScreen = document.getElementById('loginScreen');
-                if (loginScreen) loginScreen.classList.remove('hidden');
-                const appContent = document.getElementById('appContent');
-                if (appContent) appContent.classList.add('hidden');
-            }
-            updateThemeIcon(); 
-        });
-
+        // ================= FILTER & FORM LOGIC =================
         function isDateInRange(dateStr, start, end) {
             if (!start && !end) return true; 
             if (!dateStr) return false;      
@@ -1305,7 +1470,7 @@
                     } else {
                         if (owner !== orgValue && leader !== orgValue) return false;
                     }
-                } else if (currentUser.role === 'superadmin') {
+                } else if (currentUser.role === 'superadmin' || currentUser.role === 'ceo') {
                     if (orgValue !== 'all') {
                         if (owner !== orgValue && leader !== orgValue) return false;
                     }
@@ -1320,61 +1485,42 @@
         }
 
         function clearFilter() {
-            const startDateEl = document.getElementById('filterStartDate');
-            if(startDateEl) startDateEl.value = '';
-            const endDateEl = document.getElementById('filterEndDate');
-            if(endDateEl) endDateEl.value = '';
-            
-            const orgFilterEl = document.getElementById('orgFilter');
-            if(orgFilterEl) orgFilterEl.value = 'all';
-            
+            const startDateEl = document.getElementById('filterStartDate'); if(startDateEl) startDateEl.value = '';
+            const endDateEl = document.getElementById('filterEndDate'); if(endDateEl) endDateEl.value = '';
+            const orgFilterEl = document.getElementById('orgFilter'); if(orgFilterEl) orgFilterEl.value = 'all';
             applyFilter();
         }
 
         function switchTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
 
             const filterDiv = document.getElementById('global-date-filter');
             if (filterDiv) {
-                if(tabId === 'form' || tabId === 'management') {
-                    filterDiv.style.display = 'none'; 
-                } else {
-                    filterDiv.style.display = 'flex';
-                }
+                if(tabId === 'form' || tabId === 'management') filterDiv.style.display = 'none'; 
+                else filterDiv.style.display = 'flex';
             }
 
-            const activeTab = document.getElementById('tab-' + tabId);
-            if(activeTab) activeTab.classList.add('active');
-            
-            const navTab = document.getElementById('nav-' + tabId);
-            if(navTab) navTab.classList.add('active');
+            const activeTab = document.getElementById('tab-' + tabId); if(activeTab) activeTab.classList.add('active');
+            const navTab = document.getElementById('nav-' + tabId); if(navTab) navTab.classList.add('active');
 
             if(tabId === 'dashboard') renderCharts();
             window.scrollTo(0, 0);
         }
 
         function toggleConditionalFields() {
-            const remarkEl = document.getElementById('remark');
-            const statusEl = document.getElementById('status');
-            const remark = remarkEl ? remarkEl.value : '';
-            const status = statusEl ? statusEl.value : '';
+            const remarkEl = document.getElementById('remark'); const statusEl = document.getElementById('status');
+            const remark = remarkEl ? remarkEl.value.toLowerCase() : ''; const status = statusEl ? statusEl.value.toLowerCase() : '';
 
-            const divSubmitDate = document.getElementById('divSubmitDate');
-            const submitDate = document.getElementById('submitDate');
+            const divSubmitDate = document.getElementById('divSubmitDate'); const submitDate = document.getElementById('submitDate');
             if (divSubmitDate && submitDate) {
-                if (remark === 'Berminat Submit') divSubmitDate.classList.remove('hidden');
+                if (remark.includes('submit')) divSubmitDate.classList.remove('hidden');
                 else { divSubmitDate.classList.add('hidden'); submitDate.value = ''; }
             }
 
-            const divEnforceDate = document.getElementById('divEnforceDate');
-            const enforceDate = document.getElementById('enforceDate');
+            const divEnforceDate = document.getElementById('divEnforceDate'); const enforceDate = document.getElementById('enforceDate');
             if (divEnforceDate && enforceDate) {
-                if (status === 'Enforce') divEnforceDate.classList.remove('hidden');
+                if (status.includes('enforce')) divEnforceDate.classList.remove('hidden');
                 else { divEnforceDate.classList.add('hidden'); enforceDate.value = ''; }
             }
         }
@@ -1382,42 +1528,29 @@
         function calculateAge() {
             const dobInput = document.getElementById('dob');
             if (!dobInput || !dobInput.value) return;
-            const dob = new Date(dobInput.value);
-            const today = new Date();
+            const dob = new Date(dobInput.value); const today = new Date();
             let age = today.getFullYear() - dob.getFullYear();
             const m = today.getMonth() - dob.getMonth();
             if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
             
-            const ageEl = document.getElementById('age');
-            if (ageEl) ageEl.value = age;
-            
+            const ageEl = document.getElementById('age'); if (ageEl) ageEl.value = age;
             let range = "";
             if (age < 20) range = "Bawah 20"; else if (age <= 30) range = "20 - 30"; else if (age <= 40) range = "31 - 40"; else if (age <= 50) range = "41 - 50"; else range = "Atas 50";
-            
-            const ageRangeEl = document.getElementById('ageRange');
-            if (ageRangeEl) ageRangeEl.value = range;
+            const ageRangeEl = document.getElementById('ageRange'); if (ageRangeEl) ageRangeEl.value = range;
         }
 
         function generateWhatsapp() {
-            const phoneEl = document.getElementById('phone');
-            const waEl = document.getElementById('whatsapp');
+            const phoneEl = document.getElementById('phone'); const waEl = document.getElementById('whatsapp');
             if (!phoneEl || !waEl) return;
-            
             let phone = phoneEl.value.replace(/\D/g, ''); 
-            if (phone.startsWith('0')) {
-                phone = '6' + phone; 
-            }
-            if (phone.length > 5) {
-                waEl.value = `https://wa.me/${phone}`;
-            } else {
-                waEl.value = '';
-            }
+            if (phone.startsWith('0')) phone = '6' + phone; 
+            if (phone.length > 5) waEl.value = `https://wa.me/${phone}`;
+            else waEl.value = '';
         }
 
-        // --- FORM SUBMIT LOGIC (Updated to handle EDIT) ---
         const prospectFormEl = document.getElementById('prospectForm');
         if (prospectFormEl) {
-            prospectFormEl.addEventListener('submit', function(e) {
+            prospectFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 let assignedLeader = 'admin';
@@ -1437,23 +1570,18 @@
                     dob: getVal('dob'),
                     age: getVal('age'),
                     ageRange: getVal('ageRange'),
-                    
                     source1: getVal('source1'),
                     source2: getVal('source2'),
                     dateApproach: getVal('dateApproach'),
-                    
                     openCaseDate: getVal('openCaseDate'),
                     fullPresentation: getVal('fullPresentation'),
                     fullPresentationRating: getVal('fullPresentationRating'),
-                    
                     dialDate: getVal('dialDate'),
                     reachDate: getVal('reachDate'),
                     callsRating: getVal('callsRating'),
-                    
                     messageDate: getVal('messageDate'),
                     followUpDate: getVal('followUpDate'),
                     followUpRating: getVal('followUpRating'),
-                    
                     remark: getVal('remark'),
                     submitDate: getVal('submitDate'),
                     product: getVal('product'),
@@ -1464,30 +1592,37 @@
                     enforceDate: getVal('enforceDate')
                 };
 
-                if (currentEditId) {
-                    const index = prospectsData.findIndex(x => x.id === currentEditId);
-                    if (index !== -1) {
-                        updatedProspect.ownerId = prospectsData[index].ownerId;
-                        updatedProspect.leaderId = prospectsData[index].leaderId;
-                        updatedProspect.ownerName = prospectsData[index].ownerName;
-                        prospectsData[index] = updatedProspect;
-                        alert('Data Prospek Berjaya Dikemaskini!');
+                const pIdStr = updatedProspect.id.toString();
+                
+                try {
+                    await db.collection('prospects').doc(pIdStr).set(updatedProspect);
+                    
+                    if (currentEditId) {
+                        const index = prospectsData.findIndex(x => x.id === currentEditId);
+                        if (index !== -1) {
+                            updatedProspect.ownerId = prospectsData[index].ownerId;
+                            updatedProspect.leaderId = prospectsData[index].leaderId;
+                            updatedProspect.ownerName = prospectsData[index].ownerName;
+                            prospectsData[index] = updatedProspect;
+                            alert('Data Prospek Berjaya Dikemaskini di Server!');
+                        }
+                    } else {
+                        prospectsData.unshift(updatedProspect); 
+                        alert('Data Prospek Berjaya Disimpan di Server!');
                     }
-                } else {
-                    prospectsData.unshift(updatedProspect); 
-                    alert('Data Prospek Berjaya Disimpan!');
+                    
+                    resetForm();
+                    applyFilter(); 
+                    switchTab('list'); 
+                } catch (error) {
+                    console.error("Error saving prospect: ", error);
+                    alert("Ralat semasa menyimpan. Sila cuba lagi.");
                 }
-
-                localStorage.setItem('infaq_prospects', JSON.stringify(prospectsData));
-                resetForm();
-                applyFilter(); 
-                switchTab('list'); 
             });
         }
 
         function resetForm() {
-            const formEl = document.getElementById('prospectForm');
-            if(formEl) formEl.reset();
+            const formEl = document.getElementById('prospectForm'); if(formEl) formEl.reset();
             const wa = document.getElementById('whatsapp'); if(wa) wa.value = '';
             const age = document.getElementById('age'); if(age) age.value = '';
             const ageRange = document.getElementById('ageRange'); if(ageRange) ageRange.value = '';
@@ -1499,19 +1634,17 @@
             
             const submitBtn = document.getElementById('submitProspectBtn');
             if(submitBtn) {
-                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIM ঐতিহ্য PROSPEK`;
                 submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
                 submitBtn.classList.add('bg-infaq-DEFAULT', 'hover:bg-infaq-dark');
             }
         }
 
-        // ================= VIEW & EDIT PROSPECT MODAL LOGIC =================
         function viewProspect(id) {
             const p = prospectsData.find(x => x.id === id);
             if(!p) return;
 
             const content = document.getElementById('viewProspectContent');
-            
             const getVal = (val, suffix='') => val ? `<span class="font-medium text-slate-800 dark:text-slate-200">${val} ${suffix}</span>` : `<span class="text-slate-400 italic">Tiada Rekod</span>`;
             const getRating = (val) => val ? `<span class="font-medium text-yellow-500">${'⭐'.repeat(parseInt(val))}</span>` : `<span class="text-slate-400 italic">Tiada Rekod</span>`;
 
@@ -1592,35 +1725,17 @@
             if(!p) return;
 
             currentEditId = id;
-            
             const setVal = (fid, val) => { if(document.getElementById(fid)) document.getElementById(fid).value = val || ''; };
             
-            setVal('name', p.name);
-            setVal('phone', p.phone);
-            setVal('whatsapp', p.whatsapp);
-            setVal('dob', p.dob);
-            setVal('age', p.age);
-            setVal('ageRange', p.ageRange);
-            setVal('source1', p.source1);
-            setVal('source2', p.source2);
-            setVal('dateApproach', p.dateApproach);
-            setVal('openCaseDate', p.openCaseDate);
-            setVal('fullPresentation', p.fullPresentation);
-            setVal('fullPresentationRating', p.fullPresentationRating);
-            setVal('dialDate', p.dialDate);
-            setVal('reachDate', p.reachDate);
-            setVal('callsRating', p.callsRating);
-            setVal('messageDate', p.messageDate);
-            setVal('followUpDate', p.followUpDate);
-            setVal('followUpRating', p.followUpRating);
-            setVal('remark', p.remark);
-            setVal('submitDate', p.submitDate);
-            setVal('product', p.product);
-            setVal('ace', p.ace);
-            setVal('paymentMode', p.paymentMode);
-            setVal('production', p.production);
-            setVal('status', p.status);
-            setVal('enforceDate', p.enforceDate);
+            setVal('name', p.name); setVal('phone', p.phone); setVal('whatsapp', p.whatsapp);
+            setVal('dob', p.dob); setVal('age', p.age); setVal('ageRange', p.ageRange);
+            setVal('source1', p.source1); setVal('source2', p.source2); setVal('dateApproach', p.dateApproach);
+            setVal('openCaseDate', p.openCaseDate); setVal('fullPresentation', p.fullPresentation); setVal('fullPresentationRating', p.fullPresentationRating);
+            setVal('dialDate', p.dialDate); setVal('reachDate', p.reachDate); setVal('callsRating', p.callsRating);
+            setVal('messageDate', p.messageDate); setVal('followUpDate', p.followUpDate); setVal('followUpRating', p.followUpRating);
+            setVal('remark', p.remark); setVal('submitDate', p.submitDate); setVal('product', p.product);
+            setVal('ace', p.ace); setVal('paymentMode', p.paymentMode); setVal('production', p.production);
+            setVal('status', p.status); setVal('enforceDate', p.enforceDate);
 
             toggleConditionalFields();
 
@@ -1633,16 +1748,15 @@
                 submitBtn.classList.remove('bg-infaq-DEFAULT', 'hover:bg-infaq-dark');
                 submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
             }
-
             switchTab('form');
         }
 
-        // ================= DASHBOARD & CHARTS LOGIC =================
+        // ================= DASHBOARD & CHARTS =================
         function updateDashboard() {
             renderTable(); renderAdsTables(); renderReports(); renderCharts();
             const totalProspects = document.getElementById('totalProspects');
             if (totalProspects) totalProspects.innerText = filteredProspects.length; 
-            const enforceProduction = filteredProspects.filter(p => p.status === 'Enforce').reduce((sum, p) => sum + p.production, 0);
+            const enforceProduction = filteredProspects.filter(p => p.status && p.status.toLowerCase().includes('enforce')).reduce((sum, p) => sum + p.production, 0);
             const totalProduction = document.getElementById('totalProduction');
             if (totalProduction) totalProduction.innerText = 'RM ' + enforceProduction.toLocaleString('en-MY', { minimumFractionDigits: 2 });
         }
@@ -1657,12 +1771,12 @@
                 if(emptyState) emptyState.classList.add('hidden');
                 filteredProspects.forEach(p => { 
                     let statusClass = "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300";
-                    if(p.status === 'Enforce') statusClass = "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-400 font-bold";
-                    if(p.status === 'Pending') statusClass = "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-400";
-                    if(p.status === 'Cancelled') statusClass = "bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-400";
+                    if(p.status && p.status.toLowerCase().includes('enforce')) statusClass = "bg-emerald-100 text-emerald-700 dark:bg-emerald-900/50 dark:text-emerald-400 font-bold";
+                    if(p.status && p.status.toLowerCase().includes('pending')) statusClass = "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-400";
+                    if(p.status && (p.status.toLowerCase().includes('cancel') || p.status.toLowerCase().includes('batal') || p.status.toLowerCase().includes('tolak'))) statusClass = "bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-400";
 
                     let remarkClass = "text-slate-500 dark:text-slate-400";
-                    if(p.remark === 'Berminat Submit') remarkClass = "text-blue-600 dark:text-blue-400 font-medium";
+                    if(p.remark && p.remark.toLowerCase().includes('submit')) remarkClass = "text-blue-600 dark:text-blue-400 font-medium";
 
                     const agentNameLabel = (currentUser && currentUser.role !== 'agent' && p.ownerName) ? `<div class="text-[10px] text-infaq-DEFAULT font-bold mt-1"><i class="fa-solid fa-user-tie mr-1"></i>${p.ownerName}</div>` : '';
 
@@ -1676,10 +1790,10 @@
                         </td>
                         <td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.phone} ${p.whatsapp ? `<a href="${p.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="ml-2 text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400"><i class="fa-brands fa-whatsapp"></i></a>` : ''}</td>
                         <td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.age || '-'} <span class="text-xs text-slate-400 dark:text-slate-500">(${p.ageRange || '-'})</span></td>
-                        <td class="px-6 py-4 text-xs" onclick="viewProspect(${p.id})"><span class="block dark:text-slate-300">${p.source1}</span><span class="text-slate-400 dark:text-slate-500">${p.source2}</span></td>
+                        <td class="px-6 py-4 text-xs" onclick="viewProspect(${p.id})"><span class="block dark:text-slate-300">${p.source1 || '-'}</span><span class="text-slate-400 dark:text-slate-500">${p.source2 || '-'}</span></td>
                         <td class="px-6 py-4 ${remarkClass}" onclick="viewProspect(${p.id})">${p.remark || '-'}</td>
-                        <td class="px-6 py-4" onclick="viewProspect(${p.id})"><span class="px-2.5 py-1 rounded-full text-xs ${statusClass}">${p.status}</span></td>
-                        <td class="px-6 py-4 font-semibold text-slate-700 dark:text-slate-200" onclick="viewProspect(${p.id})">RM ${p.production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
+                        <td class="px-6 py-4" onclick="viewProspect(${p.id})"><span class="px-2.5 py-1 rounded-full text-xs ${statusClass}">${p.status || '-'}</span></td>
+                        <td class="px-6 py-4 font-semibold text-slate-700 dark:text-slate-200" onclick="viewProspect(${p.id})">RM ${p.production ? p.production.toLocaleString('en-MY', {minimumFractionDigits: 2}) : '0.00'}</td>
                         <td class="px-6 py-4 text-center">
                             <button onclick="editProspect(${p.id}, event)" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 transition px-3 py-1.5 rounded-lg text-xs font-bold" title="Kemaskini Rekod">
                                 <i class="fa-solid fa-pen-to-square mr-1"></i> Edit
@@ -1696,12 +1810,11 @@
             const chartTextColor = isDark ? '#94a3b8' : '#64748b'; 
             const gridColor = isDark ? '#334155' : '#f1f5f9'; 
 
-            const statusCounts = { 'Enforce': 0, 'Pending': 0, 'Postponed': 0, 'Cancelled': 0 };
-            const sourceCounts = {};
+            const statusCounts = {}; const sourceCounts = {};
             filteredProspects.forEach(p => { 
-                if(statusCounts[p.status] !== undefined) statusCounts[p.status]++;
-                const src = p.source1 || 'Lain-lain';
-                sourceCounts[src] = (sourceCounts[src] || 0) + 1;
+                const statusStr = p.status || 'Tiada Status';
+                if(statusCounts[statusStr] === undefined) statusCounts[statusStr] = 0; statusCounts[statusStr]++;
+                const src = p.source1 || 'Lain-lain'; sourceCounts[src] = (sourceCounts[src] || 0) + 1;
             });
 
             if(statusChartInstance) statusChartInstance.destroy();
@@ -1710,9 +1823,13 @@
 
             const statusCtxEl = document.getElementById('statusChart');
             if (statusCtxEl) {
+                const labels = Object.keys(statusCounts); const data = Object.values(statusCounts);
+                const colors = labels.map(l => {
+                    let L = l.toLowerCase();
+                    if(L.includes('enforce')) return '#006b49'; if(L.includes('pending')) return '#facc15'; if(L.includes('cancel') || L.includes('tolak')) return '#ef4444'; return '#94a3b8';
+                });
                 statusChartInstance = new Chart(statusCtxEl.getContext('2d'), {
-                    type: 'doughnut',
-                    data: { labels: ['Enforce', 'Pending', 'Postponed', 'Cancelled'], datasets: [{ data: [statusCounts['Enforce'], statusCounts['Pending'], statusCounts['Postponed'], statusCounts['Cancelled']], backgroundColor: ['#006b49', '#facc15', '#94a3b8', '#ef4444'], borderWidth: isDark ? 2 : 0, borderColor: isDark ? '#1e293b' : '#fff' }] },
+                    type: 'doughnut', data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderWidth: isDark ? 2 : 0, borderColor: isDark ? '#1e293b' : '#fff' }] },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: {family: 'Inter'}, color: chartTextColor } } }, cutout: '70%' }
                 });
             }
@@ -1720,8 +1837,7 @@
             const sourceCtxEl = document.getElementById('sourceChart');
             if (sourceCtxEl) {
                 sourceChartInstance = new Chart(sourceCtxEl.getContext('2d'), {
-                    type: 'bar',
-                    data: { labels: Object.keys(sourceCounts), datasets: [{ label: 'Bil. Prospek', data: Object.values(sourceCounts), backgroundColor: '#006b49', borderRadius: 4 }] },
+                    type: 'bar', data: { labels: Object.keys(sourceCounts), datasets: [{ label: 'Bil. Prospek', data: Object.values(sourceCounts), backgroundColor: '#006b49', borderRadius: 4 }] },
                     options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0, color: chartTextColor }, grid: { color: gridColor } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } } }
                 });
             }
@@ -1739,6 +1855,38 @@
             }
         }
 
+        // ================= ADS LOGIC =================
+        const tkAdsFormEl = document.getElementById('tiktokAdsForm');
+        if (tkAdsFormEl) {
+            tkAdsFormEl.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const dateEl = document.getElementById('tkDate'); const costEl = document.getElementById('tkCost'); const leadsEl = document.getElementById('tkLeads');
+                const newData = { id: Date.now(), date: dateEl ? dateEl.value : '', cost: costEl ? costEl.value : 0, leads: leadsEl ? leadsEl.value : 0 };
+                const existingIndex = tiktokAdsData.findIndex(a => a.date === newData.date);
+
+                try {
+                    await db.collection('tiktok_ads').doc(newData.id.toString()).set(newData);
+                    if(existingIndex >= 0) tiktokAdsData[existingIndex] = newData;
+                    else tiktokAdsData.push(newData);
+                    this.reset(); applyFilter(); alert('Rekod Tiktok Ads Disimpan di Firebase!');
+                } catch(err) { console.error(err); alert("Ralat menyimpan Tiktok Ads."); }
+            });
+        }
+
+        const fbAdsFormEl = document.getElementById('fbAdsForm');
+        if (fbAdsFormEl) {
+            fbAdsFormEl.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                const dateEl = document.getElementById('fbDate'); const productEl = document.getElementById('fbProduct'); const costEl = document.getElementById('fbCost'); const leadsEl = document.getElementById('fbLeads');
+                const newData = { id: Date.now(), date: dateEl ? dateEl.value : '', product: productEl ? productEl.value : '', cost: costEl ? costEl.value : 0, leads: leadsEl ? leadsEl.value : 0 };
+                try {
+                    await db.collection('fb_ads').doc(newData.id.toString()).set(newData);
+                    fbAdsData.push(newData);
+                    this.reset(); applyFilter(); alert('Rekod FB Ads Disimpan di Firebase!');
+                } catch(err) { console.error(err); alert("Ralat menyimpan FB Ads."); }
+            });
+        }
+
         function renderAdsTables() {
             const tkBody = document.getElementById('tkAdsTableBody');
             if(tkBody) {
@@ -1746,28 +1894,19 @@
                 const sortedTk = [...filteredTkAds].sort((a,b) => new Date(b.date) - new Date(a.date)); 
                 sortedTk.forEach(ad => {
                     const cost = parseFloat(ad.cost); const leads = parseInt(ad.leads); const cpl = leads > 0 ? (cost / leads) : 0;
-                    const matchedProspects = filteredProspects.filter(p => p.source1 === 'Tiktok Ads' && p.dateApproach === ad.date); 
+                    
+                    const matchedProspects = filteredProspects.filter(p => p.source1 && p.source1.toLowerCase().includes('tiktok') && p.dateApproach === ad.date); 
+                    
                     let openCase = 0, submit = 0, ace = 0, enforce = 0, production = 0;
                     matchedProspects.forEach(p => {
                         if (p.openCaseDate) openCase++;
-                        if (p.remark === 'Berminat Submit' || p.submitDate) { submit++; ace += parseFloat(p.ace || 0); }
-                        if (p.status === 'Enforce') { enforce++; production += parseFloat(p.production || 0); }
+                        if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { submit++; ace += parseFloat(p.ace || 0); }
+                        if (p.status && p.status.toLowerCase().includes('enforce')) { enforce++; production += parseFloat(p.production || 0); }
                     });
                     const closedLead = leads > 0 ? ((submit / leads) * 100).toFixed(1) + '%' : '0%'; const openClose = openCase > 0 ? ((submit / openCase) * 100).toFixed(1) + '%' : '0%'; const acs = enforce > 0 ? (production / enforce) : 0;
 
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition dark:text-slate-300";
-                    tr.innerHTML = `
-                        <td class="p-3 border-r dark:border-slate-700">${ad.date}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-center">${openCase}</td><td class="p-3 border-r dark:border-slate-700 text-center">${submit}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-right">${ace.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-center text-xs">${closedLead}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${openClose}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-center text-infaq-DEFAULT font-bold">${enforce}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-right text-infaq-DEFAULT font-bold">${production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                        <td class="p-3 font-bold text-right bg-emerald-50/50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400">${acs.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                    `;
+                    tr.innerHTML = `<td class="p-3 border-r dark:border-slate-700">${ad.date}</td><td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td><td class="p-3 border-r dark:border-slate-700 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${openCase}</td><td class="p-3 border-r dark:border-slate-700 text-center">${submit}</td><td class="p-3 border-r dark:border-slate-700 text-right">${ace.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${closedLead}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${openClose}</td><td class="p-3 border-r dark:border-slate-700 text-center text-infaq-DEFAULT font-bold">${enforce}</td><td class="p-3 border-r dark:border-slate-700 text-right text-infaq-DEFAULT font-bold">${production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 font-bold text-right bg-emerald-50/50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400">${acs.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>`;
                     tkBody.appendChild(tr);
                 });
                 if(sortedTk.length === 0) tkBody.innerHTML = `<tr><td colspan="12" class="p-4 text-center text-slate-400">Tiada rekod Tiktok Ads dimasukkan.</td></tr>`;
@@ -1780,19 +1919,14 @@
                 sortedFb.forEach(ad => {
                     const cost = parseFloat(ad.cost); const leads = parseInt(ad.leads); const cpl = leads > 0 ? (cost / leads) : 0;
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition dark:text-slate-300";
-                    tr.innerHTML = `
-                        <td class="p-3 border-r dark:border-slate-700">${ad.date}</td>
-                        <td class="p-3 border-r dark:border-slate-700">${ad.product}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td>
-                        <td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                        <td class="p-3 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>
-                    `;
+                    tr.innerHTML = `<td class="p-3 border-r dark:border-slate-700">${ad.date}</td><td class="p-3 border-r dark:border-slate-700">${ad.product}</td><td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td><td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>`;
                     fbBody.appendChild(tr);
                 });
                 if(sortedFb.length === 0) fbBody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Tiada rekod FB Ads dimasukkan.</td></tr>`;
             }
         }
 
+        // ================= REPORTS LOGIC =================
         function renderReports() {
             const srcBody = document.getElementById('reportSourceBody'); const srcFoot = document.getElementById('reportSourceFoot');
             const prodBody = document.getElementById('reportProductBody'); const prodFoot = document.getElementById('reportProductFoot');
@@ -1815,8 +1949,8 @@
                 srcMap[src].leads++; tLeads++;
                 if(p.openCaseDate) { srcMap[src].open++; tOpen++; }
                 if(p.fullPresentation) { srcMap[src].full++; tFull++; }
-                if(p.remark === 'Berminat Submit' || p.submitDate) { srcMap[src].submit++; tSubmit++; srcMap[src].ace += parseFloat(p.ace || 0); tAce += parseFloat(p.ace || 0); }
-                if(p.status === 'Enforce') { srcMap[src].enf++; tEnf++; srcMap[src].prod += parseFloat(p.production || 0); tProd += parseFloat(p.production || 0); }
+                if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { srcMap[src].submit++; tSubmit++; srcMap[src].ace += parseFloat(p.ace || 0); tAce += parseFloat(p.ace || 0); }
+                if(p.status && p.status.toLowerCase().includes('enforce')) { srcMap[src].enf++; tEnf++; srcMap[src].prod += parseFloat(p.production || 0); tProd += parseFloat(p.production || 0); }
             });
 
             const tAcs = tEnf > 0 ? tProd / tEnf : 0;
@@ -1831,35 +1965,19 @@
                     const rSubOpen = sData.open > 0 ? Math.round((sData.submit / sData.open)*100) + '%' : '0%';
                     const rSubLead = sData.leads > 0 ? Math.round((sData.submit / sData.leads)*100) + '%' : '0%';
 
-                    srcBody.innerHTML += `
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-3 text-left font-medium">${sName}</td>
-                            <td class="p-3">${sData.leads}</td><td class="p-3">${sData.open}</td><td class="p-3">${sData.full}</td><td class="p-3">${sData.submit}</td>
-                            <td class="p-3">RM ${sData.ace.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${acs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td>
-                            <td class="p-3">${sData.enf}</td><td class="p-3">RM ${sData.prod.toLocaleString('en-MY', {minimumFractionDigits:0})}</td>
-                            <td class="p-3">${rOpenLead}</td><td class="p-3">${rSubOpen}</td><td class="p-3">${rSubLead}</td>
-                        </tr>
-                    `;
+                    srcBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left font-medium">${sName}</td><td class="p-3">${sData.leads}</td><td class="p-3">${sData.open}</td><td class="p-3">${sData.full}</td><td class="p-3">${sData.submit}</td><td class="p-3">RM ${sData.ace.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${acs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${sData.enf}</td><td class="p-3">RM ${sData.prod.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${rOpenLead}</td><td class="p-3">${rSubOpen}</td><td class="p-3">${rSubLead}</td></tr>`;
                 }
-                
-                srcFoot.innerHTML = `
-                    <tr>
-                        <td class="p-3 text-left">Grand Total</td>
-                        <td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tFull}</td><td class="p-3">${tSubmit}</td>
-                        <td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${tAcs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td>
-                        <td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:0})}</td>
-                        <td class="p-3">${tOpenLead}</td><td class="p-3">${tSubOpen}</td><td class="p-3">${tSubLead}</td>
-                    </tr>
-                `;
+                srcFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tFull}</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${tAcs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${tOpenLead}</td><td class="p-3">${tSubOpen}</td><td class="p-3">${tSubLead}</td></tr>`;
             }
 
             let prodMap = {};
             filteredProspects.forEach(p => { 
                 const prod = p.product || 'Tiada Produk Diset';
-                if(!p.product && p.remark !== 'Berminat Submit' && p.status !== 'Enforce') return; 
+                if(!p.product && (!p.remark || !p.remark.toLowerCase().includes('submit')) && (!p.status || !p.status.toLowerCase().includes('enforce'))) return; 
+                
                 if(!prodMap[prod]) prodMap[prod] = { submit:0, ace:0, enf:0, prod:0 };
-                if(p.remark === 'Berminat Submit' || p.submitDate) { prodMap[prod].submit++; prodMap[prod].ace += parseFloat(p.ace || 0); }
-                if(p.status === 'Enforce') { prodMap[prod].enf++; prodMap[prod].prod += parseFloat(p.production || 0); }
+                if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { prodMap[prod].submit++; prodMap[prod].ace += parseFloat(p.ace || 0); }
+                if(p.status && p.status.toLowerCase().includes('enforce')) { prodMap[prod].enf++; prodMap[prod].prod += parseFloat(p.production || 0); }
             });
 
             if (prodBody && prodFoot) {
@@ -1867,29 +1985,9 @@
                     if(pData.submit === 0 && pData.enf === 0) continue; 
                     const pAcs = pData.enf > 0 ? pData.prod / pData.enf : 0;
                     const avgProd = pData.enf > 0 ? pData.prod / pData.enf : 0; 
-                    prodBody.innerHTML += `
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-3 text-left font-medium">${pName}</td>
-                            <td class="p-3">${pData.submit}</td>
-                            <td class="p-3">RM ${pData.ace.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                            <td class="p-3">RM ${pAcs.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                            <td class="p-3">${pData.enf}</td>
-                            <td class="p-3">RM ${pData.prod.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                            <td class="p-3">RM ${avgProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                        </tr>
-                    `;
+                    prodBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left font-medium">${pName}</td><td class="p-3">${pData.submit}</td><td class="p-3">RM ${pData.ace.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${pAcs.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">${pData.enf}</td><td class="p-3">RM ${pData.prod.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${avgProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td></tr>`;
                 }
-                prodFoot.innerHTML = `
-                    <tr>
-                        <td class="p-3 text-left">Grand Total</td>
-                        <td class="p-3">${tSubmit}</td>
-                        <td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                        <td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td>
-                        <td class="p-3">${tEnf}</td>
-                        <td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td>
-                        <td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td>
-                    </tr>
-                `;
+                prodFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td></tr>`;
             }
 
             let dailyMap = {};
@@ -1902,8 +2000,8 @@
                 if(p.dateApproach && dailyMap[p.dateApproach]) {
                     dailyMap[p.dateApproach].leads++;
                     if(p.openCaseDate) dailyMap[p.dateApproach].open++;
-                    if(p.remark === 'Berminat Submit' || p.submitDate) { dailyMap[p.dateApproach].submit++; dailyMap[p.dateApproach].ace += parseFloat(p.ace || 0); }
-                    if(p.status === 'Enforce') { dailyMap[p.dateApproach].enf++; dailyMap[p.dateApproach].prod += parseFloat(p.production || 0); }
+                    if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { dailyMap[p.dateApproach].submit++; dailyMap[p.dateApproach].ace += parseFloat(p.ace || 0); }
+                    if(p.status && p.status.toLowerCase().includes('enforce')) { dailyMap[p.dateApproach].enf++; dailyMap[p.dateApproach].prod += parseFloat(p.production || 0); }
                 }
                 if(p.dialDate && dailyMap[p.dialDate]) dailyMap[p.dialDate].dial++;
                 if(p.reachDate && dailyMap[p.reachDate]) dailyMap[p.reachDate].reach++;
@@ -1920,37 +2018,9 @@
                     dtDial += d.dial; dtReach += d.reach; dtMsg += d.msg; dtFup += d.fup;
                     const dateObj = new Date(date);
                     const dateStr = dateObj.toLocaleDateString('en-MY', { month: 'short', day: 'numeric', year: 'numeric' });
-                    dailyBody.innerHTML += `
-                        <tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50">
-                            <td class="p-3 text-left">${dateStr}</td>
-                            <td class="p-3">${d.leads}</td><td class="p-3">${d.open}</td><td class="p-3">${d.submit}</td>
-                            <td class="p-3">${d.ace > 0 ? 'RM '+d.ace.toLocaleString('en-MY') : '-'}</td>
-                            <td class="p-3">${d.enf}</td>
-                            <td class="p-3">${d.prod > 0 ? 'RM '+d.prod.toLocaleString('en-MY') : '-'}</td>
-                            <td class="p-3">${d.dial}</td><td class="p-3">${d.reach}</td><td class="p-3">${d.msg}</td><td class="p-3">${d.fup}</td>
-                        </tr>
-                    `;
+                    dailyBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left">${dateStr}</td><td class="p-3">${d.leads}</td><td class="p-3">${d.open}</td><td class="p-3">${d.submit}</td><td class="p-3">${d.ace > 0 ? 'RM '+d.ace.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.enf}</td><td class="p-3">${d.prod > 0 ? 'RM '+d.prod.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.dial}</td><td class="p-3">${d.reach}</td><td class="p-3">${d.msg}</td><td class="p-3">${d.fup}</td></tr>`;
                 });
-                dailyFoot.innerHTML = `
-                    <tr>
-                        <td class="p-3 text-left">Grand Total</td>
-                        <td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tSubmit}</td>
-                        <td class="p-3">RM ${tAce.toLocaleString('en-MY')}</td>
-                        <td class="p-3">${tEnf}</td>
-                        <td class="p-3">RM ${tProd.toLocaleString('en-MY')}</td>
-                        <td class="p-3">${dtDial}</td><td class="p-3">${dtReach}</td><td class="p-3">${dtMsg}</td><td class="p-3">${dtFup}</td>
-                    </tr>
-                `;
-            }
-        }
-
-        function clearData() {
-            if(confirm("Adakah anda pasti mahu memadam SEMUA rekod (Prospek & Kos Ads)? Tindakan ini tidak boleh diundur.")) {
-                localStorage.removeItem('infaq_prospects');
-                localStorage.removeItem('infaq_tiktok_ads');
-                localStorage.removeItem('infaq_fb_ads');
-                prospectsData = []; tiktokAdsData = []; fbAdsData = [];
-                applyFilter(); 
+                dailyFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY')}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY')}</td><td class="p-3">${dtDial}</td><td class="p-3">${dtReach}</td><td class="p-3">${dtMsg}</td><td class="p-3">${dtFup}</td></tr>`;
             }
         }
     </script>
