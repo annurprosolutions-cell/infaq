@@ -240,6 +240,8 @@
 
             <!-- ================= TAB 1: DASHBOARD ================= -->
             <div id="tab-dashboard" class="tab-content active space-y-6 max-w-5xl mx-auto">
+                
+                <!-- Summary Cards -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white dark:bg-slate-800 p-5 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center transition-colors">
                         <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 font-medium mb-1">Jumlah Prospek</p>
@@ -250,6 +252,29 @@
                         <h3 class="text-3xl lg:text-4xl font-bold text-infaq-DEFAULT" id="totalProduction">RM 0</h3>
                     </div>
                 </div>
+
+                <!-- ORG SUMMARY (Visible for CEO/Leader) -->
+                <div id="orgSummaryContainer" class="hidden bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
+                    <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2">
+                        <i class="fa-solid fa-sitemap text-infaq-DEFAULT mr-2"></i> Rumusan Organisasi
+                    </h3>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
+                            <thead>
+                                <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 font-medium border-b border-slate-200 dark:border-slate-700">
+                                    <th class="p-3">Nama / Peranan</th>
+                                    <th class="p-3 text-center">Bil. Ejen Seliaan</th>
+                                    <th class="p-3 text-center">Bil. Prospek</th>
+                                </tr>
+                            </thead>
+                            <tbody id="orgSummaryBody" class="divide-y divide-slate-100 dark:divide-slate-700">
+                                <!-- JS Auto Generate -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Charts -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-pie text-infaq-DEFAULT mr-2"></i> Analisis Status Polisi</h3>
@@ -259,8 +284,9 @@
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-column text-infaq-DEFAULT mr-2"></i> Sumber Lead Terbaik</h3>
                         <div class="relative h-64 w-full flex justify-center"><canvas id="sourceChart"></canvas></div>
                     </div>
+                    <!-- Combination Chart (Ads + Leads) -->
                     <div class="md:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors" id="costAdsChartContainer">
-                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq-DEFAULT mr-2"></i> Rumusan Kos Pengiklanan (Ads Cost)</h3>
+                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq-DEFAULT mr-2"></i> Rumusan Kos Pengiklanan & Tarikan Lead</h3>
                         <div class="relative h-72 w-full flex justify-center"><canvas id="costAdsChart"></canvas></div>
                     </div>
                 </div>
@@ -727,8 +753,16 @@
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nama Penuh</label>
                                 <input type="text" id="myName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
                             </div>
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Semasa</label>
+                                <input type="password" id="myOldPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Sahkan password lama">
+                            </div>
+                            <div class="sm:col-span-1">
+                                <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Baharu</label>
+                                <input type="password" id="myNewPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Biarkan kosong jika tidak tukar">
+                            </div>
                             <div class="sm:col-span-2 mt-2">
-                                <button type="submit" class="w-full md:w-auto px-6 py-2.5 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
+                                <button type="submit" id="profileSaveBtn" class="w-full md:w-auto px-6 py-2.5 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
                                     <i class="fa-solid fa-floppy-disk"></i> Simpan Profil
                                 </button>
                             </div>
@@ -857,6 +891,7 @@
 
         let currentUser = null;
         let currentEditId = null;
+        let allUsersData = {}; 
 
         // ================= FETCH GOOGLE SHEET DROPDOWNS =================
         async function fetchGoogleSheetDropdowns() {
@@ -943,9 +978,7 @@
                 try {
                     let userDoc = await db.collection('users').doc(user.uid).get();
                     
-                    // JIKA PROFIL TIADA DI FIRESTORE (DATABASE)
                     if (!userDoc.exists) {
-                        // BINA PROFIL AUTOMATIK UNTUK CEO DAN SUPERADMIN
                         if (user.email === 'infaqsmartbook@gmail.com' || user.email === 'annurprosolutions@gmail.com') {
                             const role = user.email === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
                             const name = user.email === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
@@ -959,10 +992,8 @@
                                 leaderId: null
                             });
                             
-                            // Tarik semula data yang baru dicipta
                             userDoc = await db.collection('users').doc(user.uid).get();
                         } else {
-                            // Jika ejen biasa tiada profil, sekat mereka
                             firebase.auth().signOut();
                             alert("Akaun anda wujud di Authentication tetapi belum dikonfigurasikan di Firestore (Database). Sila lapor kepada Admin.");
                             return;
@@ -1024,8 +1055,6 @@
             if (email && email.trim() !== "") {
                 const targetEmail = email.trim();
                 try {
-                    // SILENTLY CREATE CEO/ADMIN IF THEY DON'T EXIST YET
-                    // This allows them to use "Forgot Password" to set their first password
                     if (targetEmail === 'infaqsmartbook@gmail.com' || targetEmail === 'annurprosolutions@gmail.com') {
                         try {
                             const tempApp = firebase.initializeApp(firebaseConfig, "TempApp");
@@ -1046,7 +1075,6 @@
                             await tempApp.auth().signOut();
                             tempApp.delete();
                         } catch (e) {
-                            // If account already exists, it will throw an error and we just ignore it
                             console.log("Bootstrap check: User might already exist.");
                         }
                     }
@@ -1060,6 +1088,18 @@
             }
         }
 
+        async function fetchAllUsersForOrg() {
+            try {
+                const snap = await db.collection('users').get();
+                allUsersData = {};
+                snap.forEach(doc => {
+                    allUsersData[doc.id] = doc.data();
+                });
+            } catch(e) {
+                console.error("Error fetching all users for Org Summary: ", e);
+            }
+        }
+
         async function initApp() {
             const loginScreen = document.getElementById('loginScreen');
             if (loginScreen) loginScreen.style.opacity = '0';
@@ -1068,6 +1108,8 @@
             if(headerUserName) headerUserName.innerText = "Memuatkan data...";
             
             try {
+                await fetchAllUsersForOrg();
+
                 const prospectSnap = await db.collection('prospects').get();
                 prospectsData = [];
                 prospectSnap.forEach(doc => prospectsData.push(doc.data()));
@@ -1174,11 +1216,7 @@
 
             if (!roleFilter) return;
 
-            let allUsers = [];
-            try {
-                const snap = await db.collection('users').get();
-                snap.forEach(d => allUsers.push(d.data()));
-            } catch(e) { console.error(e); }
+            let allUsers = Object.values(allUsersData);
 
             if (currentUser.role === 'ceo') {
                 if (liForm) liForm.style.display = 'none';
@@ -1295,22 +1333,105 @@
         async function updateMyProfile(e) {
             e.preventDefault();
             const newName = document.getElementById('myName').value.trim();
+            const oldPass = document.getElementById('myOldPass').value.trim();
+            const newPass = document.getElementById('myNewPass').value.trim();
             const picInput = document.getElementById('myProfilePic');
 
             const updates = {};
             if(newName) { currentUser.name = newName; updates.name = newName; }
 
-            if(picInput.files && picInput.files[0]) {
-                const reader = new FileReader();
-                reader.onload = async function(e) {
-                    const base64Img = e.target.result;
-                    currentUser.profilePic = base64Img;
-                    updates.profilePic = base64Img;
+            const submitBtn = document.getElementById('profileSaveBtn');
+            const originalBtnText = submitBtn.innerHTML;
+            
+            try {
+                // Firebase Auth Password Update Logic
+                if (oldPass || newPass) {
+                    if (!oldPass || !newPass) {
+                        alert("Sila masukkan 'Kata Laluan Semasa' dan 'Kata Laluan Baharu' untuk menukar kata laluan.");
+                        return;
+                    }
+                    const authUser = firebase.auth().currentUser;
+                    if (authUser) {
+                        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengesahkan...`;
+                        submitBtn.disabled = true;
+                        
+                        const credential = firebase.auth.EmailAuthProvider.credential(authUser.email, oldPass);
+                        try {
+                            await authUser.reauthenticateWithCredential(credential);
+                            await authUser.updatePassword(newPass);
+                        } catch (err) {
+                            console.error("Re-auth error: ", err);
+                            alert("Kata laluan semasa yang dimasukkan adalah salah. Sila cuba lagi.");
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                            return;
+                        }
+                    }
+                }
+
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...`;
+                submitBtn.disabled = true;
+
+                if(picInput.files && picInput.files[0]) {
+                    const file = picInput.files[0];
+                    const reader = new FileReader();
+                    reader.onload = async function(e) {
+                        const base64Data = e.target.result.split(',')[1]; 
+                        const mimeType = file.type;
+                        const fileName = currentUser.id + "_" + Date.now() + "_" + file.name;
+
+                        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memuat naik ke Drive...`;
+
+                        try {
+                            /* MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI BAWAH INI */
+                            const scriptUrl = "https://script.google.com/macros/s/AKfycbwTiKcXfTqpL4MIwZ69AcSImSPGZJhnZc-1GtKRHQyKzGlryKIiRfHcQ3PgaWNwYJad/exec"; 
+
+                            if (scriptUrl === "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI") {
+                                alert("Sila kemas kini URL Google Apps Script di dalam fail HTML terlebih dahulu untuk membolehkan muat naik ke Google Drive.");
+                                throw new Error("Script URL not configured");
+                            }
+
+                            const response = await fetch(scriptUrl, {
+                                method: "POST",
+                                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                                body: JSON.stringify({ 
+                                    uid: currentUser.id, 
+                                    nama: currentUser.name, 
+                                    fileName: fileName, 
+                                    mimeType: mimeType, 
+                                    data: base64Data 
+                                })
+                            });
+
+                            const result = await response.json();
+                            
+                            if (result.status === 'success') {
+                                const driveImageUrl = result.url;
+                                currentUser.profilePic = driveImageUrl;
+                                updates.profilePic = driveImageUrl;
+                                await saveProfileToFirebase(updates);
+                            } else {
+                                throw new Error(result.message);
+                            }
+                        } catch (uploadError) {
+                            console.error("Upload error:", uploadError);
+                            alert("Ralat semasa memuat naik gambar ke Google Drive.");
+                        } finally {
+                            submitBtn.innerHTML = originalBtnText;
+                            submitBtn.disabled = false;
+                        }
+                    };
+                    reader.readAsDataURL(file);
+                } else {
                     await saveProfileToFirebase(updates);
-                };
-                reader.readAsDataURL(picInput.files[0]);
-            } else {
-                await saveProfileToFirebase(updates);
+                    submitBtn.innerHTML = originalBtnText;
+                    submitBtn.disabled = false;
+                }
+            } catch (error) {
+                console.error("Update profile error: ", error);
+                alert("Berlaku ralat semasa mengemaskini profil.");
+                submitBtn.innerHTML = originalBtnText;
+                submitBtn.disabled = false;
             }
         }
 
@@ -1320,6 +1441,11 @@
                 alert('Profil berjaya dikemas kini!');
                 setupRoleUI(); 
                 if(currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
+                
+                const oldPassEl = document.getElementById('myOldPass');
+                if (oldPassEl) oldPassEl.value = '';
+                const newPassEl = document.getElementById('myNewPass');
+                if (newPassEl) newPassEl.value = '';
             } catch(e) {
                 console.error(e); alert('Gagal menyimpan profil.');
             }
@@ -1374,6 +1500,7 @@
                     
                     alert("Berjaya: Pengguna baharu didaftarkan!");
                     this.reset();
+                    fetchAllUsersForOrg(); // Refresh global map
                     setupRoleUI(); 
                     setupManagementUI(); 
                 } catch(err) {
@@ -1634,7 +1761,7 @@
             
             const submitBtn = document.getElementById('submitProspectBtn');
             if(submitBtn) {
-                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIM ঐতিহ্য PROSPEK`;
+                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK`;
                 submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
                 submitBtn.classList.add('bg-infaq-DEFAULT', 'hover:bg-infaq-dark');
             }
@@ -1753,12 +1880,115 @@
 
         // ================= DASHBOARD & CHARTS =================
         function updateDashboard() {
-            renderTable(); renderAdsTables(); renderReports(); renderCharts();
+            renderTable(); 
+            renderAdsTables(); 
+            renderReports(); 
+            renderCharts();
+            renderOrgTable(); 
+            
             const totalProspects = document.getElementById('totalProspects');
             if (totalProspects) totalProspects.innerText = filteredProspects.length; 
             const enforceProduction = filteredProspects.filter(p => p.status && p.status.toLowerCase().includes('enforce')).reduce((sum, p) => sum + p.production, 0);
             const totalProduction = document.getElementById('totalProduction');
             if (totalProduction) totalProduction.innerText = 'RM ' + enforceProduction.toLocaleString('en-MY', { minimumFractionDigits: 2 });
+        }
+
+        function renderOrgTable() {
+            const container = document.getElementById('orgSummaryContainer');
+            const tbody = document.getElementById('orgSummaryBody');
+            if(!container || !tbody) return;
+
+            if(currentUser.role === 'agent') {
+                container.classList.add('hidden');
+                return;
+            }
+
+            container.classList.remove('hidden');
+            tbody.innerHTML = '';
+
+            const prospectCounts = {};
+            filteredProspects.forEach(p => {
+                const owner = p.ownerId || 'admin';
+                prospectCounts[owner] = (prospectCounts[owner] || 0) + 1;
+            });
+
+            const allUsers = Object.values(allUsersData);
+
+            if (currentUser.role === 'ceo' || currentUser.role === 'superadmin') {
+                const leaders = allUsers.filter(u => u.role === 'leader');
+                
+                leaders.forEach(leader => {
+                    const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === leader.id);
+                    const leaderProps = prospectCounts[leader.id] || 0;
+                    
+                    tbody.innerHTML += `
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
+                            <td class="p-3"><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)</td>
+                            <td class="p-3 text-center">${agents.length}</td>
+                            <td class="p-3 text-center">${leaderProps}</td>
+                        </tr>
+                    `;
+                    
+                    agents.forEach(agent => {
+                        const agentProps = prospectCounts[agent.id] || 0;
+                        tbody.innerHTML += `
+                            <tr class="text-slate-600 dark:text-slate-400">
+                                <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                                <td class="p-3 text-center">-</td>
+                                <td class="p-3 text-center font-medium">${agentProps}</td>
+                            </tr>
+                        `;
+                    });
+                });
+                
+                const others = allUsers.filter(u => u.role === 'agent' && (u.leaderId === 'admin' || !u.leaderId));
+                if(others.length > 0) {
+                     tbody.innerHTML += `
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
+                            <td class="p-3"><i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin</td>
+                            <td class="p-3 text-center">${others.length}</td>
+                            <td class="p-3 text-center">-</td>
+                        </tr>
+                    `;
+                    others.forEach(agent => {
+                        const agentProps = prospectCounts[agent.id] || 0;
+                        tbody.innerHTML += `
+                            <tr class="text-slate-600 dark:text-slate-400">
+                                <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                                <td class="p-3 text-center">-</td>
+                                <td class="p-3 text-center font-medium">${agentProps}</td>
+                            </tr>
+                        `;
+                    });
+                }
+
+                if (leaders.length === 0 && others.length === 0) {
+                    tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-400">Tiada rekod organisasi dijumpai.</td></tr>`;
+                }
+
+            } else if (currentUser.role === 'leader') {
+                const leaderProps = prospectCounts[currentUser.id] || 0;
+                const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === currentUser.id);
+
+                tbody.innerHTML += `
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
+                        <td class="p-3"><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})</td>
+                        <td class="p-3 text-center">${agents.length}</td>
+                        <td class="p-3 text-center">${leaderProps}</td>
+                    </tr>
+                `;
+                
+                agents.forEach(agent => {
+                    const agentProps = prospectCounts[agent.id] || 0;
+                    tbody.innerHTML += `
+                        <tr class="text-slate-600 dark:text-slate-400">
+                            <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                            <td class="p-3 text-center">-</td>
+                            <td class="p-3 text-center font-medium">${agentProps}</td>
+                        </tr>
+                    `;
+                });
+            }
         }
 
         function renderTable() {
@@ -1845,12 +2075,78 @@
             const costCtxEl = document.getElementById('costAdsChart');
             if (costCtxEl) {
                 const adDates = [...new Set([...filteredTkAds.map(a => a.date), ...filteredFbAds.map(a => a.date)])].sort();
+                
                 const tkCostArray = adDates.map(d => { const tk = filteredTkAds.find(a => a.date === d); return tk ? parseFloat(tk.cost) : 0; });
                 const fbCostArray = adDates.map(d => { const fb = filteredFbAds.find(a => a.date === d); return fb ? parseFloat(fb.cost) : 0; });
+                
+                // Calculate Total Leads for the Line Chart
+                const leadsArray = adDates.map(d => { 
+                    const tk = filteredTkAds.find(a => a.date === d); 
+                    const fb = filteredFbAds.find(a => a.date === d); 
+                    const tkL = tk ? parseInt(tk.leads) : 0;
+                    const fbL = fb ? parseInt(fb.leads) : 0;
+                    return tkL + fbL;
+                });
+
                 costAdsChartInstance = new Chart(costCtxEl.getContext('2d'), {
-                    type: 'bar',
-                    data: { labels: adDates.length > 0 ? adDates : ['Tiada Data'], datasets: [ { label: 'Tiktok Ads Cost (RM)', data: adDates.length > 0 ? tkCostArray : [0], backgroundColor: '#0f172a', borderRadius: 4 }, { label: 'FB Ads Cost (RM)', data: adDates.length > 0 ? fbCostArray : [0], backgroundColor: '#2563eb', borderRadius: 4 } ] },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, scales: { y: { beginAtZero: true, ticks: { color: chartTextColor }, grid: { color: gridColor } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } } }
+                    data: { 
+                        labels: adDates.length > 0 ? adDates : ['Tiada Data'], 
+                        datasets: [ 
+                            {
+                                type: 'line',
+                                label: 'Jumlah Lead Dihasilkan',
+                                data: adDates.length > 0 ? leadsArray : [0],
+                                borderColor: '#f59e0b', // Amber
+                                backgroundColor: '#f59e0b',
+                                borderWidth: 3,
+                                tension: 0.3,
+                                yAxisID: 'y1'
+                            },
+                            { 
+                                type: 'bar',
+                                label: 'Tiktok Ads Cost (RM)', 
+                                data: adDates.length > 0 ? tkCostArray : [0], 
+                                backgroundColor: '#0f172a', 
+                                borderRadius: 4,
+                                yAxisID: 'y'
+                            }, 
+                            { 
+                                type: 'bar',
+                                label: 'FB Ads Cost (RM)', 
+                                data: adDates.length > 0 ? fbCostArray : [0], 
+                                backgroundColor: '#2563eb', 
+                                borderRadius: 4,
+                                yAxisID: 'y'
+                            } 
+                        ] 
+                    },
+                    options: { 
+                        responsive: true, 
+                        maintainAspectRatio: false, 
+                        plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, 
+                        scales: { 
+                            y: { 
+                                type: 'linear',
+                                position: 'left',
+                                title: { display: true, text: 'Kos Pengiklanan (RM)', color: chartTextColor },
+                                beginAtZero: true, 
+                                ticks: { color: chartTextColor }, 
+                                grid: { color: gridColor } 
+                            }, 
+                            y1: {
+                                type: 'linear',
+                                position: 'right',
+                                title: { display: true, text: 'Bilangan Leads', color: chartTextColor },
+                                beginAtZero: true,
+                                ticks: { color: chartTextColor },
+                                grid: { drawOnChartArea: false } // Hide background grid for the right axis to keep it clean
+                            },
+                            x: { 
+                                ticks: { color: chartTextColor }, 
+                                grid: { display: false } 
+                            } 
+                        } 
+                    }
                 });
             }
         }
@@ -2021,6 +2317,26 @@
                     dailyBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left">${dateStr}</td><td class="p-3">${d.leads}</td><td class="p-3">${d.open}</td><td class="p-3">${d.submit}</td><td class="p-3">${d.ace > 0 ? 'RM '+d.ace.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.enf}</td><td class="p-3">${d.prod > 0 ? 'RM '+d.prod.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.dial}</td><td class="p-3">${d.reach}</td><td class="p-3">${d.msg}</td><td class="p-3">${d.fup}</td></tr>`;
                 });
                 dailyFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY')}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY')}</td><td class="p-3">${dtDial}</td><td class="p-3">${dtReach}</td><td class="p-3">${dtMsg}</td><td class="p-3">${dtFup}</td></tr>`;
+            }
+        }
+
+        async function clearData() {
+            if(confirm("Adakah anda pasti mahu memadam SEMUA rekod (Prospek & Kos Ads)? Tindakan ini tidak boleh diundur.")) {
+                try {
+                    const pSnap = await db.collection('prospects').get();
+                    pSnap.forEach(doc => doc.ref.delete());
+                    const tkSnap = await db.collection('tiktok_ads').get();
+                    tkSnap.forEach(doc => doc.ref.delete());
+                    const fbSnap = await db.collection('fb_ads').get();
+                    fbSnap.forEach(doc => doc.ref.delete());
+
+                    prospectsData = []; tiktokAdsData = []; fbAdsData = [];
+                    applyFilter(); 
+                    alert("Semua data telah dipadam dari pangkalan data.");
+                } catch(err) {
+                    console.error(err);
+                    alert("Ralat semasa memadam data.");
+                }
             }
         }
     </script>
