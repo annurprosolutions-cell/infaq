@@ -13,11 +13,11 @@
     <meta name="mobile-web-app-capable" content="yes">
 
     <!-- Favicon and App Icons (Converted from Google Drive Link) -->
-    <link rel="icon" href="https://lh3.googleusercontent.com/d/1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc" type="image/png">
+    <link rel="icon" href="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" type="image/png">
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc">
     
     <!-- Web App Manifest (Base64 Encoded to keep single-file structure) -->
-    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%20%22name%22%3A%20%22Takaful%20Sales%20Tracker%22%2C%20%22short_name%22%3A%20%22Takaful%20App%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23f8fafc%22%2C%20%22theme_color%22%3A%20%22%23006b49%22%2C%20%22icons%22%3A%20%5B%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1WSYuJivsVnfLyZltaN12I51RTb_dYwT2%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%2C%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1WSYuJivsVnfLyZltaN12I51RTb_dYwT2%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%20%5D%20%7D">
+    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%20%22name%22%3A%20%22Takaful%20Sales%20Tracker%22%2C%20%22short_name%22%3A%20%22Takaful%20App%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23f8fafc%22%2C%20%22theme_color%22%3A%20%22%23006b49%22%2C%20%22icons%22%3A%20%5B%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%2C%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%20%5D%20%7D">
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -195,6 +195,12 @@
                             <span class="text-[10px] md:text-sm">Dashboard</span>
                         </button>
                     </li>
+                    <li class="flex-1 md:flex-none" id="li-calendar" style="display:none;">
+                        <button onclick="switchTab('calendar')" id="nav-calendar" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                            <i class="fa-solid fa-calendar-days text-lg md:text-base"></i>
+                            <span class="text-[10px] md:text-sm">Kalendar</span>
+                        </button>
+                    </li>
                     <li class="flex-1 md:flex-none" id="li-form">
                         <button onclick="switchTab('form')" id="nav-form" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-user-plus text-lg md:text-base"></i>
@@ -271,7 +277,7 @@
                     <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 flex justify-between items-center">
                         <span><i class="fa-solid fa-sitemap text-infaq-DEFAULT mr-2"></i> Rumusan Organisasi</span>
                         <span id="orgSummaryCounts" class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full shadow-sm">
-                            <!-- JS Auto Fill: 0 Leader | 0 Agent -->
+                            <!-- JS Auto Fill -->
                         </span>
                     </h3>
                     <div class="overflow-x-auto">
@@ -305,6 +311,48 @@
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq-DEFAULT mr-2"></i> Rumusan Kos Pengiklanan & Tarikan Lead</h3>
                         <div class="relative h-72 w-full flex justify-center"><canvas id="costAdsChart"></canvas></div>
                     </div>
+                </div>
+            </div>
+
+            <!-- ================= TAB 1.5: KALENDAR CEO ================= -->
+            <div id="tab-calendar" class="tab-content max-w-full mx-auto space-y-4">
+                <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors p-4 md:p-6">
+                    
+                    <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+                        <div class="flex items-center gap-4">
+                            <button onclick="changeCalendarMonth(-1)" class="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg text-slate-700 dark:text-slate-200 transition"><i class="fa-solid fa-chevron-left"></i></button>
+                            <h2 id="calendarMonthYear" class="text-xl font-bold text-slate-800 dark:text-white min-w-[150px] text-center">Bulan Tahun</h2>
+                            <button onclick="changeCalendarMonth(1)" class="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg text-slate-700 dark:text-slate-200 transition"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                        <div class="flex gap-4">
+                            <label class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+                                <input type="checkbox" id="calShowLeaders" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq-DEFAULT focus:ring-infaq-DEFAULT border-slate-300 rounded cursor-pointer">
+                                Tunjuk Leader
+                            </label>
+                            <label class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
+                                <input type="checkbox" id="calShowAgents" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq-DEFAULT focus:ring-infaq-DEFAULT border-slate-300 rounded cursor-pointer">
+                                Tunjuk Agent
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="w-full overflow-x-auto">
+                        <div class="min-w-[1000px]">
+                            <div class="grid grid-cols-7 bg-[#789bcc] text-white font-medium text-sm text-center border-b-2 border-[#5c7eb3]">
+                                <div class="p-2 border-r border-white/20">Isnin</div>
+                                <div class="p-2 border-r border-white/20">Selasa</div>
+                                <div class="p-2 border-r border-white/20">Rabu</div>
+                                <div class="p-2 border-r border-white/20">Khamis</div>
+                                <div class="p-2 border-r border-white/20">Jumaat</div>
+                                <div class="p-2 border-r border-white/20">Sabtu</div>
+                                <div class="p-2">Ahad</div>
+                            </div>
+                            <div id="calendarGrid" class="grid grid-cols-7 border-l border-slate-200 dark:border-slate-700">
+                                <!-- JS generated calendar cells -->
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
@@ -909,6 +957,8 @@
         let currentEditId = null;
         let allUsersData = {}; 
 
+        let calendarDate = new Date();
+
         // Helper function to parse CSV robustly
         function parseCSV(csv) {
             const rows = [];
@@ -929,7 +979,7 @@
 
         // ================= FETCH GOOGLE SHEET DATA =================
         async function fetchGoogleSheetDropdowns() {
-            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?single=true&output=csv";
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=475370971&single=true&output=csv";
             try {
                 const res = await fetch(url);
                 const csv = await res.text();
@@ -955,7 +1005,7 @@
         }
 
         async function fetchProfilePicsFromSheet() {
-            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?output=csv";
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=0&single=true&output=csv";
             try {
                 const res = await fetch(url);
                 const csv = await res.text();
@@ -1155,6 +1205,7 @@
             const html = document.documentElement; html.classList.toggle('dark');
             const isDark = html.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateThemeIcon();
+            
             const tabDash = document.getElementById('tab-dashboard');
             if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
@@ -1188,14 +1239,19 @@
             const roleFilter = document.getElementById('roleBasedFilter');
             const navManagement = document.getElementById('navItemManagement');
             const liForm = document.getElementById('li-form'); const liAds = document.getElementById('li-ads'); const liList = document.getElementById('li-list');
+            const liCalendar = document.getElementById('li-calendar');
 
             if (liForm) liForm.style.display = 'block'; if (liAds) liAds.style.display = 'block'; if (liList) liList.style.display = 'block';
+            if (liCalendar) liCalendar.style.display = 'none';
+
             if (!roleFilter) return;
 
             let allUsers = Object.values(allUsersData);
             if (currentUser.role === 'ceo') {
                 if (liForm) liForm.style.display = 'none'; if (liAds) liAds.style.display = 'none'; if (liList) liList.style.display = 'none';
                 if (navManagement) navManagement.style.display = 'block';
+                if (liCalendar) liCalendar.style.display = 'block';
+                
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
                 allUsers.forEach(u => { if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`; });
@@ -1209,6 +1265,7 @@
                 });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
                 if (navManagement) navManagement.style.display = 'block';
+                if (liCalendar) liCalendar.style.display = 'block';
             } else if (currentUser.role === 'leader') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan Saya</option>`;
@@ -1307,7 +1364,7 @@
                         submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memuat naik ke Drive...`;
 
                         try {
-                            const scriptUrl = "https://script.google.com/macros/s/AKfycbwTiKcXfTqpL4MIwZ69AcSImSPGZJhnZc-1GtKRHQyKzGlryKIiRfHcQ3PgaWNwYJad/exec"; 
+                            const scriptUrl = "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI"; 
                             if (scriptUrl === "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI") {
                                 alert("Sila kemas kini URL Google Apps Script di dalam fail HTML terlebih dahulu untuk membolehkan muat naik ke Google Drive.");
                                 throw new Error("Script URL not configured");
@@ -1446,6 +1503,7 @@
             filteredFbAds = fbAdsData.filter(a => isDateInRange(a.date, start, end));
 
             updateDashboard();
+            if(currentUser.role === 'ceo' || currentUser.role === 'superadmin') renderCalendar();
         }
 
         function clearFilter() {
@@ -1469,7 +1527,115 @@
             const navTab = document.getElementById('nav-' + tabId); if(navTab) navTab.classList.add('active');
 
             if(tabId === 'dashboard') renderCharts();
+            if(tabId === 'calendar') renderCalendar();
             window.scrollTo(0, 0);
+        }
+
+        // ================= CALENDAR LOGIC (CEO/ADMIN ONLY) =================
+        function changeCalendarMonth(offset) {
+            calendarDate.setMonth(calendarDate.getMonth() + offset);
+            renderCalendar();
+        }
+
+        function toggleCalendarFilters() {
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const monthYearEl = document.getElementById('calendarMonthYear');
+            const gridEl = document.getElementById('calendarGrid');
+            if (!monthYearEl || !gridEl) return;
+
+            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
+            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
+
+            const year = calendarDate.getFullYear();
+            const month = calendarDate.getMonth();
+            
+            const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
+            monthYearEl.innerText = `${monthNames[month]} ${year}`;
+
+            const calData = {};
+            
+            prospectsData.forEach(p => {
+                const ownerId = p.ownerId || 'admin';
+                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
+                const role = ownerObj.role;
+
+                if (role === 'leader' && !showLeaders) return;
+                if (role === 'agent' && !showAgents) return;
+                if (role === 'superadmin' || role === 'ceo') return; 
+
+                const updateMap = (dateStr, type) => {
+                    if (!dateStr) return;
+                    const d = new Date(dateStr);
+                    if (isNaN(d)) return;
+                    const ymd = dateStr.substring(0, 10);
+                    
+                    if (!calData[ymd]) calData[ymd] = {};
+                    if (!calData[ymd][ownerId]) {
+                        calData[ymd][ownerId] = {
+                            name: ownerObj.name.split(' ')[0], 
+                            leads: 0, openCase: 0, submit: 0, enforce: 0
+                        };
+                    }
+                    calData[ymd][ownerId][type]++;
+                };
+
+                updateMap(p.dateApproach, 'leads');
+                updateMap(p.openCaseDate, 'openCase');
+                if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) {
+                    if (p.submitDate) updateMap(p.submitDate, 'submit');
+                }
+                updateMap(p.enforceDate, 'enforce');
+            });
+
+            gridEl.innerHTML = '';
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            let startDayOfWeek = firstDay.getDay(); 
+            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
+
+            const totalDays = lastDay.getDate();
+            
+            for (let i = 0; i < startDayOfWeek; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayData = calData[dateStr] || {};
+                
+                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
+                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
+                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
+
+                for (const uid in dayData) {
+                    const u = dayData[uid];
+                    let activities = [];
+                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
+                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
+                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
+                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
+                    
+                    if (activities.length > 0) {
+                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
+                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
+                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
+                        cellContent += `</div>`;
+                    }
+                }
+
+                cellContent += `</div></div>`;
+                gridEl.innerHTML += cellContent;
+            }
+
+            let totalCells = startDayOfWeek + totalDays;
+            let remainingCells = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
+            }
         }
 
         function toggleConditionalFields() {
