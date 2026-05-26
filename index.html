@@ -2,8 +2,22 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Takaful Sales Tracker | Infaq Consultancy</title>
+    
+    <!-- PWA Essential Meta Tags -->
+    <meta name="theme-color" content="#006b49">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Takaful Tracker">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <!-- Favicon and App Icons (Converted from Google Drive Link) -->
+    <link rel="icon" href="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" type="image/png">
+    <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2">
+    
+    <!-- Web App Manifest (Base64 Encoded to keep single-file structure) -->
+    <link rel="manifest" href="data:application/json;charset=utf-8,%7B%20%22name%22%3A%20%22Takaful%20Sales%20Tracker%22%2C%20%22short_name%22%3A%20%22Takaful%20App%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23f8fafc%22%2C%20%22theme_color%22%3A%20%22%23006b49%22%2C%20%22icons%22%3A%20%5B%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1WSYuJivsVnfLyZltaN12I51RTb_dYwT2%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%2C%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1WSYuJivsVnfLyZltaN12I51RTb_dYwT2%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%20%5D%20%7D">
     
     <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -85,11 +99,9 @@
         <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-2xl w-full max-w-[360px] overflow-hidden flex flex-col transform transition-transform hover:scale-[1.01]">
             <div class="bg-infaq-gradient px-8 py-10 text-center flex flex-col items-center justify-center relative">
                 <div class="absolute top-0 left-0 w-full h-full bg-white opacity-10 rounded-tr-full rounded-bl-full pointer-events-none" style="clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);"></div>
-                <div class="bg-white/95 backdrop-blur-sm p-3 rounded-xl shadow-lg mb-4 inline-block relative z-10 border border-white/20">
-                    <h1 class="text-3xl font-bold text-infaq-DEFAULT tracking-tight leading-none flex items-center justify-center">
-                        infaq<i class="fa-solid fa-leaf text-infaq-DEFAULT text-xl ml-1 -mt-1 shadow-sm rounded-full"></i>
-                    </h1>
-                    <p class="text-[8px] font-bold text-slate-500 mt-1 uppercase tracking-widest text-center">Consultancy Sdn Bhd</p>
+                <div class="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg mb-4 inline-block relative z-10 border border-white/20">
+                    <!-- Official Logo Uploaded by User -->
+                    <img src="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" alt="Logo Infaq Consultancy" class="h-16 w-auto mx-auto object-contain">
                 </div>
                 <h2 class="text-xl font-bold text-white mb-1 relative z-10 shadow-sm">Infaq Consultancy</h2>
                 <p class="text-xs text-white/90 italic font-medium relative z-10">"Plan Your Wealth, Change Your Life"</p>
@@ -146,17 +158,18 @@
         <header class="bg-infaq-gradient text-white shadow-lg sticky top-0 z-50">
             <div class="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="bg-white dark:bg-slate-800 p-2 rounded-lg shadow-sm">
-                        <i class="fa-solid fa-leaf text-infaq-DEFAULT text-xl"></i>
+                    <div class="bg-white dark:bg-slate-800 p-1.5 rounded-lg shadow-sm">
+                        <!-- Official Logo for Header -->
+                        <img src="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" alt="Logo" class="h-6 w-auto object-contain rounded-md">
                     </div>
                     <div>
-                        <h1 class="text-xl font-bold tracking-wide">Takaful Tracker</h1>
-                        <p class="text-xs text-emerald-100 dark:text-emerald-300/80">"Plan Your Wealth, Change Your Life"</p>
+                        <h1 class="text-xl font-bold tracking-wide leading-tight">Takaful Tracker</h1>
+                        <p class="text-[10px] text-emerald-100 dark:text-emerald-300/80 leading-none">Infaq Consultancy</p>
                     </div>
                 </div>
                 <div class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
                     <span class="hidden sm:flex bg-white/20 px-3 py-1.5 rounded-full items-center">
-                        <img id="headerAvatarImg" src="" class="w-6 h-6 rounded-full mr-2 object-cover hidden border border-white/50 bg-white">
+                        <img id="headerAvatarImg" src="" class="w-6 h-6 rounded-full mr-2 object-cover hidden border border-white/50 bg-white shadow-sm">
                         <i id="headerAvatarIcon" class="fa-solid fa-user-tie mr-2"></i>
                         <span id="headerUserName">Sistem...</span>
                     </span>
@@ -255,8 +268,11 @@
 
                 <!-- ORG SUMMARY (Visible for CEO/Leader) -->
                 <div id="orgSummaryContainer" class="hidden bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
-                    <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2">
-                        <i class="fa-solid fa-sitemap text-infaq-DEFAULT mr-2"></i> Rumusan Organisasi
+                    <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 flex justify-between items-center">
+                        <span><i class="fa-solid fa-sitemap text-infaq-DEFAULT mr-2"></i> Rumusan Organisasi</span>
+                        <span id="orgSummaryCounts" class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full shadow-sm">
+                            <!-- JS Auto Fill: 0 Leader | 0 Agent -->
+                        </span>
                     </h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
@@ -893,48 +909,34 @@
         let currentEditId = null;
         let allUsersData = {}; 
 
-        // ================= FETCH GOOGLE SHEET DROPDOWNS =================
+        // Helper function to parse CSV robustly
+        function parseCSV(csv) {
+            const rows = [];
+            let currentRow = [];
+            let currentCell = '';
+            let inQuotes = false;
+            for (let i = 0; i < csv.length; i++) {
+                const c = csv[i];
+                if (c === '"' && csv[i+1] === '"') { currentCell += '"'; i++; } 
+                else if (c === '"') { inQuotes = !inQuotes; } 
+                else if (c === ',' && !inQuotes) { currentRow.push(currentCell.trim()); currentCell = ''; } 
+                else if (c === '\n' && !inQuotes) { currentRow.push(currentCell.trim()); rows.push(currentRow); currentRow = []; currentCell = ''; } 
+                else if (c !== '\r') { currentCell += c; }
+            }
+            if (currentRow.length > 0 || currentCell !== '') { currentRow.push(currentCell.trim()); rows.push(currentRow); }
+            return rows;
+        }
+
+        // ================= FETCH GOOGLE SHEET DATA =================
         async function fetchGoogleSheetDropdowns() {
-            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=475370971&single=true&output=csv";
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?single=true&output=csv";
             try {
                 const res = await fetch(url);
                 const csv = await res.text();
+                const rows = parseCSV(csv);
                 
-                const rows = [];
-                let currentRow = [];
-                let currentCell = '';
-                let inQuotes = false;
-
-                for (let i = 0; i < csv.length; i++) {
-                    const c = csv[i];
-                    if (c === '"' && csv[i+1] === '"') {
-                        currentCell += '"';
-                        i++;
-                    } else if (c === '"') {
-                        inQuotes = !inQuotes;
-                    } else if (c === ',' && !inQuotes) {
-                        currentRow.push(currentCell.trim());
-                        currentCell = '';
-                    } else if (c === '\n' && !inQuotes) {
-                        currentRow.push(currentCell.trim());
-                        rows.push(currentRow);
-                        currentRow = [];
-                        currentCell = '';
-                    } else if (c !== '\r') {
-                        currentCell += c;
-                    }
-                }
-                if (currentRow.length > 0 || currentCell !== '') {
-                    currentRow.push(currentCell.trim());
-                    rows.push(currentRow);
-                }
-                
-                const sources1 = new Set();
-                const sources2 = new Set();
-                const remarks = new Set();
-                const products = new Set();
-                const payments = new Set();
-                const statuses = new Set();
+                const sources1 = new Set(); const sources2 = new Set(); const remarks = new Set();
+                const products = new Set(); const payments = new Set(); const statuses = new Set();
 
                 for (let i = 1; i < rows.length; i++) {
                     const cols = rows[i];
@@ -946,15 +948,49 @@
                     if (cols[5] && cols[5].trim()) statuses.add(cols[5].trim());
                 }
 
-                populateDropdown('source1', sources1, 'Pilih Sumber...');
-                populateDropdown('source2', sources2, 'Pilih Kategori...');
-                populateDropdown('remark', remarks, 'Pilih Remark...');
-                populateDropdown('product', products, 'Pilih Produk...');
-                populateDropdown('paymentMode', payments, 'Pilih Mod...');
-                populateDropdown('status', statuses, 'Pilih Status...');
+                populateDropdown('source1', sources1, 'Pilih Sumber...'); populateDropdown('source2', sources2, 'Pilih Kategori...');
+                populateDropdown('remark', remarks, 'Pilih Remark...'); populateDropdown('product', products, 'Pilih Produk...');
+                populateDropdown('paymentMode', payments, 'Pilih Mod...'); populateDropdown('status', statuses, 'Pilih Status...');
+            } catch (err) { console.error("Gagal memuat turun dropdown Google Sheet", err); }
+        }
 
+        async function fetchProfilePicsFromSheet() {
+            const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?output=csv";
+            try {
+                const res = await fetch(url);
+                const csv = await res.text();
+                const rows = parseCSV(csv);
+                
+                let hasUpdates = false;
+                for (let i = 1; i < rows.length; i++) {
+                    const cols = rows[i];
+                    const uid = cols[0] ? cols[0].trim() : null;
+                    let picUrl = cols[2] ? cols[2].trim() : null;
+                    
+                    if (uid && picUrl) {
+                        if (picUrl.includes('drive.google.com/file/d/')) {
+                            const match = picUrl.match(/file\/d\/([a-zA-Z0-9_-]+)/);
+                            if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1];
+                        } else if (picUrl.includes('drive.google.com/uc')) {
+                            const match = picUrl.match(/id=([a-zA-Z0-9_-]+)/);
+                            if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1];
+                        }
+
+                        if (allUsersData[uid]) {
+                            allUsersData[uid].profilePic = picUrl;
+                        }
+                        if (currentUser && currentUser.id === uid) {
+                            currentUser.profilePic = picUrl;
+                            hasUpdates = true;
+                        }
+                    }
+                }
+                
+                updateHeaderProfile();
+                if(currentUser && currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
+                
             } catch (err) {
-                console.error("Gagal memuat turun data dari Google Sheet", err);
+                console.error("Gagal menarik gambar profil dari Google Sheet", err);
             }
         }
 
@@ -962,13 +998,10 @@
             const select = document.getElementById(id);
             if (!select) return;
             select.innerHTML = `<option value="">${placeholder}</option>`;
-            dataSet.forEach(val => {
-                select.innerHTML += `<option value="${val}">${val}</option>`;
-            });
+            dataSet.forEach(val => select.innerHTML += `<option value="${val}">${val}</option>`);
         }
 
         // ================= AUTH & APP STARTUP =================
-        
         firebase.auth().onAuthStateChanged(async (user) => {
             if (user) {
                 const loginScreen = document.getElementById('loginScreen');
@@ -977,43 +1010,26 @@
 
                 try {
                     let userDoc = await db.collection('users').doc(user.uid).get();
-                    
                     if (!userDoc.exists) {
                         if (user.email === 'infaqsmartbook@gmail.com' || user.email === 'annurprosolutions@gmail.com') {
                             const role = user.email === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
                             const name = user.email === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
-                            
-                            await db.collection('users').doc(user.uid).set({
-                                id: user.uid,
-                                email: user.email,
-                                name: name,
-                                role: role,
-                                profilePic: null,
-                                leaderId: null
-                            });
-                            
+                            await db.collection('users').doc(user.uid).set({ id: user.uid, email: user.email, name: name, role: role, profilePic: null, leaderId: null });
                             userDoc = await db.collection('users').doc(user.uid).get();
                         } else {
                             firebase.auth().signOut();
-                            alert("Akaun anda wujud di Authentication tetapi belum dikonfigurasikan di Firestore (Database). Sila lapor kepada Admin.");
+                            alert("Akaun anda wujud di Authentication tetapi belum dikonfigurasikan di Firestore. Sila lapor kepada Admin.");
                             return;
                         }
                     }
-                    
                     currentUser = userDoc.data();
                     initApp();
-                } catch (err) {
-                    console.error("Auth state error: ", err);
-                    alert("Ralat semasa log masuk: " + err.message);
-                }
+                } catch (err) { console.error("Auth state error: ", err); alert("Ralat semasa log masuk: " + err.message); }
             } else {
                 currentUser = null;
                 const loginScreen = document.getElementById('loginScreen');
                 const appContent = document.getElementById('appContent');
-                if (loginScreen) {
-                    loginScreen.classList.remove('hidden');
-                    loginScreen.style.opacity = '1';
-                }
+                if (loginScreen) { loginScreen.classList.remove('hidden'); loginScreen.style.opacity = '1'; }
                 if (appContent) appContent.classList.add('hidden');
             }
         });
@@ -1037,14 +1053,10 @@
                 if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sedang log masuk...`;
                 if (errorDiv) errorDiv.classList.add('hidden');
 
-                try {
-                    await firebase.auth().signInWithEmailAndPassword(email, pass);
-                } catch (err) {
+                try { await firebase.auth().signInWithEmailAndPassword(email, pass); } 
+                catch (err) {
                     console.error("Login Error: ", err);
-                    if (errorDiv) {
-                        errorDiv.classList.remove('hidden');
-                        errorDiv.innerHTML = "E-mel atau Kata Laluan salah. <br><span class='text-[10px]'>Jika ini log masuk pertama anda, sila guna butang 'Lupa Kata Laluan'.</span>";
-                    }
+                    if (errorDiv) { errorDiv.classList.remove('hidden'); errorDiv.innerHTML = "E-mel atau Kata Laluan salah. <br><span class='text-[10px]'>Jika ini log masuk pertama anda, sila guna butang 'Lupa Kata Laluan'.</span>"; }
                     if (btn) btn.innerHTML = `Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>`;
                 }
             });
@@ -1060,31 +1072,16 @@
                             const tempApp = firebase.initializeApp(firebaseConfig, "TempApp");
                             const dummyPass = "Temp" + Math.random().toString(36).slice(-8) + "!";
                             const userCred = await tempApp.auth().createUserWithEmailAndPassword(targetEmail, dummyPass);
-                            
                             const role = targetEmail === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
                             const name = targetEmail === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
-                            
-                            await db.collection('users').doc(userCred.user.uid).set({
-                                id: userCred.user.uid,
-                                email: targetEmail,
-                                name: name,
-                                role: role,
-                                profilePic: null
-                            });
-                            
+                            await db.collection('users').doc(userCred.user.uid).set({ id: userCred.user.uid, email: targetEmail, name: name, role: role, profilePic: null });
                             await tempApp.auth().signOut();
                             tempApp.delete();
-                        } catch (e) {
-                            console.log("Bootstrap check: User might already exist.");
-                        }
+                        } catch (e) { console.log("Bootstrap check: User might already exist."); }
                     }
-
                     await firebase.auth().sendPasswordResetEmail(targetEmail);
                     alert("Pautan untuk menetapkan semula kata laluan telah dihantar ke e-mel anda. Sila semak peti masuk (inbox) atau kotak spam.");
-                } catch (err) {
-                    alert("Gagal menghantar e-mel reset. Pastikan e-mel tersebut sah dan wujud dalam sistem.");
-                    console.error(err);
-                }
+                } catch (err) { alert("Gagal menghantar e-mel reset. Pastikan e-mel tersebut sah dan wujud dalam sistem."); console.error(err); }
             }
         }
 
@@ -1092,12 +1089,8 @@
             try {
                 const snap = await db.collection('users').get();
                 allUsersData = {};
-                snap.forEach(doc => {
-                    allUsersData[doc.id] = doc.data();
-                });
-            } catch(e) {
-                console.error("Error fetching all users for Org Summary: ", e);
-            }
+                snap.forEach(doc => { allUsersData[doc.id] = doc.data(); });
+            } catch(e) { console.error("Error fetching all users for Org Summary: ", e); }
         }
 
         async function initApp() {
@@ -1109,6 +1102,7 @@
             
             try {
                 await fetchAllUsersForOrg();
+                await fetchProfilePicsFromSheet();
 
                 const prospectSnap = await db.collection('prospects').get();
                 prospectsData = [];
@@ -1138,28 +1132,19 @@
                 applyFilter(); 
                 toggleConditionalFields();
                 
-                if (currentUser.role === 'ceo') {
-                    switchTab('dashboard');
-                } else {
-                    if (filteredProspects.length === 0) switchTab('form');
-                    else switchTab('dashboard');
-                }
+                if (currentUser.role === 'ceo') { switchTab('dashboard'); } 
+                else { if (filteredProspects.length === 0) switchTab('form'); else switchTab('dashboard'); }
             }, 300); 
         }
 
         function logOutApp() {
             if(confirm('Adakah anda pasti mahu log keluar?')) {
-                firebase.auth().signOut().then(() => {
-                    window.location.reload();
-                }).catch((error) => {
-                    console.error("Sign out error", error);
-                });
+                firebase.auth().signOut().then(() => { window.location.reload(); }).catch((error) => { console.error("Sign out error", error); });
             }
         }
 
         function togglePassword() {
-            const passInput = document.getElementById('loginPass');
-            const icon = document.getElementById('eyeIcon');
+            const passInput = document.getElementById('loginPass'); const icon = document.getElementById('eyeIcon');
             if (passInput && icon) {
                 if (passInput.type === "password") { passInput.type = "text"; icon.classList.remove('fa-eye'); icon.classList.add('fa-eye-slash'); } 
                 else { passInput.type = "password"; icon.classList.remove('fa-eye-slash'); icon.classList.add('fa-eye'); }
@@ -1167,12 +1152,9 @@
         }
 
         function toggleTheme() {
-            const html = document.documentElement;
-            html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark');
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            const html = document.documentElement; html.classList.toggle('dark');
+            const isDark = html.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateThemeIcon();
-            
             const tabDash = document.getElementById('tab-dashboard');
             if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
@@ -1203,38 +1185,21 @@
 
         async function setupRoleUI() {
             updateHeaderProfile();
-
             const roleFilter = document.getElementById('roleBasedFilter');
             const navManagement = document.getElementById('navItemManagement');
-            const liForm = document.getElementById('li-form');
-            const liAds = document.getElementById('li-ads');
-            const liList = document.getElementById('li-list');
+            const liForm = document.getElementById('li-form'); const liAds = document.getElementById('li-ads'); const liList = document.getElementById('li-list');
 
-            if (liForm) liForm.style.display = 'block';
-            if (liAds) liAds.style.display = 'block';
-            if (liList) liList.style.display = 'block';
-
+            if (liForm) liForm.style.display = 'block'; if (liAds) liAds.style.display = 'block'; if (liList) liList.style.display = 'block';
             if (!roleFilter) return;
 
             let allUsers = Object.values(allUsersData);
-
             if (currentUser.role === 'ceo') {
-                if (liForm) liForm.style.display = 'none';
-                if (liAds) liAds.style.display = 'none';
-                if (liList) liList.style.display = 'none';
+                if (liForm) liForm.style.display = 'none'; if (liAds) liAds.style.display = 'none'; if (liList) liList.style.display = 'none';
                 if (navManagement) navManagement.style.display = 'block';
-
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
-                allUsers.forEach(u => {
-                    if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`;
-                });
-                roleFilter.innerHTML = `
-                    <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label>
-                    <select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
-                        ${options}
-                    </select>
-                `;
+                allUsers.forEach(u => { if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`; });
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
             } else if (currentUser.role === 'superadmin') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Cawangan (Global)</option>`;
@@ -1242,31 +1207,16 @@
                     if(u.role === 'leader') options += `<option value="${u.id}">Pasukan ${u.name} (Leader)</option>`;
                     if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`;
                 });
-                roleFilter.innerHTML = `
-                    <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label>
-                    <select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
-                        ${options}
-                    </select>
-                `;
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
                 if (navManagement) navManagement.style.display = 'block';
             } else if (currentUser.role === 'leader') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan Saya</option>`;
-                allUsers.forEach(u => {
-                    if(u.role === 'agent' && u.leaderId === currentUser.id) {
-                        options += `<option value="${u.id}">Ejen ${u.name}</option>`;
-                    }
-                });
-                roleFilter.innerHTML = `
-                    <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label>
-                    <select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
-                        ${options}
-                    </select>
-                `;
+                allUsers.forEach(u => { if(u.role === 'agent' && u.leaderId === currentUser.id) { options += `<option value="${u.id}">Ejen ${u.name}</option>`; } });
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
                 if (navManagement) navManagement.style.display = 'block';
             } else {
-                roleFilter.classList.add('hidden');
-                roleFilter.innerHTML = ''; 
+                roleFilter.classList.add('hidden'); roleFilter.innerHTML = ''; 
                 if (navManagement) navManagement.style.display = 'block'; 
             }
         }
@@ -1274,13 +1224,10 @@
         // ================= USER MANAGEMENT & PROFILE =================
         async function setupManagementUI() {
             if(!currentUser) return;
-            
             const myId = document.getElementById('myId'); if(myId) myId.value = currentUser.email; 
             const myName = document.getElementById('myName'); if(myName) myName.value = currentUser.name;
-            
             if(currentUser.profilePic) {
-                const imgPrev = document.getElementById('myAvatarPreview');
-                const imgIcon = document.getElementById('myAvatarIcon');
+                const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon');
                 if(imgPrev && imgIcon) { imgPrev.src = currentUser.profilePic; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
             }
 
@@ -1291,26 +1238,18 @@
                 adminSection.classList.add('hidden');
             } else {
                 adminSection.classList.remove('hidden');
-                const roleDiv = document.getElementById('roleSelectDiv');
-                const leaderDiv = document.getElementById('leaderSelectDiv');
-                const leaderSelect = document.getElementById('newUserLeader');
-                
+                const roleDiv = document.getElementById('roleSelectDiv'); const leaderDiv = document.getElementById('leaderSelectDiv'); const leaderSelect = document.getElementById('newUserLeader');
                 if(currentUser.role === 'superadmin') {
-                    if(roleDiv) roleDiv.classList.remove('hidden');
-                    if(leaderDiv) leaderDiv.classList.remove('hidden');
-                    
+                    if(roleDiv) roleDiv.classList.remove('hidden'); if(leaderDiv) leaderDiv.classList.remove('hidden');
                     if(leaderSelect) {
                         leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Direct Admin)</option>`;
                         try {
                             const snap = await db.collection('users').where('role', '==', 'leader').get();
-                            snap.forEach(doc => {
-                                leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`;
-                            });
+                            snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; });
                         } catch(e) { console.error(e); }
                     }
                 } else if (currentUser.role === 'leader') {
-                    if(roleDiv) roleDiv.classList.add('hidden');
-                    if(leaderDiv) leaderDiv.classList.add('hidden');
+                    if(roleDiv) roleDiv.classList.add('hidden'); if(leaderDiv) leaderDiv.classList.add('hidden');
                 }
                 renderUsersTable();
             }
@@ -1322,8 +1261,7 @@
                 if (file.size > 2 * 1024 * 1024) alert("Amaran: Saiz gambar terlalu besar. Sila guna gambar di bawah 2MB.");
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const imgPrev = document.getElementById('myAvatarPreview');
-                    const imgIcon = document.getElementById('myAvatarIcon');
+                    const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon');
                     if(imgPrev && imgIcon) { imgPrev.src = e.target.result; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
                 }
                 reader.readAsDataURL(file);
@@ -1344,169 +1282,97 @@
             const originalBtnText = submitBtn.innerHTML;
             
             try {
-                // Firebase Auth Password Update Logic
                 if (oldPass || newPass) {
-                    if (!oldPass || !newPass) {
-                        alert("Sila masukkan 'Kata Laluan Semasa' dan 'Kata Laluan Baharu' untuk menukar kata laluan.");
-                        return;
-                    }
+                    if (!oldPass || !newPass) { alert("Sila masukkan 'Kata Laluan Semasa' dan 'Kata Laluan Baharu' untuk menukar kata laluan."); return; }
                     const authUser = firebase.auth().currentUser;
                     if (authUser) {
-                        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengesahkan...`;
-                        submitBtn.disabled = true;
-                        
+                        submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengesahkan...`; submitBtn.disabled = true;
                         const credential = firebase.auth.EmailAuthProvider.credential(authUser.email, oldPass);
                         try {
-                            await authUser.reauthenticateWithCredential(credential);
-                            await authUser.updatePassword(newPass);
+                            await authUser.reauthenticateWithCredential(credential); await authUser.updatePassword(newPass);
                         } catch (err) {
-                            console.error("Re-auth error: ", err);
-                            alert("Kata laluan semasa yang dimasukkan adalah salah. Sila cuba lagi.");
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                            return;
+                            console.error("Re-auth error: ", err); alert("Kata laluan semasa yang dimasukkan adalah salah. Sila cuba lagi.");
+                            submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; return;
                         }
                     }
                 }
 
-                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...`;
-                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...`; submitBtn.disabled = true;
 
                 if(picInput.files && picInput.files[0]) {
-                    const file = picInput.files[0];
-                    const reader = new FileReader();
+                    const file = picInput.files[0]; const reader = new FileReader();
                     reader.onload = async function(e) {
-                        const base64Data = e.target.result.split(',')[1]; 
-                        const mimeType = file.type;
+                        const base64Data = e.target.result.split(',')[1]; const mimeType = file.type;
                         const fileName = currentUser.id + "_" + Date.now() + "_" + file.name;
-
                         submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memuat naik ke Drive...`;
 
                         try {
-                            /* MASUKKAN URL GOOGLE APPS SCRIPT ANDA DI BAWAH INI */
-                            const scriptUrl = "https://script.google.com/macros/s/AKfycbwTiKcXfTqpL4MIwZ69AcSImSPGZJhnZc-1GtKRHQyKzGlryKIiRfHcQ3PgaWNwYJad/exec"; 
-
+                            const scriptUrl = "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI"; 
                             if (scriptUrl === "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI") {
                                 alert("Sila kemas kini URL Google Apps Script di dalam fail HTML terlebih dahulu untuk membolehkan muat naik ke Google Drive.");
                                 throw new Error("Script URL not configured");
                             }
 
                             const response = await fetch(scriptUrl, {
-                                method: "POST",
-                                headers: { "Content-Type": "text/plain;charset=utf-8" },
-                                body: JSON.stringify({ 
-                                    uid: currentUser.id, 
-                                    nama: currentUser.name, 
-                                    fileName: fileName, 
-                                    mimeType: mimeType, 
-                                    data: base64Data 
-                                })
+                                method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+                                body: JSON.stringify({ uid: currentUser.id, nama: currentUser.name, fileName: fileName, mimeType: mimeType, data: base64Data })
                             });
-
                             const result = await response.json();
                             
                             if (result.status === 'success') {
-                                const driveImageUrl = result.url;
+                                const driveImageUrl = "https://lh3.googleusercontent.com/d/" + result.fileId;
                                 currentUser.profilePic = driveImageUrl;
                                 updates.profilePic = driveImageUrl;
                                 await saveProfileToFirebase(updates);
-                            } else {
-                                throw new Error(result.message);
-                            }
-                        } catch (uploadError) {
-                            console.error("Upload error:", uploadError);
-                            alert("Ralat semasa memuat naik gambar ke Google Drive.");
-                        } finally {
-                            submitBtn.innerHTML = originalBtnText;
-                            submitBtn.disabled = false;
-                        }
+                            } else { throw new Error(result.message); }
+                        } catch (uploadError) { console.error("Upload error:", uploadError); alert("Ralat semasa memuat naik gambar ke Google Drive."); } 
+                        finally { submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
                     };
                     reader.readAsDataURL(file);
                 } else {
                     await saveProfileToFirebase(updates);
-                    submitBtn.innerHTML = originalBtnText;
-                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false;
                 }
-            } catch (error) {
-                console.error("Update profile error: ", error);
-                alert("Berlaku ralat semasa mengemaskini profil.");
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
-            }
+            } catch (error) { console.error("Update profile error: ", error); alert("Berlaku ralat semasa mengemaskini profil."); submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
         }
 
         async function saveProfileToFirebase(updates) {
             try {
                 await db.collection('users').doc(currentUser.id).update(updates);
-                alert('Profil berjaya dikemas kini!');
-                setupRoleUI(); 
+                alert('Profil berjaya dikemas kini!'); setupRoleUI(); 
                 if(currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
-                
-                const oldPassEl = document.getElementById('myOldPass');
-                if (oldPassEl) oldPassEl.value = '';
-                const newPassEl = document.getElementById('myNewPass');
-                if (newPassEl) newPassEl.value = '';
-            } catch(e) {
-                console.error(e); alert('Gagal menyimpan profil.');
-            }
+                const oldPassEl = document.getElementById('myOldPass'); if (oldPassEl) oldPassEl.value = '';
+                const newPassEl = document.getElementById('myNewPass'); if (newPassEl) newPassEl.value = '';
+            } catch(e) { console.error(e); alert('Gagal menyimpan profil.'); }
         }
 
         function handleRoleChange() {
-            const roleEl = document.getElementById('newUserRole');
-            const role = roleEl ? roleEl.value : '';
+            const roleEl = document.getElementById('newUserRole'); const role = roleEl ? roleEl.value : '';
             const leaderDiv = document.getElementById('leaderSelectDiv');
-            if(leaderDiv) {
-                if(role === 'leader') leaderDiv.classList.add('hidden');
-                else leaderDiv.classList.remove('hidden');
-            }
+            if(leaderDiv) { if(role === 'leader') leaderDiv.classList.add('hidden'); else leaderDiv.classList.remove('hidden'); }
         }
 
         const addUserFormEl = document.getElementById('addUserForm');
         if(addUserFormEl) {
             addUserFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const email = document.getElementById('newUserEmail').value.trim();
-                const name = document.getElementById('newUserName').value.trim();
-                const pass = document.getElementById('newUserPass').value.trim();
-                
-                let role = 'agent';
-                let leaderId = currentUser.id; 
+                const email = document.getElementById('newUserEmail').value.trim(); const name = document.getElementById('newUserName').value.trim(); const pass = document.getElementById('newUserPass').value.trim();
+                let role = 'agent'; let leaderId = currentUser.id; 
                 
                 if(currentUser.role === 'superadmin') {
-                    const roleEl = document.getElementById('newUserRole');
-                    role = roleEl ? roleEl.value : 'agent';
-                    if(role === 'agent') {
-                        const leaderEl = document.getElementById('newUserLeader');
-                        leaderId = leaderEl ? leaderEl.value : null;
-                    } else { leaderId = null; }
+                    const roleEl = document.getElementById('newUserRole'); role = roleEl ? roleEl.value : 'agent';
+                    if(role === 'agent') { const leaderEl = document.getElementById('newUserLeader'); leaderId = leaderEl ? leaderEl.value : null; } else { leaderId = null; }
                 }
 
                 try {
                     const secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
                     const userCredential = await secondaryApp.auth().createUserWithEmailAndPassword(email, pass);
                     const newUid = userCredential.user.uid;
-                    
-                    await db.collection('users').doc(newUid).set({ 
-                        id: newUid, 
-                        email: email, 
-                        name: name, 
-                        role: role, 
-                        leaderId: leaderId, 
-                        profilePic: null 
-                    });
-                    
-                    await secondaryApp.auth().signOut();
-                    secondaryApp.delete();
-                    
+                    await db.collection('users').doc(newUid).set({ id: newUid, email: email, name: name, role: role, leaderId: leaderId, profilePic: null });
+                    await secondaryApp.auth().signOut(); secondaryApp.delete();
                     alert("Berjaya: Pengguna baharu didaftarkan!");
-                    this.reset();
-                    fetchAllUsersForOrg(); // Refresh global map
-                    setupRoleUI(); 
-                    setupManagementUI(); 
-                } catch(err) {
-                    console.error(err); 
-                    alert("Gagal mendaftar pengguna. " + err.message);
-                }
+                    this.reset(); fetchAllUsersForOrg(); setupRoleUI(); setupManagementUI(); 
+                } catch(err) { console.error(err); alert("Gagal mendaftar pengguna. " + err.message); }
             });
         }
 
@@ -1514,27 +1380,15 @@
             const tbody = document.getElementById('usersTableBody');
             if(!tbody) return;
             tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
-            
             try {
                 const snap = await db.collection('users').get();
-                let usersList = [];
-                const allUsersMap = {};
-                snap.forEach(doc => {
-                    const u = doc.data();
-                    allUsersMap[u.id] = u;
-                    usersList.push(u);
-                });
+                let usersList = []; const allUsersMap = {};
+                snap.forEach(doc => { const u = doc.data(); allUsersMap[u.id] = u; usersList.push(u); });
 
-                if(currentUser.role === 'leader') {
-                    usersList = usersList.filter(u => u.leaderId === currentUser.id);
-                } else if (currentUser.role === 'superadmin') {
-                    usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
-                }
+                if(currentUser.role === 'leader') usersList = usersList.filter(u => u.leaderId === currentUser.id);
+                else if (currentUser.role === 'superadmin') usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
                 
-                if(usersList.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`;
-                    return;
-                }
+                if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
 
                 tbody.innerHTML = '';
                 usersList.forEach(u => {
@@ -1546,8 +1400,7 @@
                                       (u.role === 'ceo' ? '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>' :
                                       '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>');
 
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
+                    const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
                     tr.innerHTML = `
                         <td class="p-3 text-slate-800 dark:text-slate-200 font-medium flex items-center gap-2">
                             ${u.profilePic ? `<img src="${u.profilePic}" class="w-6 h-6 rounded-full object-cover border border-slate-200 dark:border-slate-600">` : `<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>`}
@@ -1559,10 +1412,7 @@
                     `;
                     tbody.appendChild(tr);
                 });
-            } catch (err) {
-                console.error(err);
-                tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`;
-            }
+            } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
         }
 
         // ================= FILTER & FORM LOGIC =================
@@ -1575,32 +1425,19 @@
         }
 
         function applyFilter() {
-            const startEl = document.getElementById('filterStartDate');
-            const endEl = document.getElementById('filterEndDate');
-            const start = startEl ? startEl.value : '';
-            const end = endEl ? endEl.value : '';
-            
-            const orgFilterEl = document.getElementById('orgFilter');
-            const orgValue = orgFilterEl ? orgFilterEl.value : 'all';
+            const startEl = document.getElementById('filterStartDate'); const endEl = document.getElementById('filterEndDate');
+            const start = startEl ? startEl.value : ''; const end = endEl ? endEl.value : '';
+            const orgFilterEl = document.getElementById('orgFilter'); const orgValue = orgFilterEl ? orgFilterEl.value : 'all';
 
             filteredProspects = prospectsData.filter(p => {
                 if (!isDateInRange(p.dateApproach, start, end)) return false;
-
-                const owner = p.ownerId || 'admin';
-                const leader = p.leaderId || 'admin';
-
-                if (currentUser.role === 'agent') {
-                    if (owner !== currentUser.id) return false;
-                } else if (currentUser.role === 'leader') {
-                    if (orgValue === 'all') {
-                        if (leader !== currentUser.id && owner !== currentUser.id) return false;
-                    } else {
-                        if (owner !== orgValue && leader !== orgValue) return false;
-                    }
+                const owner = p.ownerId || 'admin'; const leader = p.leaderId || 'admin';
+                if (currentUser.role === 'agent') { if (owner !== currentUser.id) return false; } 
+                else if (currentUser.role === 'leader') {
+                    if (orgValue === 'all') { if (leader !== currentUser.id && owner !== currentUser.id) return false; } 
+                    else { if (owner !== orgValue && leader !== orgValue) return false; }
                 } else if (currentUser.role === 'superadmin' || currentUser.role === 'ceo') {
-                    if (orgValue !== 'all') {
-                        if (owner !== orgValue && leader !== orgValue) return false;
-                    }
+                    if (orgValue !== 'all') { if (owner !== orgValue && leader !== orgValue) return false; }
                 }
                 return true;
             });
@@ -1896,6 +1733,7 @@
         function renderOrgTable() {
             const container = document.getElementById('orgSummaryContainer');
             const tbody = document.getElementById('orgSummaryBody');
+            const countSpan = document.getElementById('orgSummaryCounts');
             if(!container || !tbody) return;
 
             if(currentUser.role === 'agent') {
@@ -1913,28 +1751,35 @@
             });
 
             const allUsers = Object.values(allUsersData);
+            let totalLeaders = 0;
+            let totalAgents = 0;
 
             if (currentUser.role === 'ceo' || currentUser.role === 'superadmin') {
                 const leaders = allUsers.filter(u => u.role === 'leader');
+                totalLeaders = leaders.length;
                 
                 leaders.forEach(leader => {
                     const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === leader.id);
+                    totalAgents += agents.length;
                     const leaderProps = prospectCounts[leader.id] || 0;
                     
                     tbody.innerHTML += `
-                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
-                            <td class="p-3"><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)</td>
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${leader.id}')">
+                            <td class="p-3 flex items-center select-none">
+                                <i id="icon-${leader.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
+                                <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)
+                            </td>
                             <td class="p-3 text-center">${agents.length}</td>
-                            <td class="p-3 text-center">${leaderProps}</td>
+                            <td class="p-3 text-center text-infaq-DEFAULT">${leaderProps}</td>
                         </tr>
                     `;
                     
                     agents.forEach(agent => {
                         const agentProps = prospectCounts[agent.id] || 0;
                         tbody.innerHTML += `
-                            <tr class="text-slate-600 dark:text-slate-400">
-                                <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                                <td class="p-3 text-center">-</td>
+                            <tr class="text-slate-600 dark:text-slate-400 group-${leader.id} hidden bg-white dark:bg-slate-800 transition-all">
+                                <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                                <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
                                 <td class="p-3 text-center font-medium">${agentProps}</td>
                             </tr>
                         `;
@@ -1943,19 +1788,23 @@
                 
                 const others = allUsers.filter(u => u.role === 'agent' && (u.leaderId === 'admin' || !u.leaderId));
                 if(others.length > 0) {
+                     totalAgents += others.length;
                      tbody.innerHTML += `
-                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
-                            <td class="p-3"><i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin</td>
+                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('admin_group')">
+                            <td class="p-3 flex items-center select-none">
+                                <i id="icon-admin_group" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
+                                <i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin
+                            </td>
                             <td class="p-3 text-center">${others.length}</td>
-                            <td class="p-3 text-center">-</td>
+                            <td class="p-3 text-center text-infaq-DEFAULT">-</td>
                         </tr>
                     `;
                     others.forEach(agent => {
                         const agentProps = prospectCounts[agent.id] || 0;
                         tbody.innerHTML += `
-                            <tr class="text-slate-600 dark:text-slate-400">
-                                <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                                <td class="p-3 text-center">-</td>
+                            <tr class="text-slate-600 dark:text-slate-400 group-admin_group hidden bg-white dark:bg-slate-800 transition-all">
+                                <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                                <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
                                 <td class="p-3 text-center font-medium">${agentProps}</td>
                             </tr>
                         `;
@@ -1967,27 +1816,50 @@
                 }
 
             } else if (currentUser.role === 'leader') {
+                totalLeaders = 1;
                 const leaderProps = prospectCounts[currentUser.id] || 0;
                 const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === currentUser.id);
+                totalAgents = agents.length;
 
                 tbody.innerHTML += `
-                    <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200">
-                        <td class="p-3"><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})</td>
+                    <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${currentUser.id}')">
+                        <td class="p-3 flex items-center select-none">
+                            <i id="icon-${currentUser.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
+                            <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})
+                        </td>
                         <td class="p-3 text-center">${agents.length}</td>
-                        <td class="p-3 text-center">${leaderProps}</td>
+                        <td class="p-3 text-center text-infaq-DEFAULT">${leaderProps}</td>
                     </tr>
                 `;
                 
                 agents.forEach(agent => {
                     const agentProps = prospectCounts[agent.id] || 0;
                     tbody.innerHTML += `
-                        <tr class="text-slate-600 dark:text-slate-400">
-                            <td class="p-3 pl-8"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                            <td class="p-3 text-center">-</td>
+                        <tr class="text-slate-600 dark:text-slate-400 group-${currentUser.id} hidden bg-white dark:bg-slate-800 transition-all">
+                            <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
+                            <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
                             <td class="p-3 text-center font-medium">${agentProps}</td>
                         </tr>
                     `;
                 });
+            }
+
+            if(countSpan) {
+                countSpan.innerHTML = `<span class="font-bold text-infaq-DEFAULT">${totalLeaders}</span> Leader &nbsp;|&nbsp; <span class="font-bold text-infaq-DEFAULT">${totalAgents}</span> Agent`;
+            }
+        }
+
+        function toggleOrgGroup(groupId) {
+            const rows = document.querySelectorAll('.group-' + groupId);
+            const icon = document.getElementById('icon-' + groupId);
+            let isHidden = true;
+            rows.forEach(row => {
+                if (row.classList.contains('hidden')) { row.classList.remove('hidden'); isHidden = false; } 
+                else { row.classList.add('hidden'); isHidden = true; }
+            });
+            if (icon) {
+                if (isHidden) { icon.classList.remove('fa-square-minus', 'text-infaq-DEFAULT'); icon.classList.add('fa-square-plus', 'text-slate-400'); } 
+                else { icon.classList.remove('fa-square-plus', 'text-slate-400'); icon.classList.add('fa-square-minus', 'text-infaq-DEFAULT'); }
             }
         }
 
@@ -2079,7 +1951,6 @@
                 const tkCostArray = adDates.map(d => { const tk = filteredTkAds.find(a => a.date === d); return tk ? parseFloat(tk.cost) : 0; });
                 const fbCostArray = adDates.map(d => { const fb = filteredFbAds.find(a => a.date === d); return fb ? parseFloat(fb.cost) : 0; });
                 
-                // Calculate Total Leads for the Line Chart
                 const leadsArray = adDates.map(d => { 
                     const tk = filteredTkAds.find(a => a.date === d); 
                     const fb = filteredFbAds.find(a => a.date === d); 
@@ -2092,59 +1963,17 @@
                     data: { 
                         labels: adDates.length > 0 ? adDates : ['Tiada Data'], 
                         datasets: [ 
-                            {
-                                type: 'line',
-                                label: 'Jumlah Lead Dihasilkan',
-                                data: adDates.length > 0 ? leadsArray : [0],
-                                borderColor: '#f59e0b', // Amber
-                                backgroundColor: '#f59e0b',
-                                borderWidth: 3,
-                                tension: 0.3,
-                                yAxisID: 'y1'
-                            },
-                            { 
-                                type: 'bar',
-                                label: 'Tiktok Ads Cost (RM)', 
-                                data: adDates.length > 0 ? tkCostArray : [0], 
-                                backgroundColor: '#0f172a', 
-                                borderRadius: 4,
-                                yAxisID: 'y'
-                            }, 
-                            { 
-                                type: 'bar',
-                                label: 'FB Ads Cost (RM)', 
-                                data: adDates.length > 0 ? fbCostArray : [0], 
-                                backgroundColor: '#2563eb', 
-                                borderRadius: 4,
-                                yAxisID: 'y'
-                            } 
+                            { type: 'line', label: 'Jumlah Lead Dihasilkan', data: adDates.length > 0 ? leadsArray : [0], borderColor: '#f59e0b', backgroundColor: '#f59e0b', borderWidth: 3, tension: 0.3, yAxisID: 'y1' },
+                            { type: 'bar', label: 'Tiktok Ads Cost (RM)', data: adDates.length > 0 ? tkCostArray : [0], backgroundColor: '#0f172a', borderRadius: 4, yAxisID: 'y' }, 
+                            { type: 'bar', label: 'FB Ads Cost (RM)', data: adDates.length > 0 ? fbCostArray : [0], backgroundColor: '#2563eb', borderRadius: 4, yAxisID: 'y' } 
                         ] 
                     },
                     options: { 
-                        responsive: true, 
-                        maintainAspectRatio: false, 
-                        plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, 
+                        responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, 
                         scales: { 
-                            y: { 
-                                type: 'linear',
-                                position: 'left',
-                                title: { display: true, text: 'Kos Pengiklanan (RM)', color: chartTextColor },
-                                beginAtZero: true, 
-                                ticks: { color: chartTextColor }, 
-                                grid: { color: gridColor } 
-                            }, 
-                            y1: {
-                                type: 'linear',
-                                position: 'right',
-                                title: { display: true, text: 'Bilangan Leads', color: chartTextColor },
-                                beginAtZero: true,
-                                ticks: { color: chartTextColor },
-                                grid: { drawOnChartArea: false } // Hide background grid for the right axis to keep it clean
-                            },
-                            x: { 
-                                ticks: { color: chartTextColor }, 
-                                grid: { display: false } 
-                            } 
+                            y: { type: 'linear', position: 'left', title: { display: true, text: 'Kos Pengiklanan (RM)', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { color: gridColor } }, 
+                            y1: { type: 'linear', position: 'right', title: { display: true, text: 'Bilangan Leads', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { drawOnChartArea: false } },
+                            x: { ticks: { color: chartTextColor }, grid: { display: false } } 
                         } 
                     }
                 });
@@ -2338,6 +2167,26 @@
                     alert("Ralat semasa memadam data.");
                 }
             }
+        }
+
+        // ================= SERVICE WORKER REGISTRATION (PWA) =================
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swContent = `
+                    self.addEventListener('install', (e) => { self.skipWaiting(); });
+                    self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });
+                    self.addEventListener('fetch', (e) => { 
+                        // Basic offline fallback mechanism
+                    });
+                `;
+                const blob = new Blob([swContent], { type: 'application/javascript' });
+                const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).then(registration => {
+                    console.log('ServiceWorker registration successful');
+                }).catch(err => {
+                    console.log('ServiceWorker registration failed: ', err);
+                });
+            });
         }
     </script>
 </body>
