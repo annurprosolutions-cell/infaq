@@ -100,7 +100,6 @@
             <div class="bg-infaq-gradient px-8 py-10 text-center flex flex-col items-center justify-center relative">
                 <div class="absolute top-0 left-0 w-full h-full bg-white opacity-10 rounded-tr-full rounded-bl-full pointer-events-none" style="clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);"></div>
                 <div class="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg mb-4 inline-block relative z-10 border border-white/20">
-                    <!-- Official Logo Uploaded by User -->
                     <img src="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" alt="Logo Infaq Consultancy" class="h-16 w-auto mx-auto object-contain">
                 </div>
                 <h2 class="text-xl font-bold text-white mb-1 relative z-10 shadow-sm">Infaq Consultancy</h2>
@@ -150,7 +149,6 @@
         </div>
     </div>
 
-
     <!-- ================= APP CONTENT ================= -->
     <div id="appContent" class="hidden">
         
@@ -159,7 +157,6 @@
             <div class="container mx-auto px-4 lg:px-8 py-4 flex justify-between items-center">
                 <div class="flex items-center gap-3">
                     <div class="bg-white dark:bg-slate-800 p-1.5 rounded-lg shadow-sm">
-                        <!-- Official Logo for Header -->
                         <img src="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" alt="Logo" class="h-6 w-auto object-contain rounded-md">
                     </div>
                     <div>
@@ -1205,7 +1202,6 @@
             const html = document.documentElement; html.classList.toggle('dark');
             const isDark = html.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateThemeIcon();
-            
             const tabDash = document.getElementById('tab-dashboard');
             if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
@@ -1584,10 +1580,26 @@
 
                 updateMap(p.dateApproach, 'leads');
                 updateMap(p.openCaseDate, 'openCase');
-                if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) {
-                    if (p.submitDate) updateMap(p.submitDate, 'submit');
+                
+                // KIRA SUBMIT DARI REMARK ATAU TARIKH SUBMIT
+                let isSubmit = false;
+                if (p.remark && p.remark.toLowerCase().includes('submit')) isSubmit = true;
+                if (p.submitDate) isSubmit = true;
+                
+                if (isSubmit) {
+                    const submitPlotDate = p.submitDate ? p.submitDate : p.dateApproach;
+                    updateMap(submitPlotDate, 'submit');
                 }
-                updateMap(p.enforceDate, 'enforce');
+                
+                // KIRA ENFORCE DARI STATUS ATAU TARIKH ENFORCE
+                let isEnforce = false;
+                if (p.status && p.status.toLowerCase().includes('enforce')) isEnforce = true;
+                if (p.enforceDate) isEnforce = true;
+
+                if (isEnforce) {
+                    const enforcePlotDate = p.enforceDate ? p.enforceDate : p.dateApproach;
+                    updateMap(enforcePlotDate, 'enforce');
+                }
             });
 
             gridEl.innerHTML = '';
@@ -2332,6 +2344,125 @@
                     console.error(err);
                     alert("Ralat semasa memadam data.");
                 }
+            }
+        }
+        
+        // ================= CALENDAR LOGIC =================
+        function changeCalendarMonth(offset) {
+            calendarDate.setMonth(calendarDate.getMonth() + offset);
+            renderCalendar();
+        }
+
+        function toggleCalendarFilters() {
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const monthYearEl = document.getElementById('calendarMonthYear');
+            const gridEl = document.getElementById('calendarGrid');
+            if (!monthYearEl || !gridEl) return;
+
+            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
+            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
+
+            const year = calendarDate.getFullYear();
+            const month = calendarDate.getMonth();
+            
+            const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
+            monthYearEl.innerText = `${monthNames[month]} ${year}`;
+
+            const calData = {};
+            
+            prospectsData.forEach(p => {
+                const ownerId = p.ownerId || 'admin';
+                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
+                const role = ownerObj.role;
+
+                if (role === 'leader' && !showLeaders) return;
+                if (role === 'agent' && !showAgents) return;
+                if (role === 'superadmin' || role === 'ceo') return; 
+
+                const updateMap = (dateStr, type) => {
+                    if (!dateStr) return;
+                    const d = new Date(dateStr);
+                    if (isNaN(d)) return;
+                    const ymd = dateStr.substring(0, 10);
+                    
+                    if (!calData[ymd]) calData[ymd] = {};
+                    if (!calData[ymd][ownerId]) {
+                        calData[ymd][ownerId] = {
+                            name: ownerObj.name.split(' ')[0], 
+                            leads: 0, openCase: 0, submit: 0, enforce: 0
+                        };
+                    }
+                    calData[ymd][ownerId][type]++;
+                };
+
+                updateMap(p.dateApproach, 'leads');
+                updateMap(p.openCaseDate, 'openCase');
+                
+                let isSubmit = false;
+                if (p.remark && p.remark.toLowerCase().includes('submit')) isSubmit = true;
+                if (p.submitDate) isSubmit = true;
+                if (isSubmit) {
+                    const submitPlotDate = p.submitDate ? p.submitDate : p.dateApproach;
+                    updateMap(submitPlotDate, 'submit');
+                }
+                
+                let isEnforce = false;
+                if (p.status && p.status.toLowerCase().includes('enforce')) isEnforce = true;
+                if (p.enforceDate) isEnforce = true;
+                if (isEnforce) {
+                    const enforcePlotDate = p.enforceDate ? p.enforceDate : p.dateApproach;
+                    updateMap(enforcePlotDate, 'enforce');
+                }
+            });
+
+            gridEl.innerHTML = '';
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            let startDayOfWeek = firstDay.getDay(); 
+            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
+
+            const totalDays = lastDay.getDate();
+            
+            for (let i = 0; i < startDayOfWeek; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayData = calData[dateStr] || {};
+                
+                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
+                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
+                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
+
+                for (const uid in dayData) {
+                    const u = dayData[uid];
+                    let activities = [];
+                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
+                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
+                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
+                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
+                    
+                    if (activities.length > 0) {
+                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
+                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
+                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
+                        cellContent += `</div>`;
+                    }
+                }
+
+                cellContent += `</div></div>`;
+                gridEl.innerHTML += cellContent;
+            }
+
+            let totalCells = startDayOfWeek + totalDays;
+            let remainingCells = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
             }
         }
 
