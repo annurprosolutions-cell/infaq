@@ -12,11 +12,11 @@
     <meta name="apple-mobile-web-app-title" content="Takaful Tracker">
     <meta name="mobile-web-app-capable" content="yes">
 
-    <!-- Favicon and App Icons (Converted from Google Drive Link) -->
+    <!-- Favicon and App Icons -->
     <link rel="icon" href="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" type="image/png">
     <link rel="apple-touch-icon" href="https://lh3.googleusercontent.com/d/1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc">
     
-    <!-- Web App Manifest (Base64 Encoded to keep single-file structure) -->
+    <!-- Web App Manifest -->
     <link rel="manifest" href="data:application/json;charset=utf-8,%7B%20%22name%22%3A%20%22Takaful%20Sales%20Tracker%22%2C%20%22short_name%22%3A%20%22Takaful%20App%22%2C%20%22start_url%22%3A%20%22.%22%2C%20%22display%22%3A%20%22standalone%22%2C%20%22background_color%22%3A%20%22%23f8fafc%22%2C%20%22theme_color%22%3A%20%22%23006b49%22%2C%20%22icons%22%3A%20%5B%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc%22%2C%20%22sizes%22%3A%20%22192x192%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%2C%20%7B%20%22src%22%3A%20%22https%3A%2F%2Flh3.googleusercontent.com%2Fd%2F1hI89LqMQ2Dy55i4FEHhOV76F-OUWsyTc%22%2C%20%22sizes%22%3A%20%22512x512%22%2C%20%22type%22%3A%20%22image%2Fpng%22%2C%20%22purpose%22%3A%20%22any%20maskable%22%20%7D%20%5D%20%7D">
     
     <!-- Tailwind CSS for styling -->
@@ -831,7 +831,7 @@
                     </form>
                 </div>
 
-                <!-- ADMIN/LEADER MANAGEMENT SECTION (HIDDEN FOR AGENT) -->
+                <!-- ADMIN/LEADER MANAGEMENT SECTION -->
                 <div id="adminLeaderManagementSection" class="grid grid-cols-1 lg:grid-cols-3 gap-6 hidden">
                     <!-- Add User Form -->
                     <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 transition-colors">
@@ -856,6 +856,7 @@
                                 <select id="newUserRole" onchange="handleRoleChange()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
                                     <option value="agent">Agent (Ejen Biasa)</option>
                                     <option value="leader">Leader (Pengurus)</option>
+                                    <!-- Superadmin option injected dynamically if CEO -->
                                 </select>
                             </div>
                             <div id="leaderSelectDiv" class="hidden">
@@ -956,7 +957,6 @@
 
         let calendarDate = new Date();
 
-        // Helper function to parse CSV robustly
         function parseCSV(csv) {
             const rows = [];
             let currentRow = [];
@@ -974,7 +974,6 @@
             return rows;
         }
 
-        // ================= FETCH GOOGLE SHEET DATA =================
         async function fetchGoogleSheetDropdowns() {
             const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=475370971&single=true&output=csv";
             try {
@@ -1034,7 +1033,7 @@
                 }
                 
                 updateHeaderProfile();
-                if(currentUser && currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
+                if(currentUser && currentUser.role !== 'agent') renderUsersTable();
                 
             } catch (err) {
                 console.error("Gagal menarik gambar profil dari Google Sheet", err);
@@ -1287,15 +1286,41 @@
             const adminSection = document.getElementById('adminLeaderManagementSection');
             if(!adminSection) return;
 
-            if(currentUser.role === 'agent' || currentUser.role === 'ceo') {
+            if(currentUser.role === 'agent') {
                 adminSection.classList.add('hidden');
             } else {
                 adminSection.classList.remove('hidden');
                 const roleDiv = document.getElementById('roleSelectDiv'); const leaderDiv = document.getElementById('leaderSelectDiv'); const leaderSelect = document.getElementById('newUserLeader');
-                if(currentUser.role === 'superadmin') {
-                    if(roleDiv) roleDiv.classList.remove('hidden'); if(leaderDiv) leaderDiv.classList.remove('hidden');
+                const roleSelect = document.getElementById('newUserRole');
+                
+                if (currentUser.role === 'ceo') {
+                    if(roleDiv) roleDiv.classList.remove('hidden');
+                    if(leaderDiv) leaderDiv.classList.remove('hidden');
+                    if(roleSelect) {
+                        roleSelect.innerHTML = `
+                            <option value="agent">Agent (Ejen Biasa)</option>
+                            <option value="leader">Leader (Pengurus)</option>
+                            <option value="superadmin">Superadmin (Pentadbir Sistem)</option>
+                        `;
+                    }
                     if(leaderSelect) {
-                        leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Direct Admin)</option>`;
+                        leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Pengurusan Utama)</option>`;
+                        try {
+                            const snap = await db.collection('users').where('role', '==', 'leader').get();
+                            snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; });
+                        } catch(e) { console.error(e); }
+                    }
+                } else if(currentUser.role === 'superadmin') {
+                    if(roleDiv) roleDiv.classList.remove('hidden'); 
+                    if(leaderDiv) leaderDiv.classList.remove('hidden');
+                    if(roleSelect) {
+                        roleSelect.innerHTML = `
+                            <option value="agent">Agent (Ejen Biasa)</option>
+                            <option value="leader">Leader (Pengurus)</option>
+                        `;
+                    }
+                    if(leaderSelect) {
+                        leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Pengurusan Utama)</option>`;
                         try {
                             const snap = await db.collection('users').where('role', '==', 'leader').get();
                             snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; });
@@ -1393,7 +1418,7 @@
             try {
                 await db.collection('users').doc(currentUser.id).update(updates);
                 alert('Profil berjaya dikemas kini!'); setupRoleUI(); 
-                if(currentUser.role !== 'agent' && currentUser.role !== 'ceo') renderUsersTable();
+                if(currentUser.role !== 'agent') renderUsersTable();
                 const oldPassEl = document.getElementById('myOldPass'); if (oldPassEl) oldPassEl.value = '';
                 const newPassEl = document.getElementById('myNewPass'); if (newPassEl) newPassEl.value = '';
             } catch(e) { console.error(e); alert('Gagal menyimpan profil.'); }
@@ -1402,7 +1427,10 @@
         function handleRoleChange() {
             const roleEl = document.getElementById('newUserRole'); const role = roleEl ? roleEl.value : '';
             const leaderDiv = document.getElementById('leaderSelectDiv');
-            if(leaderDiv) { if(role === 'leader') leaderDiv.classList.add('hidden'); else leaderDiv.classList.remove('hidden'); }
+            if(leaderDiv) { 
+                if(role === 'leader' || role === 'superadmin') leaderDiv.classList.add('hidden'); 
+                else leaderDiv.classList.remove('hidden'); 
+            }
         }
 
         const addUserFormEl = document.getElementById('addUserForm');
@@ -1412,9 +1440,12 @@
                 const email = document.getElementById('newUserEmail').value.trim(); const name = document.getElementById('newUserName').value.trim(); const pass = document.getElementById('newUserPass').value.trim();
                 let role = 'agent'; let leaderId = currentUser.id; 
                 
-                if(currentUser.role === 'superadmin') {
+                if(currentUser.role === 'superadmin' || currentUser.role === 'ceo') {
                     const roleEl = document.getElementById('newUserRole'); role = roleEl ? roleEl.value : 'agent';
-                    if(role === 'agent') { const leaderEl = document.getElementById('newUserLeader'); leaderId = leaderEl ? leaderEl.value : null; } else { leaderId = null; }
+                    if(role === 'agent') { 
+                        const leaderEl = document.getElementById('newUserLeader'); 
+                        leaderId = leaderEl ? leaderEl.value : null; 
+                    } else { leaderId = null; }
                 }
 
                 try {
@@ -1438,20 +1469,30 @@
                 let usersList = []; const allUsersMap = {};
                 snap.forEach(doc => { const u = doc.data(); allUsersMap[u.id] = u; usersList.push(u); });
 
-                if(currentUser.role === 'leader') usersList = usersList.filter(u => u.leaderId === currentUser.id);
-                else if (currentUser.role === 'superadmin') usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
+                if(currentUser.role === 'leader') {
+                    usersList = usersList.filter(u => u.leaderId === currentUser.id);
+                } else if (currentUser.role === 'superadmin') {
+                    usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
+                } else if (currentUser.role === 'ceo') {
+                    usersList = usersList.filter(u => u.id !== currentUser.id); 
+                }
                 
-                if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
+                if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
 
                 tbody.innerHTML = '';
                 usersList.forEach(u => {
                     let leaderName = '-';
-                    if(u.role === 'agent' && u.leaderId && allUsersMap[u.leaderId]) leaderName = allUsersMap[u.leaderId].name;
-                    else if (u.role === 'agent' && u.leaderId === 'admin') leaderName = 'Admin';
+                    if (u.role === 'agent') {
+                        if (u.leaderId && allUsersMap[u.leaderId]) leaderName = allUsersMap[u.leaderId].name;
+                        else if (u.leaderId === 'admin' || u.leaderId === 'ceo') leaderName = 'Pengurusan Utama';
+                        else leaderName = 'Pengurusan Utama';
+                    }
                     
-                    const roleBadge = u.role === 'leader' ? '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>' : 
-                                      (u.role === 'ceo' ? '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>' :
-                                      '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>');
+                    let roleBadge = '';
+                    if(u.role === 'ceo') roleBadge = '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>';
+                    else if(u.role === 'superadmin') roleBadge = '<span class="bg-red-100 text-red-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Superadmin</span>';
+                    else if(u.role === 'leader') roleBadge = '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>';
+                    else roleBadge = '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>';
 
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
                     tr.innerHTML = `
@@ -1462,10 +1503,26 @@
                         <td class="p-3 text-slate-500 dark:text-slate-400 font-mono text-xs">${u.email || u.id}</td>
                         <td class="p-3">${roleBadge}</td>
                         <td class="p-3 text-slate-600 dark:text-slate-400 text-xs">${leaderName}</td>
+                        <td class="p-3 text-center">
+                            <button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna"><i class="fa-solid fa-trash"></i></button>
+                        </td>
                     `;
                     tbody.appendChild(tr);
                 });
-            } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="4" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
+            } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
+        }
+
+        async function deleteUser(userId) {
+            if(confirm("Adakah anda pasti mahu memadam pengguna ini? Tindakan ini tidak boleh diundur.")) {
+                try {
+                    await db.collection('users').doc(userId).delete();
+                    fetchAllUsersForOrg();
+                    setupRoleUI(); setupManagementUI();
+                    alert("Pengguna telah dipadam.");
+                } catch(e) {
+                    console.error(e); alert("Gagal memadam.");
+                }
+            }
         }
 
         // ================= FILTER & FORM LOGIC =================
@@ -1525,129 +1582,6 @@
             if(tabId === 'dashboard') renderCharts();
             if(tabId === 'calendar') renderCalendar();
             window.scrollTo(0, 0);
-        }
-
-        // ================= CALENDAR LOGIC (CEO/ADMIN ONLY) =================
-        function changeCalendarMonth(offset) {
-            calendarDate.setMonth(calendarDate.getMonth() + offset);
-            renderCalendar();
-        }
-
-        function toggleCalendarFilters() {
-            renderCalendar();
-        }
-
-        function renderCalendar() {
-            const monthYearEl = document.getElementById('calendarMonthYear');
-            const gridEl = document.getElementById('calendarGrid');
-            if (!monthYearEl || !gridEl) return;
-
-            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
-            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
-
-            const year = calendarDate.getFullYear();
-            const month = calendarDate.getMonth();
-            
-            const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
-            monthYearEl.innerText = `${monthNames[month]} ${year}`;
-
-            const calData = {};
-            
-            prospectsData.forEach(p => {
-                const ownerId = p.ownerId || 'admin';
-                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
-                const role = ownerObj.role;
-
-                if (role === 'leader' && !showLeaders) return;
-                if (role === 'agent' && !showAgents) return;
-                if (role === 'superadmin' || role === 'ceo') return; 
-
-                const updateMap = (dateStr, type) => {
-                    if (!dateStr) return;
-                    const d = new Date(dateStr);
-                    if (isNaN(d)) return;
-                    const ymd = dateStr.substring(0, 10);
-                    
-                    if (!calData[ymd]) calData[ymd] = {};
-                    if (!calData[ymd][ownerId]) {
-                        calData[ymd][ownerId] = {
-                            name: ownerObj.name.split(' ')[0], 
-                            leads: 0, openCase: 0, submit: 0, enforce: 0
-                        };
-                    }
-                    calData[ymd][ownerId][type]++;
-                };
-
-                updateMap(p.dateApproach, 'leads');
-                updateMap(p.openCaseDate, 'openCase');
-                
-                // KIRA SUBMIT DARI REMARK ATAU TARIKH SUBMIT
-                let isSubmit = false;
-                if (p.remark && p.remark.toLowerCase().includes('submit')) isSubmit = true;
-                if (p.submitDate) isSubmit = true;
-                
-                if (isSubmit) {
-                    const submitPlotDate = p.submitDate ? p.submitDate : p.dateApproach;
-                    updateMap(submitPlotDate, 'submit');
-                }
-                
-                // KIRA ENFORCE DARI STATUS ATAU TARIKH ENFORCE
-                let isEnforce = false;
-                if (p.status && p.status.toLowerCase().includes('enforce')) isEnforce = true;
-                if (p.enforceDate) isEnforce = true;
-
-                if (isEnforce) {
-                    const enforcePlotDate = p.enforceDate ? p.enforceDate : p.dateApproach;
-                    updateMap(enforcePlotDate, 'enforce');
-                }
-            });
-
-            gridEl.innerHTML = '';
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            
-            let startDayOfWeek = firstDay.getDay(); 
-            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
-
-            const totalDays = lastDay.getDate();
-            
-            for (let i = 0; i < startDayOfWeek; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const dayData = calData[dateStr] || {};
-                
-                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
-                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
-                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
-
-                for (const uid in dayData) {
-                    const u = dayData[uid];
-                    let activities = [];
-                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
-                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
-                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
-                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
-                    
-                    if (activities.length > 0) {
-                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
-                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
-                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
-                        cellContent += `</div>`;
-                    }
-                }
-
-                cellContent += `</div></div>`;
-                gridEl.innerHTML += cellContent;
-            }
-
-            let totalCells = startDayOfWeek + totalDays;
-            let remainingCells = (7 - (totalCells % 7)) % 7;
-            for (let i = 0; i < remainingCells; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
         }
 
         function toggleConditionalFields() {
@@ -2158,6 +2092,113 @@
             }
         }
 
+        // ================= CALENDAR LOGIC (CEO/ADMIN ONLY) =================
+        function changeCalendarMonth(offset) {
+            calendarDate.setMonth(calendarDate.getMonth() + offset);
+            renderCalendar();
+        }
+
+        function toggleCalendarFilters() {
+            renderCalendar();
+        }
+
+        function renderCalendar() {
+            const monthYearEl = document.getElementById('calendarMonthYear');
+            const gridEl = document.getElementById('calendarGrid');
+            if (!monthYearEl || !gridEl) return;
+
+            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
+            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
+
+            const year = calendarDate.getFullYear();
+            const month = calendarDate.getMonth();
+            
+            const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
+            monthYearEl.innerText = `${monthNames[month]} ${year}`;
+
+            const calData = {};
+            
+            prospectsData.forEach(p => {
+                const ownerId = p.ownerId || 'admin';
+                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
+                const role = ownerObj.role;
+
+                if (role === 'leader' && !showLeaders) return;
+                if (role === 'agent' && !showAgents) return;
+                if (role === 'superadmin' || role === 'ceo') return; 
+
+                const updateMap = (dateStr, type) => {
+                    if (!dateStr) return;
+                    const d = new Date(dateStr);
+                    if (isNaN(d)) return;
+                    const ymd = dateStr.substring(0, 10);
+                    
+                    if (!calData[ymd]) calData[ymd] = {};
+                    if (!calData[ymd][ownerId]) {
+                        calData[ymd][ownerId] = {
+                            name: ownerObj.name.split(' ')[0], 
+                            leads: 0, openCase: 0, submit: 0, enforce: 0
+                        };
+                    }
+                    calData[ymd][ownerId][type]++;
+                };
+
+                updateMap(p.dateApproach, 'leads');
+                updateMap(p.openCaseDate, 'openCase');
+                if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) {
+                    if (p.submitDate) updateMap(p.submitDate, 'submit');
+                }
+                updateMap(p.enforceDate, 'enforce');
+            });
+
+            gridEl.innerHTML = '';
+            const firstDay = new Date(year, month, 1);
+            const lastDay = new Date(year, month + 1, 0);
+            
+            let startDayOfWeek = firstDay.getDay(); 
+            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
+
+            const totalDays = lastDay.getDate();
+            
+            for (let i = 0; i < startDayOfWeek; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
+            }
+
+            for (let day = 1; day <= totalDays; day++) {
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                const dayData = calData[dateStr] || {};
+                
+                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
+                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
+                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
+
+                for (const uid in dayData) {
+                    const u = dayData[uid];
+                    let activities = [];
+                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
+                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
+                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
+                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
+                    
+                    if (activities.length > 0) {
+                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
+                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
+                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
+                        cellContent += `</div>`;
+                    }
+                }
+
+                cellContent += `</div></div>`;
+                gridEl.innerHTML += cellContent;
+            }
+
+            let totalCells = startDayOfWeek + totalDays;
+            let remainingCells = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) {
+                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
+            }
+        }
+
         // ================= ADS LOGIC =================
         const tkAdsFormEl = document.getElementById('tiktokAdsForm');
         if (tkAdsFormEl) {
@@ -2346,125 +2387,6 @@
                 }
             }
         }
-        
-        // ================= CALENDAR LOGIC =================
-        function changeCalendarMonth(offset) {
-            calendarDate.setMonth(calendarDate.getMonth() + offset);
-            renderCalendar();
-        }
-
-        function toggleCalendarFilters() {
-            renderCalendar();
-        }
-
-        function renderCalendar() {
-            const monthYearEl = document.getElementById('calendarMonthYear');
-            const gridEl = document.getElementById('calendarGrid');
-            if (!monthYearEl || !gridEl) return;
-
-            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
-            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
-
-            const year = calendarDate.getFullYear();
-            const month = calendarDate.getMonth();
-            
-            const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
-            monthYearEl.innerText = `${monthNames[month]} ${year}`;
-
-            const calData = {};
-            
-            prospectsData.forEach(p => {
-                const ownerId = p.ownerId || 'admin';
-                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
-                const role = ownerObj.role;
-
-                if (role === 'leader' && !showLeaders) return;
-                if (role === 'agent' && !showAgents) return;
-                if (role === 'superadmin' || role === 'ceo') return; 
-
-                const updateMap = (dateStr, type) => {
-                    if (!dateStr) return;
-                    const d = new Date(dateStr);
-                    if (isNaN(d)) return;
-                    const ymd = dateStr.substring(0, 10);
-                    
-                    if (!calData[ymd]) calData[ymd] = {};
-                    if (!calData[ymd][ownerId]) {
-                        calData[ymd][ownerId] = {
-                            name: ownerObj.name.split(' ')[0], 
-                            leads: 0, openCase: 0, submit: 0, enforce: 0
-                        };
-                    }
-                    calData[ymd][ownerId][type]++;
-                };
-
-                updateMap(p.dateApproach, 'leads');
-                updateMap(p.openCaseDate, 'openCase');
-                
-                let isSubmit = false;
-                if (p.remark && p.remark.toLowerCase().includes('submit')) isSubmit = true;
-                if (p.submitDate) isSubmit = true;
-                if (isSubmit) {
-                    const submitPlotDate = p.submitDate ? p.submitDate : p.dateApproach;
-                    updateMap(submitPlotDate, 'submit');
-                }
-                
-                let isEnforce = false;
-                if (p.status && p.status.toLowerCase().includes('enforce')) isEnforce = true;
-                if (p.enforceDate) isEnforce = true;
-                if (isEnforce) {
-                    const enforcePlotDate = p.enforceDate ? p.enforceDate : p.dateApproach;
-                    updateMap(enforcePlotDate, 'enforce');
-                }
-            });
-
-            gridEl.innerHTML = '';
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            
-            let startDayOfWeek = firstDay.getDay(); 
-            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
-
-            const totalDays = lastDay.getDate();
-            
-            for (let i = 0; i < startDayOfWeek; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
-
-            for (let day = 1; day <= totalDays; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const dayData = calData[dateStr] || {};
-                
-                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
-                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
-                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
-
-                for (const uid in dayData) {
-                    const u = dayData[uid];
-                    let activities = [];
-                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
-                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
-                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
-                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
-                    
-                    if (activities.length > 0) {
-                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
-                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
-                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
-                        cellContent += `</div>`;
-                    }
-                }
-
-                cellContent += `</div></div>`;
-                gridEl.innerHTML += cellContent;
-            }
-
-            let totalCells = startDayOfWeek + totalDays;
-            let remainingCells = (7 - (totalCells % 7)) % 7;
-            for (let i = 0; i < remainingCells; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
-        }
 
         // ================= SERVICE WORKER REGISTRATION (PWA) =================
         if ('serviceWorker' in navigator) {
@@ -2472,9 +2394,7 @@
                 const swContent = `
                     self.addEventListener('install', (e) => { self.skipWaiting(); });
                     self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });
-                    self.addEventListener('fetch', (e) => { 
-                        // Basic offline fallback mechanism
-                    });
+                    self.addEventListener('fetch', (e) => { });
                 `;
                 const blob = new Blob([swContent], { type: 'application/javascript' });
                 const swUrl = URL.createObjectURL(blob);
