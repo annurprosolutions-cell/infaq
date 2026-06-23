@@ -164,20 +164,41 @@
                         <p class="text-[10px] text-emerald-100 dark:text-emerald-300/80 leading-none">Infaq Consultancy</p>
                     </div>
                 </div>
+                
+                <!-- Updated Top Right Profile & Settings Dropdown -->
                 <div class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
-                    <span class="hidden sm:flex bg-white/20 px-3 py-1.5 rounded-full items-center">
-                        <img id="headerAvatarImg" src="" class="w-6 h-6 rounded-full mr-2 object-cover hidden border border-white/50 bg-white shadow-sm">
-                        <i id="headerAvatarIcon" class="fa-solid fa-user-tie mr-2"></i>
-                        <span id="headerUserName">Sistem...</span>
-                    </span>
-                    
-                    <button onclick="toggleTheme()" class="p-2 bg-white/20 hover:bg-white/30 rounded-full transition-colors outline-none focus:ring-2 focus:ring-white flex items-center justify-center h-9 w-9">
-                        <i id="themeIcon" class="fa-solid fa-moon text-lg"></i>
-                    </button>
-
-                    <button onclick="logOutApp()" class="p-2 bg-white/20 hover:bg-red-500/80 rounded-full transition-colors outline-none focus:ring-2 focus:ring-white flex items-center justify-center h-9 w-9 text-white" title="Log Keluar">
-                        <i class="fa-solid fa-right-from-bracket"></i>
-                    </button>
+                    <div class="relative">
+                        <!-- Profile Button -->
+                        <button id="profileBtn" onclick="toggleProfileMenu()" class="flex bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full items-center transition-colors outline-none focus:ring-2 focus:ring-white">
+                            <img id="headerAvatarImg" src="" class="w-6 h-6 rounded-full mr-2 object-cover hidden border border-white/50 bg-white shadow-sm">
+                            <i id="headerAvatarIcon" class="fa-solid fa-user-tie mr-2"></i>
+                            <span id="headerUserName" class="mr-2 hidden sm:inline-block">Sistem...</span>
+                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                        </button>
+                        
+                        <!-- Dropdown Menu -->
+                        <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 py-1 z-50 transform opacity-0 scale-95 transition-all duration-200 origin-top-right text-slate-800 dark:text-slate-200">
+                            <!-- Mobile info -->
+                            <div class="px-4 py-2 border-b border-slate-100 dark:border-slate-700 block sm:hidden">
+                                <p class="text-xs font-bold truncate" id="mobileDropdownName">Sistem...</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 capitalize mt-0.5" id="mobileDropdownRole">Role</p>
+                            </div>
+                            <!-- Settings Tab Trigger -->
+                            <button onclick="switchTab('management'); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
+                                <i class="fa-solid fa-user-gear w-5 text-infaq-DEFAULT text-center mr-2"></i> Profil & Tetapan
+                            </button>
+                            <div class="h-px bg-slate-100 dark:bg-slate-700 my-1"></div>
+                            <!-- Theme Toggle -->
+                            <button onclick="toggleTheme(); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
+                                <i id="dropdownThemeIcon" class="fa-solid fa-moon w-5 text-slate-500 text-center mr-2"></i> <span id="themeText">Mod Gelap</span>
+                            </button>
+                            <div class="h-px bg-slate-100 dark:bg-slate-700 my-1"></div>
+                            <!-- Logout -->
+                            <button onclick="logOutApp()" class="w-full text-left px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center transition-colors rounded-b-xl">
+                                <i class="fa-solid fa-right-from-bracket w-5 text-center mr-2"></i> Log Keluar
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
@@ -185,7 +206,9 @@
         <!-- Tab Navigation -->
         <nav class="bg-white dark:bg-slate-800 border-t md:border-t-0 md:border-b border-slate-200 dark:border-slate-700 fixed bottom-0 w-full md:relative md:bottom-auto z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:shadow-none overflow-x-auto">
             <div class="container mx-auto px-0 md:px-8 min-w-max md:min-w-0">
-                <ul class="flex justify-between md:justify-start">
+                <ul class="flex justify-between md:justify-start items-center">
+                    
+                    <!-- KUMPULAN 1: ANALISIS -->
                     <li class="flex-1 md:flex-none" id="li-dashboard">
                         <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-chart-line text-lg md:text-base"></i>
@@ -198,16 +221,23 @@
                             <span class="text-[10px] md:text-sm">Kalendar</span>
                         </button>
                     </li>
+                    <li class="flex-1 md:flex-none" id="li-reports">
+                        <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                            <i class="fa-solid fa-file-invoice text-lg md:text-base"></i>
+                            <span class="text-[10px] md:text-sm">Laporan</span>
+                        </button>
+                    </li>
+
+                    <!-- PEMISAH (DIVIDER) -->
+                    <li id="li-divider" class="flex-none mx-0.5 md:mx-3 flex items-center justify-center">
+                        <div class="w-px h-8 bg-slate-300 dark:bg-slate-600 rounded-full"></div>
+                    </li>
+
+                    <!-- KUMPULAN 2: KEMASUKAN DATA -->
                     <li class="flex-1 md:flex-none" id="li-form">
                         <button onclick="switchTab('form')" id="nav-form" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-user-plus text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Prospek Baharu</span>
-                        </button>
-                    </li>
-                    <li class="flex-1 md:flex-none" id="li-ads">
-                        <button onclick="switchTab('ads')" id="nav-ads" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
-                            <i class="fa-solid fa-bullhorn text-lg md:text-base"></i>
-                            <span class="text-[10px] md:text-sm">Kos Ads</span>
                         </button>
                     </li>
                     <li class="flex-1 md:flex-none" id="li-list">
@@ -216,18 +246,13 @@
                             <span class="text-[10px] md:text-sm">Semua Prospek</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none" id="li-reports">
-                        <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
-                            <i class="fa-solid fa-file-invoice text-lg md:text-base"></i>
-                            <span class="text-[10px] md:text-sm">Laporan</span>
+                    <li class="flex-1 md:flex-none" id="li-ads">
+                        <button onclick="switchTab('ads')" id="nav-ads" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                            <i class="fa-solid fa-bullhorn text-lg md:text-base"></i>
+                            <span class="text-[10px] md:text-sm">Kos Ads</span>
                         </button>
                     </li>
-                    <li class="flex-1 md:flex-none" id="navItemManagement">
-                        <button onclick="switchTab('management')" id="nav-management" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium border-l border-slate-200 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/30">
-                            <i class="fa-solid fa-user-gear text-lg md:text-base text-infaq-DEFAULT"></i>
-                            <span class="text-[10px] md:text-sm text-infaq-DEFAULT">Tetapan</span>
-                        </button>
-                    </li>
+                    
                 </ul>
             </div>
         </nav>
@@ -387,7 +412,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Lahir (DOB)</label>
-                                    <input type="date" id="dob" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="calculateAge()">
+                                    <input type="date" id="dob" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="calculateAge()">
                                 </div>
                                 <div class="grid grid-cols-2 gap-3">
                                     <div>
@@ -504,7 +529,7 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Remark Kes</label>
-                                    <select id="remark" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
+                                    <select id="remark" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
                                         <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
@@ -1083,6 +1108,17 @@
         document.addEventListener('DOMContentLoaded', () => {
             fetchGoogleSheetDropdowns(); 
             updateThemeIcon(); 
+            
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                const dropdown = document.getElementById('profileDropdown');
+                const profileBtn = document.getElementById('profileBtn');
+                if (dropdown && !dropdown.classList.contains('hidden')) {
+                    if (!dropdown.contains(event.target) && !profileBtn.contains(event.target)) {
+                        toggleProfileMenu();
+                    }
+                }
+            });
         });
 
         const loginFormEl = document.getElementById('loginForm');
@@ -1189,6 +1225,24 @@
             }
         }
 
+        function toggleProfileMenu() {
+            const dropdown = document.getElementById('profileDropdown');
+            if (!dropdown) return;
+            if (dropdown.classList.contains('hidden')) {
+                dropdown.classList.remove('hidden');
+                setTimeout(() => {
+                    dropdown.classList.remove('opacity-0', 'scale-95');
+                    dropdown.classList.add('opacity-100', 'scale-100');
+                }, 10);
+            } else {
+                dropdown.classList.remove('opacity-100', 'scale-100');
+                dropdown.classList.add('opacity-0', 'scale-95');
+                setTimeout(() => {
+                    dropdown.classList.add('hidden');
+                }, 200);
+            }
+        }
+
         function togglePassword() {
             const passInput = document.getElementById('loginPass'); const icon = document.getElementById('eyeIcon');
             if (passInput && icon) {
@@ -1201,15 +1255,33 @@
             const html = document.documentElement; html.classList.toggle('dark');
             const isDark = html.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light');
             updateThemeIcon();
+            
             const tabDash = document.getElementById('tab-dashboard');
             if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
 
         function updateThemeIcon() {
+            // Update Main header icon
             const icon = document.getElementById('themeIcon');
-            if (!icon) return;
-            if (document.documentElement.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
-            else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+            if (icon) {
+                if (document.documentElement.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
+                else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
+            }
+            
+            // Update dropdown icon & text
+            const dropdownIcon = document.getElementById('dropdownThemeIcon');
+            const themeText = document.getElementById('themeText');
+            if (dropdownIcon && themeText) {
+                if (document.documentElement.classList.contains('dark')) { 
+                    dropdownIcon.classList.remove('fa-moon'); 
+                    dropdownIcon.classList.add('fa-sun'); 
+                    themeText.innerText = 'Mod Cerah';
+                } else { 
+                    dropdownIcon.classList.remove('fa-sun'); 
+                    dropdownIcon.classList.add('fa-moon'); 
+                    themeText.innerText = 'Mod Gelap';
+                }
+            }
         }
 
         function updateHeaderProfile() {
@@ -1217,8 +1289,12 @@
             const headerUserName = document.getElementById('headerUserName');
             const avatarImg = document.getElementById('headerAvatarImg');
             const avatarIcon = document.getElementById('headerAvatarIcon');
+            const mobileName = document.getElementById('mobileDropdownName');
+            const mobileRole = document.getElementById('mobileDropdownRole');
 
             if(headerUserName) headerUserName.innerText = currentUser.name;
+            if(mobileName) mobileName.innerText = currentUser.name;
+            if(mobileRole) mobileRole.innerText = currentUser.role === 'ceo' ? 'Dato CEO' : currentUser.role;
 
             if(currentUser.profilePic) {
                 if(avatarImg) { avatarImg.src = currentUser.profilePic; avatarImg.classList.remove('hidden'); }
@@ -1232,19 +1308,26 @@
         async function setupRoleUI() {
             updateHeaderProfile();
             const roleFilter = document.getElementById('roleBasedFilter');
-            const navManagement = document.getElementById('navItemManagement');
-            const liForm = document.getElementById('li-form'); const liAds = document.getElementById('li-ads'); const liList = document.getElementById('li-list');
+            const liForm = document.getElementById('li-form'); 
+            const liAds = document.getElementById('li-ads'); 
+            const liList = document.getElementById('li-list');
             const liCalendar = document.getElementById('li-calendar');
+            const liDivider = document.getElementById('li-divider');
 
-            if (liForm) liForm.style.display = 'block'; if (liAds) liAds.style.display = 'block'; if (liList) liList.style.display = 'block';
+            if (liForm) liForm.style.display = 'block'; 
+            if (liAds) liAds.style.display = 'block'; 
+            if (liList) liList.style.display = 'block';
             if (liCalendar) liCalendar.style.display = 'none';
+            if (liDivider) liDivider.style.display = 'flex';
 
             if (!roleFilter) return;
 
             let allUsers = Object.values(allUsersData);
             if (currentUser.role === 'ceo') {
-                if (liForm) liForm.style.display = 'none'; if (liAds) liAds.style.display = 'none'; if (liList) liList.style.display = 'none';
-                if (navManagement) navManagement.style.display = 'block';
+                if (liForm) liForm.style.display = 'none'; 
+                if (liAds) liAds.style.display = 'none'; 
+                if (liList) liList.style.display = 'none';
+                if (liDivider) liDivider.style.display = 'none';
                 if (liCalendar) liCalendar.style.display = 'block';
                 
                 roleFilter.classList.remove('hidden');
@@ -1259,17 +1342,14 @@
                     if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`;
                 });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
-                if (navManagement) navManagement.style.display = 'block';
                 if (liCalendar) liCalendar.style.display = 'block';
             } else if (currentUser.role === 'leader') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan Saya</option>`;
                 allUsers.forEach(u => { if(u.role === 'agent' && u.leaderId === currentUser.id) { options += `<option value="${u.id}">Ejen ${u.name}</option>`; } });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
-                if (navManagement) navManagement.style.display = 'block';
             } else {
                 roleFilter.classList.add('hidden'); roleFilter.innerHTML = ''; 
-                if (navManagement) navManagement.style.display = 'block'; 
             }
         }
 
