@@ -165,7 +165,7 @@
                     </div>
                 </div>
                 
-                <!-- Updated Top Right Profile & Settings Dropdown -->
+                <!-- Top Right Profile & Settings Dropdown -->
                 <div class="flex items-center gap-2 sm:gap-4 text-sm font-medium">
                     <div class="relative">
                         <!-- Profile Button -->
@@ -178,22 +178,18 @@
                         
                         <!-- Dropdown Menu -->
                         <div id="profileDropdown" class="hidden absolute right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-xl shadow-xl border border-slate-100 dark:border-slate-700 py-1 z-50 transform opacity-0 scale-95 transition-all duration-200 origin-top-right text-slate-800 dark:text-slate-200">
-                            <!-- Mobile info -->
                             <div class="px-4 py-2 border-b border-slate-100 dark:border-slate-700 block sm:hidden">
                                 <p class="text-xs font-bold truncate" id="mobileDropdownName">Sistem...</p>
                                 <p class="text-[10px] text-slate-500 dark:text-slate-400 capitalize mt-0.5" id="mobileDropdownRole">Role</p>
                             </div>
-                            <!-- Settings Tab Trigger -->
                             <button onclick="switchTab('management'); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
                                 <i class="fa-solid fa-user-gear w-5 text-infaq-DEFAULT text-center mr-2"></i> Profil & Tetapan
                             </button>
                             <div class="h-px bg-slate-100 dark:bg-slate-700 my-1"></div>
-                            <!-- Theme Toggle -->
                             <button onclick="toggleTheme(); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
                                 <i id="dropdownThemeIcon" class="fa-solid fa-moon w-5 text-slate-500 text-center mr-2"></i> <span id="themeText">Mod Gelap</span>
                             </button>
                             <div class="h-px bg-slate-100 dark:bg-slate-700 my-1"></div>
-                            <!-- Logout -->
                             <button onclick="logOutApp()" class="w-full text-left px-4 py-2.5 text-sm text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 flex items-center transition-colors rounded-b-xl">
                                 <i class="fa-solid fa-right-from-bracket w-5 text-center mr-2"></i> Log Keluar
                             </button>
@@ -381,9 +377,23 @@
             <!-- ================= TAB 2: PROSPEK BAHARU / KEMASKINI ================= -->
             <div id="tab-form" class="tab-content max-w-4xl mx-auto">
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
-                    <div class="p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex justify-between items-center transition-colors">
+                    <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors">
                         <h2 id="formTitleText" class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-user-plus text-infaq-DEFAULT mr-2"></i> Daftar Prospek Baru</h2>
-                        <button type="button" onclick="resetForm()" class="text-sm bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 px-4 py-2 rounded-md transition font-medium shadow-sm"><i class="fa-solid fa-rotate-right mr-1"></i> Reset Borang</button>
+                        <div class="flex items-center gap-2 w-full md:w-auto">
+                            <!-- BULK IMPORT BUTTONS -->
+                            <button type="button" onclick="downloadCSVTemplate()" class="text-xs text-infaq-DEFAULT hover:text-infaq-dark hover:underline font-medium px-2 py-2 flex items-center transition" title="Muat Turun Template CSV">
+                                <i class="fa-solid fa-download mr-1"></i> Template
+                            </button>
+                            <input type="file" id="csvImportInput" accept=".csv" class="hidden" onchange="handleCSVImport(event)">
+                            <button type="button" id="btnImportCsv" onclick="document.getElementById('csvImportInput').click()" class="flex-1 md:flex-none text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-md transition font-medium shadow-sm flex items-center justify-center whitespace-nowrap">
+                                <i class="fa-solid fa-file-import mr-1.5"></i> Import CSV
+                            </button>
+                            
+                            <!-- RESET BUTTON -->
+                            <button type="button" onclick="resetForm()" class="flex-1 md:flex-none text-sm bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 px-4 py-2.5 rounded-md transition font-medium shadow-sm flex items-center justify-center">
+                                <i class="fa-solid fa-rotate-right mr-1.5"></i> Reset
+                            </button>
+                        </div>
                     </div>
                     <form id="prospectForm" class="p-6 space-y-8">
                         <div class="form-section">
@@ -1070,6 +1080,138 @@
             if (!select) return;
             select.innerHTML = `<option value="">${placeholder}</option>`;
             dataSet.forEach(val => select.innerHTML += `<option value="${val}">${val}</option>`);
+        }
+
+        // ================= BULK IMPORT CSV =================
+        function downloadCSVTemplate() {
+            // Template columns: Nama Penuh, No Telefon, Sumber, Kategori Produk, Tarikh Lead
+            const headers = "Nama Penuh,No Telefon,Sumber Lead,Kategori Produk,Tarikh Lead (YYYY-MM-DD)\n";
+            const sampleData = "Ahmad Bin Ali,0123456789,Tiktok Ads,Hibah,2026-03-25\n";
+            
+            const blob = new Blob([headers + sampleData], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            link.setAttribute("href", url);
+            link.setAttribute("download", "Template_Import_Prospek.csv");
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        async function handleCSVImport(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const btnImport = document.getElementById('btnImportCsv');
+            const originalBtnHtml = btnImport.innerHTML;
+
+            const reader = new FileReader();
+            reader.onload = async function(e) {
+                const text = e.target.result;
+                const rows = parseCSV(text);
+                
+                if(rows.length < 2) {
+                    alert("Fail CSV kosong atau tiada data untuk diimport (Hanya jumpa barisan tajuk).");
+                    event.target.value = '';
+                    return;
+                }
+
+                // Check basic valid rows count (ignore purely empty rows)
+                let validRowsCount = 0;
+                for(let i=1; i<rows.length; i++) {
+                    if(rows[i].length > 0 && rows[i][0].trim() !== '') validRowsCount++;
+                }
+
+                if(validRowsCount === 0) {
+                    alert("Tiada rekod prospek dijumpai di dalam fail CSV.");
+                    event.target.value = '';
+                    return;
+                }
+
+                if(!confirm(`Sahkan: Jumpa ${validRowsCount} rekod prospek.\n\nAnda pasti untuk import semua data ini ke dalam sistem? Tindakan ini tidak boleh diundur.`)) {
+                    event.target.value = '';
+                    return;
+                }
+
+                btnImport.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Sedang Memproses...`;
+                btnImport.disabled = true;
+
+                try {
+                    const batch = db.batch();
+                    let batchCount = 0;
+                    let addedCount = 0;
+
+                    let assignedLeader = 'admin';
+                    if (currentUser.role === 'agent') assignedLeader = currentUser.leaderId;
+                    else if (currentUser.role === 'leader') assignedLeader = currentUser.id;
+
+                    for (let i = 1; i < rows.length; i++) {
+                        const cols = rows[i];
+                        if(!cols || cols.length === 0 || !cols[0] || cols[0].trim() === '') continue; // Skip empty/invalid rows
+
+                        const newId = Date.now() + i; // guarantee unique id by adding index
+                        
+                        const newProspect = {
+                            id: newId,
+                            ownerId: currentUser.id,         
+                            leaderId: assignedLeader,        
+                            ownerName: currentUser.name,     
+                            name: cols[0] ? cols[0].trim() : '',
+                            phone: cols[1] ? cols[1].replace(/[^0-9]/g, '') : '',
+                            whatsapp: '',
+                            dob: '', age: '', ageRange: '',
+                            source1: cols[2] ? cols[2].trim() : '',
+                            source2: cols[3] ? cols[3].trim() : '',
+                            dateApproach: cols[4] ? cols[4].trim() : new Date().toISOString().split('T')[0], // default today
+                            openCaseDate: '', fullPresentation: '', fullPresentationRating: '',
+                            dialDate: '', reachDate: '', callsRating: '', messageDate: '', followUpDate: '', followUpRating: '',
+                            remark: '', submitDate: '', product: '', ace: '', paymentMode: '', production: 0, status: '', enforceDate: ''
+                        };
+
+                        // Autogen Whatsapp
+                        if(newProspect.phone) {
+                            let phoneStr = newProspect.phone;
+                            if (phoneStr.startsWith('0')) phoneStr = '6' + phoneStr; 
+                            if (phoneStr.length > 5) newProspect.whatsapp = `https://wa.me/${phoneStr}`;
+                        }
+
+                        const docRef = db.collection('prospects').doc(newId.toString());
+                        batch.set(docRef, newProspect);
+                        prospectsData.unshift(newProspect); // add locally immediately
+
+                        batchCount++;
+                        addedCount++;
+
+                        // Commit batch every 450 records to stay within Firestore 500 limit
+                        if (batchCount >= 450) {
+                            await batch.commit();
+                            batchCount = 0;
+                        }
+                    }
+
+                    // Commit remaining records in batch
+                    if (batchCount > 0) {
+                        await batch.commit();
+                    }
+
+                    alert(`BERJAYA! ${addedCount} prospek telah berjaya dimuat naik ke dalam sistem.`);
+                    
+                    event.target.value = '';
+                    btnImport.innerHTML = originalBtnHtml;
+                    btnImport.disabled = false;
+                    
+                    applyFilter(); 
+                    switchTab('list');
+
+                } catch (error) {
+                    console.error("Bulk Import Error: ", error);
+                    alert("Ralat berlaku semasa proses muat naik. " + error.message);
+                    btnImport.innerHTML = originalBtnHtml;
+                    btnImport.disabled = false;
+                }
+            };
+            
+            reader.readAsText(file);
         }
 
         // ================= AUTH & APP STARTUP =================
