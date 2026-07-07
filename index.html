@@ -114,31 +114,31 @@
                     <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300 mb-1.5">E-mel Pengguna</label>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-infaq-DEFAULT transition-colors"></i>
+                            <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-infaq transition-colors"></i>
                         </div>
-                        <input type="email" id="loginEmail" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT focus:border-infaq-DEFAULT outline-none text-sm transition-all" placeholder="E-mel anda">
+                        <input type="email" id="loginEmail" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq focus:border-infaq outline-none text-sm transition-all" placeholder="E-mel anda">
                     </div>
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-1.5">
                         <label class="block text-xs font-semibold text-slate-600 dark:text-slate-300">Kata Laluan</label>
-                        <button type="button" onclick="forgotPassword()" class="text-[10px] font-medium text-infaq-DEFAULT hover:text-infaq-dark hover:underline transition-colors outline-none">Lupa Kata Laluan?</button>
+                        <button type="button" onclick="forgotPassword()" class="text-[10px] font-medium text-infaq hover:text-infaq-dark hover:underline transition-colors outline-none">Lupa Kata Laluan?</button>
                     </div>
                     <div class="relative group">
                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <i class="fa-solid fa-lock text-slate-400 text-sm group-focus-within:text-infaq-DEFAULT transition-colors"></i>
+                            <i class="fa-solid fa-lock text-slate-400 text-sm group-focus-within:text-infaq transition-colors"></i>
                         </div>
-                        <input type="password" id="loginPass" required class="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT focus:border-infaq-DEFAULT outline-none text-sm transition-all" placeholder="••••••••">
+                        <input type="password" id="loginPass" required class="w-full pl-10 pr-10 py-2.5 bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-600 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq focus:border-infaq outline-none text-sm transition-all" placeholder="••••••••">
                         <button type="button" onclick="togglePassword()" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
                             <i id="eyeIcon" class="fa-regular fa-eye text-sm"></i>
                         </button>
                     </div>
                 </div>
                 <div class="flex items-center pt-1 pb-2">
-                    <input type="checkbox" id="remember" class="w-3.5 h-3.5 text-infaq-DEFAULT bg-slate-50 border-slate-300 rounded focus:ring-infaq-DEFAULT focus:ring-2 cursor-pointer transition-colors">
+                    <input type="checkbox" id="remember" class="w-3.5 h-3.5 text-infaq bg-slate-50 border-slate-300 rounded focus:ring-infaq focus:ring-2 cursor-pointer transition-colors">
                     <label for="remember" class="ml-2 text-xs font-medium text-slate-500 dark:text-slate-400 cursor-pointer select-none hover:text-slate-700 dark:hover:text-slate-200 transition-colors">Ingat saya di peranti ini</label>
                 </div>
-                <button type="submit" id="loginBtn" class="w-full py-3 bg-infaq-light hover:bg-infaq-DEFAULT text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
+                <button type="submit" id="loginBtn" class="w-full py-3 bg-infaq-light hover:bg-infaq text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
                     Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
                 </button>
             </form>
@@ -183,7 +183,7 @@
                                 <p class="text-[10px] text-slate-500 dark:text-slate-400 capitalize mt-0.5" id="mobileDropdownRole">Role</p>
                             </div>
                             <button onclick="switchTab('management'); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
-                                <i class="fa-solid fa-user-gear w-5 text-infaq-DEFAULT text-center mr-2"></i> Profil & Tetapan
+                                <i class="fa-solid fa-user-gear w-5 text-infaq text-center mr-2"></i> Profil & Tetapan
                             </button>
                             <div class="h-px bg-slate-100 dark:bg-slate-700 my-1"></div>
                             <button onclick="toggleTheme(); toggleProfileMenu();" class="w-full text-left px-4 py-2.5 text-sm hover:bg-slate-50 dark:hover:bg-slate-700/50 flex items-center transition-colors">
@@ -206,19 +206,19 @@
                     
                     <!-- KUMPULAN 1: ANALISIS -->
                     <li class="flex-1 md:flex-none" id="li-dashboard">
-                        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="tab-btn active w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-chart-line text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Dashboard</span>
                         </button>
                     </li>
                     <li class="flex-1 md:flex-none" id="li-calendar" style="display:none;">
-                        <button onclick="switchTab('calendar')" id="nav-calendar" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('calendar')" id="nav-calendar" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-calendar-days text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Kalendar</span>
                         </button>
                     </li>
                     <li class="flex-1 md:flex-none" id="li-reports">
-                        <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('reports')" id="nav-reports" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-file-invoice text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Laporan</span>
                         </button>
@@ -231,19 +231,19 @@
 
                     <!-- KUMPULAN 2: KEMASUKAN DATA -->
                     <li class="flex-1 md:flex-none" id="li-form">
-                        <button onclick="switchTab('form')" id="nav-form" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('form')" id="nav-form" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-user-plus text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Prospek Baharu</span>
                         </button>
                     </li>
                     <li class="flex-1 md:flex-none" id="li-list">
-                        <button onclick="switchTab('list')" id="nav-list" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('list')" id="nav-list" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-users text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Semua Prospek</span>
                         </button>
                     </li>
                     <li class="flex-1 md:flex-none" id="li-ads">
-                        <button onclick="switchTab('ads')" id="nav-ads" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq-DEFAULT dark:hover:text-infaq-light transition-all font-medium">
+                        <button onclick="switchTab('ads')" id="nav-ads" class="tab-btn w-full py-3 md:py-4 px-2 md:px-6 flex flex-col md:flex-row items-center justify-center gap-1 md:gap-2 text-slate-500 dark:text-slate-400 hover:text-infaq dark:hover:text-infaq-light transition-all font-medium">
                             <i class="fa-solid fa-bullhorn text-lg md:text-base"></i>
                             <span class="text-[10px] md:text-sm">Kos Ads</span>
                         </button>
@@ -260,17 +260,17 @@
             <div id="global-date-filter" class="max-w-7xl mx-auto mb-6 bg-white dark:bg-slate-800 p-4 rounded-xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col sm:flex-row gap-4 items-end transition-all duration-300">
                 <div class="flex-1 w-full">
                     <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Tarikh Mula (Dari)</label>
-                    <input type="date" id="filterStartDate" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                    <input type="date" id="filterStartDate" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                 </div>
                 <div class="flex-1 w-full">
                     <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Tarikh Akhir (Hingga)</label>
-                    <input type="date" id="filterEndDate" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                    <input type="date" id="filterEndDate" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                 </div>
                 
                 <div id="roleBasedFilter" class="hidden flex-1 w-full"></div>
 
                 <div class="flex gap-2 w-full sm:w-auto">
-                    <button onclick="applyFilter()" class="flex-1 sm:flex-none px-6 py-2 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-medium transition shadow-sm"><i class="fa-solid fa-filter mr-1"></i> Tapis Data</button>
+                    <button onclick="applyFilter()" class="flex-1 sm:flex-none px-6 py-2 bg-infaq hover:bg-infaq-dark text-white rounded-lg text-sm font-medium transition shadow-sm"><i class="fa-solid fa-filter mr-1"></i> Tapis Data</button>
                     <button onclick="clearFilter()" class="flex-1 sm:flex-none px-4 py-2 bg-slate-200 hover:bg-slate-300 dark:bg-slate-700 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-200 rounded-lg text-sm font-medium transition"><i class="fa-solid fa-rotate-right mr-1"></i> Reset</button>
                 </div>
             </div>
@@ -286,14 +286,14 @@
                     </div>
                     <div class="bg-white dark:bg-slate-800 p-5 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center transition-colors">
                         <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 font-medium mb-1">Jumlah Enforce (RM)</p>
-                        <h3 class="text-3xl lg:text-4xl font-bold text-infaq-DEFAULT" id="totalProduction">RM 0</h3>
+                        <h3 class="text-3xl lg:text-4xl font-bold text-infaq" id="totalProduction">RM 0</h3>
                     </div>
                 </div>
 
                 <!-- ORG SUMMARY (Visible for CEO/Leader) -->
                 <div id="orgSummaryContainer" class="hidden bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
                     <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 flex justify-between items-center">
-                        <span><i class="fa-solid fa-sitemap text-infaq-DEFAULT mr-2"></i> Rumusan Organisasi</span>
+                        <span><i class="fa-solid fa-sitemap text-infaq mr-2"></i> Rumusan Organisasi</span>
                         <span id="orgSummaryCounts" class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full shadow-sm">
                             <!-- JS Auto Fill -->
                         </span>
@@ -317,16 +317,16 @@
                 <!-- Charts -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
-                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-pie text-infaq-DEFAULT mr-2"></i> Analisis Status Polisi</h3>
+                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-pie text-infaq mr-2"></i> Analisis Status Polisi</h3>
                         <div class="relative h-64 w-full flex justify-center"><canvas id="statusChart"></canvas></div>
                     </div>
                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
-                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-column text-infaq-DEFAULT mr-2"></i> Sumber Lead Terbaik</h3>
+                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-column text-infaq mr-2"></i> Sumber Lead Terbaik</h3>
                         <div class="relative h-64 w-full flex justify-center"><canvas id="sourceChart"></canvas></div>
                     </div>
                     <!-- Combination Chart (Ads + Leads) -->
                     <div class="md:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors" id="costAdsChartContainer">
-                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq-DEFAULT mr-2"></i> Rumusan Kos Pengiklanan & Tarikan Lead</h3>
+                        <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq mr-2"></i> Rumusan Kos Pengiklanan & Tarikan Lead</h3>
                         <div class="relative h-72 w-full flex justify-center"><canvas id="costAdsChart"></canvas></div>
                     </div>
                 </div>
@@ -344,11 +344,11 @@
                         </div>
                         <div class="flex gap-4">
                             <label class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
-                                <input type="checkbox" id="calShowLeaders" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq-DEFAULT focus:ring-infaq-DEFAULT border-slate-300 rounded cursor-pointer">
+                                <input type="checkbox" id="calShowLeaders" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq focus:ring-infaq border-slate-300 rounded cursor-pointer">
                                 Tunjuk Leader
                             </label>
                             <label class="flex items-center gap-2 text-sm font-medium text-slate-700 dark:text-slate-300 cursor-pointer">
-                                <input type="checkbox" id="calShowAgents" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq-DEFAULT focus:ring-infaq-DEFAULT border-slate-300 rounded cursor-pointer">
+                                <input type="checkbox" id="calShowAgents" checked onchange="toggleCalendarFilters()" class="w-4 h-4 text-infaq focus:ring-infaq border-slate-300 rounded cursor-pointer">
                                 Tunjuk Agent
                             </label>
                         </div>
@@ -378,10 +378,10 @@
             <div id="tab-form" class="tab-content max-w-4xl mx-auto">
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors">
-                        <h2 id="formTitleText" class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-user-plus text-infaq-DEFAULT mr-2"></i> Daftar Prospek Baru</h2>
+                        <h2 id="formTitleText" class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-user-plus text-infaq mr-2"></i> Daftar Prospek Baru</h2>
                         <div class="flex items-center gap-2 w-full md:w-auto">
                             <!-- BULK IMPORT BUTTONS -->
-                            <button type="button" onclick="downloadCSVTemplate()" class="text-xs text-infaq-DEFAULT hover:text-infaq-dark hover:underline font-medium px-2 py-2 flex items-center transition" title="Muat Turun Template CSV">
+                            <button type="button" onclick="downloadCSVTemplate()" class="text-xs text-infaq hover:text-infaq-dark hover:underline font-medium px-2 py-2 flex items-center transition" title="Muat Turun Template CSV">
                                 <i class="fa-solid fa-download mr-1"></i> Template
                             </button>
                             <input type="file" id="csvImportInput" accept=".csv" class="hidden" onchange="handleCSVImport(event)">
@@ -403,14 +403,14 @@
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Nama Penuh</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fa-regular fa-user text-slate-400"></i></div>
-                                        <input type="text" id="name" required class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                        <input type="text" id="name" required class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                     </div>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">No. Telefon</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"><i class="fa-solid fa-phone text-slate-400"></i></div>
-                                        <input type="tel" id="phone" required class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onkeyup="generateWhatsapp()">
+                                        <input type="tel" id="phone" required class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" onkeyup="generateWhatsapp()">
                                     </div>
                                 </div>
                                 <div class="md:col-span-2">
@@ -422,7 +422,7 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Lahir (DOB)</label>
-                                    <input type="date" id="dob" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="calculateAge()">
+                                    <input type="date" id="dob" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" onchange="calculateAge()">
                                 </div>
                                 <div class="grid grid-cols-2 gap-3">
                                     <div>
@@ -443,19 +443,19 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Source 1 (Punca Lead)</label>
-                                    <select id="source1" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <select id="source1" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                         <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Source 2 (Kategori Produk)</label>
-                                    <select id="source2" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <select id="source2" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                         <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Pertama (Lead Masuk)</label>
-                                    <input type="date" id="dateApproach" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="dateApproach" required class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                             </div>
                         </div>
@@ -466,16 +466,16 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Buka Kes (Open Case)</label>
-                                    <input type="date" id="openCaseDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="openCaseDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div class="hidden md:block"></div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Full Presentation</label>
-                                    <input type="date" id="fullPresentation" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="fullPresentation" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Full Presentation Rating</label>
-                                    <select id="fullPresentationRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <select id="fullPresentationRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                         <option value="">- Rating -</option>
                                         <option value="1">⭐ Kurang Memuaskan</option>
                                         <option value="2">⭐⭐ Memuaskan</option>
@@ -493,15 +493,15 @@
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Panggilan (Dial Date)</label>
-                                    <input type="date" id="dialDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="dialDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Berhubung (Reach Date)</label>
-                                    <input type="date" id="reachDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="reachDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Call Rating</label>
-                                    <select id="callsRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <select id="callsRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                         <option value="">- Rating -</option>
                                         <option value="1">⭐ Sangat Lemah</option>
                                         <option value="2">⭐⭐ Lemah</option>
@@ -512,15 +512,15 @@
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Mesej (Message Date)</label>
-                                    <input type="date" id="messageDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="messageDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Follow Up</label>
-                                    <input type="date" id="followUpDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="followUpDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                                 <div>
                                     <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Follow Up Rating</label>
-                                    <select id="followUpRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <select id="followUpRating" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                         <option value="">- Rating -</option>
                                         <option value="1">⭐ (Sejuk)</option>
                                         <option value="2">⭐⭐</option>
@@ -539,30 +539,30 @@
                                 
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Remark Kes</label>
-                                    <select id="remark" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
+                                    <select id="remark" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" onchange="toggleConditionalFields()">
                                         <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
                                 
                                 <div id="divSubmitDate" class="hidden animate-pulse-once">
                                     <label class="block text-sm font-medium text-infaq-dark dark:text-infaq-light mb-1 transition-colors">Tarikh Submit</label>
-                                    <input type="date" id="submitDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-infaq-DEFAULT text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <input type="date" id="submitDate" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-infaq text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
 
                                 <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Nama Produk</label>
-                                        <select id="product" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                        <select id="product" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                             <option value="">Memuatkan data...</option>
                                         </select>
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">ACE / APE</label>
-                                        <input type="number" id="ace" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" placeholder="0.00">
+                                        <input type="number" id="ace" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" placeholder="0.00">
                                     </div>
                                     <div>
                                         <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Mod Bayaran</label>
-                                        <select id="paymentMode" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                        <select id="paymentMode" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                             <option value="">Memuatkan data...</option>
                                         </select>
                                     </div>
@@ -572,27 +572,27 @@
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Jumlah Production (RM)</label>
                                     <div class="relative">
                                         <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-500 font-medium">RM</div>
-                                        <input type="number" id="production" class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" placeholder="0.00">
+                                        <input type="number" id="production" class="w-full pl-10 pr-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" placeholder="0.00">
                                     </div>
                                 </div>
 
                                 <div>
                                     <label class="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1 transition-colors">Status Polisi</label>
-                                    <select id="status" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm" onchange="toggleConditionalFields()">
+                                    <select id="status" class="w-full px-3 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm" onchange="toggleConditionalFields()">
                                         <option value="">Memuatkan data...</option>
                                     </select>
                                 </div>
 
                                 <div id="divEnforceDate" class="hidden">
-                                    <label class="block text-sm font-medium text-infaq-dark dark:text-infaq-light mb-1 transition-colors">Tarikh Enforce <i class="fa-solid fa-check-circle text-infaq-DEFAULT"></i></label>
-                                    <input type="date" id="enforceDate" class="w-full px-3 py-2.5 bg-infaq-light/10 border border-infaq-DEFAULT text-infaq-dark dark:text-infaq-light rounded-lg focus:ring-2 focus:ring-infaq-DEFAULT transition outline-none shadow-sm">
+                                    <label class="block text-sm font-medium text-infaq-dark dark:text-infaq-light mb-1 transition-colors">Tarikh Enforce <i class="fa-solid fa-check-circle text-infaq"></i></label>
+                                    <input type="date" id="enforceDate" class="w-full px-3 py-2.5 bg-infaq-light/10 border border-infaq text-infaq-dark dark:text-infaq-light rounded-lg focus:ring-2 focus:ring-infaq transition outline-none shadow-sm">
                                 </div>
                             </div>
                         </div>
 
                         <!-- Submit Button -->
                         <div class="pt-6 flex justify-end border-t border-slate-100 dark:border-slate-700 mt-6 transition-colors">
-                            <button type="submit" id="submitProspectBtn" class="w-full md:w-auto px-10 py-3.5 bg-infaq-DEFAULT hover:bg-infaq-dark text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-lg">
+                            <button type="submit" id="submitProspectBtn" class="w-full md:w-auto px-10 py-3.5 bg-infaq hover:bg-infaq-dark text-white font-bold rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-0.5 flex items-center justify-center gap-2 text-lg">
                                 <i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK
                             </button>
                         </div>
@@ -605,24 +605,24 @@
                 <!-- Tiktok Ads -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex justify-between items-center transition-colors">
-                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-brands fa-tiktok text-infaq-DEFAULT mr-2"></i> Pengurusan Kos Tiktok Ads</h2>
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-brands fa-tiktok text-infaq mr-2"></i> Pengurusan Kos Tiktok Ads</h2>
                     </div>
                     <div class="p-6">
                         <form id="tiktokAdsForm" class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
                             <div>
                                 <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Tarikh Ads</label>
-                                <input type="date" id="tkDate" required class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq-DEFAULT outline-none shadow-sm">
+                                <input type="date" id="tkDate" required class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq outline-none shadow-sm">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Kos Iklan (RM)</label>
-                                <input type="number" id="tkCost" required min="0" step="0.01" class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq-DEFAULT outline-none shadow-sm" placeholder="0.00">
+                                <input type="number" id="tkCost" required min="0" step="0.01" class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq outline-none shadow-sm" placeholder="0.00">
                             </div>
                             <div>
                                 <label class="block text-sm font-medium text-slate-600 dark:text-slate-400 mb-1 transition-colors">Jumlah Leads</label>
-                                <input type="number" id="tkLeads" required min="1" class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq-DEFAULT outline-none shadow-sm" placeholder="Cth: 15">
+                                <input type="number" id="tkLeads" required min="1" class="w-full px-3 py-2 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-500 text-slate-800 dark:text-slate-100 rounded focus:ring-2 focus:ring-infaq outline-none shadow-sm" placeholder="Cth: 15">
                             </div>
                             <div class="flex items-end">
-                                <button type="submit" class="w-full py-2 bg-slate-800 hover:bg-black text-white dark:bg-infaq-DEFAULT dark:hover:bg-infaq-light font-medium rounded shadow transition">Tambah Rekod Tiktok</button>
+                                <button type="submit" class="w-full py-2 bg-slate-800 hover:bg-black text-white dark:bg-infaq dark:hover:bg-infaq-light font-medium rounded shadow transition">Tambah Rekod Tiktok</button>
                             </div>
                         </form>
                         <div class="overflow-x-auto border border-slate-200 dark:border-slate-700 rounded-lg transition-colors">
@@ -638,8 +638,8 @@
                                         <th class="p-3 border-b border-r dark:border-slate-700 text-right">ACE (RM)</th>
                                         <th class="p-3 border-b border-r dark:border-slate-700 text-center text-xs">Closed:Lead</th>
                                         <th class="p-3 border-b border-r dark:border-slate-700 text-center text-xs">Open:Close</th>
-                                        <th class="p-3 border-b border-r dark:border-slate-700 text-center text-infaq-DEFAULT font-bold">Enforce</th>
-                                        <th class="p-3 border-b border-r dark:border-slate-700 text-right text-infaq-DEFAULT font-bold">Production</th>
+                                        <th class="p-3 border-b border-r dark:border-slate-700 text-center text-infaq font-bold">Enforce</th>
+                                        <th class="p-3 border-b border-r dark:border-slate-700 text-right text-infaq font-bold">Production</th>
                                         <th class="p-3 border-b dark:border-slate-700 text-right font-bold bg-emerald-50/50 dark:bg-emerald-900/20">ACS (RM)</th>
                                     </tr>
                                 </thead>
@@ -700,7 +700,7 @@
             <div id="tab-list" class="tab-content max-w-7xl mx-auto">
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors">
-                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-table-list text-infaq-DEFAULT mr-2"></i> Senarai Prospek & Jualan</h2>
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-table-list text-infaq mr-2"></i> Senarai Prospek & Jualan</h2>
                         <button onclick="clearData()" class="w-full md:w-auto text-xs bg-red-500 text-white font-medium px-4 py-2 rounded hover:bg-red-600 shadow-sm transition"><i class="fa-solid fa-trash mr-1"></i> Padam Semua Data</button>
                     </div>
                     <div class="overflow-x-auto">
@@ -733,7 +733,7 @@
                 <!-- Source Summary -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 transition-colors">
-                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-filter text-infaq-DEFAULT mr-2"></i> Laporan Prestasi Mengikut Sumber (Source)</h2>
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-filter text-infaq mr-2"></i> Laporan Prestasi Mengikut Sumber (Source)</h2>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
@@ -764,7 +764,7 @@
                 <!-- Product Summary -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 transition-colors">
-                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-box-open text-infaq-DEFAULT mr-2"></i> Laporan Prestasi Mengikut Produk</h2>
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-box-open text-infaq mr-2"></i> Laporan Prestasi Mengikut Produk</h2>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
@@ -790,7 +790,7 @@
                 <!-- Daily & Activity Tracking -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 transition-colors">
-                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-calendar-days text-infaq-DEFAULT mr-2"></i> Penjejakan Jualan & Aktiviti Harian (All Date)</h2>
+                        <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-calendar-days text-infaq mr-2"></i> Penjejakan Jualan & Aktiviti Harian (All Date)</h2>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
@@ -823,7 +823,7 @@
                 
                 <!-- PROFIL SAYA (VISIBLE TO ALL ROLES) -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 transition-colors">
-                    <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-id-badge text-infaq-DEFAULT mr-2"></i>Profil Saya</h2>
+                    <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-id-badge text-infaq mr-2"></i>Profil Saya</h2>
                     
                     <form id="myProfileForm" onsubmit="updateMyProfile(event)" class="flex flex-col md:flex-row gap-8">
                         <!-- Profile Pic Upload Section -->
@@ -847,18 +847,18 @@
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nama Penuh</label>
-                                <input type="text" id="myName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                                <input type="text" id="myName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                             </div>
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Semasa</label>
-                                <input type="password" id="myOldPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Sahkan password lama">
+                                <input type="password" id="myOldPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Sahkan password lama">
                             </div>
                             <div class="sm:col-span-1">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Baharu</label>
-                                <input type="password" id="myNewPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Biarkan kosong jika tidak tukar">
+                                <input type="password" id="myNewPass" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Biarkan kosong jika tidak tukar">
                             </div>
                             <div class="sm:col-span-2 mt-2">
-                                <button type="submit" id="profileSaveBtn" class="w-full md:w-auto px-6 py-2.5 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
+                                <button type="submit" id="profileSaveBtn" class="w-full md:w-auto px-6 py-2.5 bg-infaq hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
                                     <i class="fa-solid fa-floppy-disk"></i> Simpan Profil
                                 </button>
                             </div>
@@ -870,38 +870,38 @@
                 <div id="adminLeaderManagementSection" class="grid grid-cols-1 lg:grid-cols-3 gap-6 hidden">
                     <!-- Add User Form -->
                     <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 transition-colors">
-                        <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-user-plus text-infaq-DEFAULT mr-2"></i>Tambah Pengguna</h2>
+                        <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-user-plus text-infaq mr-2"></i>Tambah Pengguna</h2>
                         <form id="addUserForm" class="space-y-4">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">E-mel Pengguna</label>
-                                <input type="email" id="newUserEmail" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Cth: ejen@infaq.com">
+                                <input type="email" id="newUserEmail" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Cth: ejen@infaq.com">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Nama Penuh / Paparan</label>
-                                <input type="text" id="newUserName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Cth: Ejen Ali Bin Abu">
+                                <input type="text" id="newUserName" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Cth: Ejen Ali Bin Abu">
                             </div>
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Kata Laluan Sementara</label>
-                                <input type="text" id="newUserPass" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors" placeholder="Tetapkan password (min 6 aksara)">
+                                <input type="text" id="newUserPass" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Tetapkan password (min 6 aksara)">
                             </div>
                             
                             <!-- Admin Only Fields -->
                             <div id="roleSelectDiv" class="hidden">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Tahap Peranan (Role)</label>
-                                <select id="newUserRole" onchange="handleRoleChange()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                                <select id="newUserRole" onchange="handleRoleChange()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                                     <option value="agent">Agent (Ejen Biasa)</option>
                                     <option value="leader">Leader (Pengurus)</option>
-                                    <!-- Superadmin option injected dynamically if CEO -->
+                                    <!-- Superadmin / CEO options injected dynamically -->
                                 </select>
                             </div>
                             <div id="leaderSelectDiv" class="hidden">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Di Bawah Pasukan Leader</label>
-                                <select id="newUserLeader" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">
+                                <select id="newUserLeader" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                                     <!-- Javascript Auto-Fill -->
                                 </select>
                             </div>
 
-                            <button type="submit" class="w-full py-2.5 mt-2 bg-infaq-DEFAULT hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
+                            <button type="submit" class="w-full py-2.5 mt-2 bg-infaq hover:bg-infaq-dark text-white rounded-lg text-sm font-bold transition shadow-sm flex items-center justify-center gap-2">
                                 <i class="fa-solid fa-floppy-disk"></i> Daftar Pengguna
                             </button>
                         </form>
@@ -909,7 +909,7 @@
                     
                     <!-- Users Table -->
                     <div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 transition-colors overflow-hidden flex flex-col">
-                        <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-users-gear text-infaq-DEFAULT mr-2"></i>Senarai Pengguna Aktif</h2>
+                        <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-users-gear text-infaq mr-2"></i>Senarai Pengguna Aktif</h2>
                         <div class="overflow-x-auto flex-1">
                             <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
                                 <thead>
@@ -937,7 +937,7 @@
         <div id="viewProspectModal" class="fixed inset-0 z-[110] flex items-center justify-center bg-slate-900/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 p-4">
             <div class="bg-white dark:bg-slate-800 w-full max-w-4xl max-h-[90vh] rounded-2xl shadow-xl overflow-hidden flex flex-col transform transition-transform scale-95">
                 <div class="p-4 border-b border-slate-100 dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-800">
-                    <h3 class="font-bold text-lg text-slate-800 dark:text-white"><i class="fa-solid fa-address-card text-infaq-DEFAULT mr-2"></i>Maklumat Terperinci Prospek</h3>
+                    <h3 class="font-bold text-lg text-slate-800 dark:text-white"><i class="fa-solid fa-address-card text-infaq mr-2"></i>Maklumat Terperinci Prospek</h3>
                     <button onclick="closeViewModal()" class="text-slate-400 hover:text-red-500 transition"><i class="fa-solid fa-xmark text-xl"></i></button>
                 </div>
                 <div class="p-6 overflow-y-auto flex-1" id="viewProspectContent">
@@ -1475,7 +1475,7 @@
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
                 allUsers.forEach(u => { if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`; });
-                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
             } else if (currentUser.role === 'superadmin') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Cawangan (Global)</option>`;
@@ -1483,13 +1483,13 @@
                     if(u.role === 'leader') options += `<option value="${u.id}">Pasukan ${u.name} (Leader)</option>`;
                     if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`;
                 });
-                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
                 if (liCalendar) liCalendar.style.display = 'block';
             } else if (currentUser.role === 'leader') {
                 roleFilter.classList.remove('hidden');
                 let options = `<option value="all">Semua Pasukan Saya</option>`;
                 allUsers.forEach(u => { if(u.role === 'agent' && u.leaderId === currentUser.id) { options += `<option value="${u.id}">Ejen ${u.name}</option>`; } });
-                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq-DEFAULT dark:text-white transition-colors">${options}</select>`;
+                roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
             } else {
                 roleFilter.classList.add('hidden'); roleFilter.innerHTML = ''; 
             }
@@ -1523,6 +1523,7 @@
                             <option value="agent">Agent (Ejen Biasa)</option>
                             <option value="leader">Leader (Pengurus)</option>
                             <option value="superadmin">Superadmin (Pentadbir Sistem)</option>
+                            <option value="ceo">CEO (Pengarah)</option>
                         `;
                     }
                     if(leaderSelect) {
@@ -1650,7 +1651,7 @@
             const roleEl = document.getElementById('newUserRole'); const role = roleEl ? roleEl.value : '';
             const leaderDiv = document.getElementById('leaderSelectDiv');
             if(leaderDiv) { 
-                if(role === 'leader' || role === 'superadmin') leaderDiv.classList.add('hidden'); 
+                if(role === 'leader' || role === 'superadmin' || role === 'ceo') leaderDiv.classList.add('hidden'); 
                 else leaderDiv.classList.remove('hidden'); 
             }
         }
@@ -1685,7 +1686,7 @@
         async function renderUsersTable() {
             const tbody = document.getElementById('usersTableBody');
             if(!tbody) return;
-            tbody.innerHTML = '<tr><td colspan="4" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
+            tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
             try {
                 const snap = await db.collection('users').get();
                 let usersList = []; const allUsersMap = {};
@@ -1694,9 +1695,7 @@
                 if(currentUser.role === 'leader') {
                     usersList = usersList.filter(u => u.leaderId === currentUser.id);
                 } else if (currentUser.role === 'superadmin') {
-                    usersList = usersList.filter(u => u.role !== 'superadmin' && u.role !== 'ceo');
-                } else if (currentUser.role === 'ceo') {
-                    usersList = usersList.filter(u => u.id !== currentUser.id); 
+                    usersList = usersList.filter(u => u.role !== 'ceo');
                 }
                 
                 if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
@@ -1716,6 +1715,29 @@
                     else if(u.role === 'leader') roleBadge = '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>';
                     else roleBadge = '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>';
 
+                    // Dropdown untuk tukar role (Hanya untuk CEO dan Superadmin)
+                    let roleSelectHtml = roleBadge;
+                    if (u.id !== currentUser.id) { // Tak boleh tukar pangkat sendiri dari sini
+                        if (currentUser.role === 'ceo') {
+                            roleSelectHtml = `
+                                <select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'ceo' ? 'text-purple-600' : (u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600'))}">
+                                    <option value="ceo" ${u.role === 'ceo' ? 'selected' : ''}>CEO</option>
+                                    <option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option>
+                                    <option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option>
+                                    <option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option>
+                                </select>
+                            `;
+                        } else if (currentUser.role === 'superadmin' && u.role !== 'ceo') {
+                            roleSelectHtml = `
+                                <select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600')}">
+                                    <option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option>
+                                    <option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option>
+                                    <option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option>
+                                </select>
+                            `;
+                        }
+                    }
+
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
                     tr.innerHTML = `
                         <td class="p-3 text-slate-800 dark:text-slate-200 font-medium flex items-center gap-2">
@@ -1723,15 +1745,37 @@
                             ${u.name}
                         </td>
                         <td class="p-3 text-slate-500 dark:text-slate-400 font-mono text-xs">${u.email || u.id}</td>
-                        <td class="p-3">${roleBadge}</td>
+                        <td class="p-3">${roleSelectHtml}</td>
                         <td class="p-3 text-slate-600 dark:text-slate-400 text-xs">${leaderName}</td>
                         <td class="p-3 text-center">
-                            <button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna"><i class="fa-solid fa-trash"></i></button>
+                            ${u.id !== currentUser.id ? `<button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna"><i class="fa-solid fa-trash"></i></button>` : '-'}
                         </td>
                     `;
                     tbody.appendChild(tr);
                 });
             } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
+        }
+
+        async function updateUserRole(userId, newRole) {
+            if(confirm("Adakah anda pasti mahu menukar tahap peranan pengguna ini?")) {
+                try {
+                    let updateData = { role: newRole };
+                    // Reset leaderId jika dia diupgrade jadi leader/superadmin/ceo
+                    if(newRole !== 'agent') updateData.leaderId = null; 
+                    
+                    await db.collection('users').doc(userId).update(updateData);
+                    await fetchAllUsersForOrg(); // Reload user map in memory
+                    setupRoleUI(); // Refresh filters just in case
+                    renderUsersTable(); // Re-render table smoothly
+                    alert("Tahap pengguna berjaya dikemas kini.");
+                } catch(e) {
+                    console.error(e);
+                    alert("Gagal mengemas kini tahap pengguna.");
+                    renderUsersTable(); // revert dropdown visual
+                }
+            } else {
+                renderUsersTable(); // cancel visual
+            }
         }
 
         async function deleteUser(userId) {
@@ -1928,13 +1972,13 @@
 
             currentEditId = null;
             const formTitle = document.getElementById('formTitleText');
-            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-user-plus text-infaq-DEFAULT mr-2"></i> Daftar Prospek Baru`;
+            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-user-plus text-infaq mr-2"></i> Daftar Prospek Baru`;
             
             const submitBtn = document.getElementById('submitProspectBtn');
             if(submitBtn) {
                 submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK`;
                 submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                submitBtn.classList.add('bg-infaq-DEFAULT', 'hover:bg-infaq-dark');
+                submitBtn.classList.add('bg-infaq', 'hover:bg-infaq-dark');
             }
         }
 
@@ -1949,7 +1993,7 @@
             content.innerHTML = `
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                     <div class="space-y-2 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
-                        <h4 class="font-bold text-infaq-DEFAULT border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Maklumat Asas</h4>
+                        <h4 class="font-bold text-infaq border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Maklumat Asas</h4>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Nama</span> <span class="col-span-2">${getVal(p.name)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Telefon</span> <span class="col-span-2">${getVal(p.phone)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">T. Lahir</span> <span class="col-span-2">${getVal(p.dob)}</span></div>
@@ -1958,14 +2002,14 @@
                     </div>
                     
                     <div class="space-y-2 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
-                        <h4 class="font-bold text-infaq-DEFAULT border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Sumber & Pendekatan</h4>
+                        <h4 class="font-bold text-infaq border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Sumber & Pendekatan</h4>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Sumber Utama</span> <span class="col-span-2">${getVal(p.source1)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Kategori Produk</span> <span class="col-span-2">${getVal(p.source2)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Tarikh Lead</span> <span class="col-span-2">${getVal(p.dateApproach)}</span></div>
                     </div>
 
                     <div class="space-y-2 bg-slate-50 dark:bg-slate-900/50 p-4 rounded-xl border border-slate-100 dark:border-slate-700">
-                        <h4 class="font-bold text-infaq-DEFAULT border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Log Komunikasi & Aktiviti</h4>
+                        <h4 class="font-bold text-infaq border-b border-slate-200 dark:border-slate-700 pb-2 mb-3">Log Komunikasi & Aktiviti</h4>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Tarikh Dial</span> <span class="col-span-2">${getVal(p.dialDate)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Tarikh Reach</span> <span class="col-span-2">${getVal(p.reachDate)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Rating Call</span> <span class="col-span-2">${getRating(p.callsRating)}</span></div>
@@ -1976,7 +2020,7 @@
                     </div>
 
                     <div class="space-y-2 bg-infaq-light/5 dark:bg-infaq-light/10 p-4 rounded-xl border border-infaq-light/20 dark:border-infaq-light/20">
-                        <h4 class="font-bold text-infaq-DEFAULT border-b border-infaq-light/20 pb-2 mb-3">Status Penutup & Jualan</h4>
+                        <h4 class="font-bold text-infaq border-b border-infaq-light/20 pb-2 mb-3">Status Penutup & Jualan</h4>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Open Case</span> <span class="col-span-2">${getVal(p.openCaseDate)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Full Present.</span> <span class="col-span-2">${getVal(p.fullPresentation)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Rating Present.</span> <span class="col-span-2">${getRating(p.fullPresentationRating)}</span></div>
@@ -1987,9 +2031,9 @@
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Mod Bayaran</span> <span class="col-span-2">${getVal(p.paymentMode)}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">ACE / APE</span> <span class="col-span-2">${p.ace ? 'RM ' + parseFloat(p.ace).toLocaleString('en-MY') : '-'}</span></div>
                         <div class="border-t border-infaq-light/20 my-2 pt-2"></div>
-                        <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 font-bold col-span-1">Status Polisi</span> <span class="col-span-2 font-bold text-infaq-DEFAULT">${p.status}</span></div>
+                        <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 font-bold col-span-1">Status Polisi</span> <span class="col-span-2 font-bold text-infaq">${p.status}</span></div>
                         <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 col-span-1">Tarikh Enforce</span> <span class="col-span-2">${getVal(p.enforceDate)}</span></div>
-                        <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 font-bold col-span-1">Production</span> <span class="col-span-2 font-bold text-infaq-DEFAULT">${p.production ? 'RM ' + parseFloat(p.production).toLocaleString('en-MY') : '-'}</span></div>
+                        <div class="grid grid-cols-3 gap-2"><span class="text-slate-500 font-bold col-span-1">Production</span> <span class="col-span-2 font-bold text-infaq">${p.production ? 'RM ' + parseFloat(p.production).toLocaleString('en-MY') : '-'}</span></div>
                     </div>
                 </div>
             `;
@@ -2038,12 +2082,12 @@
             toggleConditionalFields();
 
             const formTitle = document.getElementById('formTitleText');
-            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-pen-to-square text-infaq-DEFAULT mr-2"></i> Kemaskini Prospek`;
+            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-pen-to-square text-infaq mr-2"></i> Kemaskini Prospek`;
             
             const submitBtn = document.getElementById('submitProspectBtn');
             if(submitBtn) {
                 submitBtn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i> KEMASKINI REKOD PROSPEK`;
-                submitBtn.classList.remove('bg-infaq-DEFAULT', 'hover:bg-infaq-dark');
+                submitBtn.classList.remove('bg-infaq', 'hover:bg-infaq-dark');
                 submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
             }
             switchTab('form');
@@ -2104,7 +2148,7 @@
                                 <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)
                             </td>
                             <td class="p-3 text-center">${agents.length}</td>
-                            <td class="p-3 text-center text-infaq-DEFAULT">${leaderProps}</td>
+                            <td class="p-3 text-center text-infaq">${leaderProps}</td>
                         </tr>
                     `;
                     
@@ -2130,7 +2174,7 @@
                                 <i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin
                             </td>
                             <td class="p-3 text-center">${others.length}</td>
-                            <td class="p-3 text-center text-infaq-DEFAULT">-</td>
+                            <td class="p-3 text-center text-infaq">-</td>
                         </tr>
                     `;
                     others.forEach(agent => {
@@ -2162,7 +2206,7 @@
                             <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})
                         </td>
                         <td class="p-3 text-center">${agents.length}</td>
-                        <td class="p-3 text-center text-infaq-DEFAULT">${leaderProps}</td>
+                        <td class="p-3 text-center text-infaq">${leaderProps}</td>
                     </tr>
                 `;
                 
@@ -2179,7 +2223,7 @@
             }
 
             if(countSpan) {
-                countSpan.innerHTML = `<span class="font-bold text-infaq-DEFAULT">${totalLeaders}</span> Leader &nbsp;|&nbsp; <span class="font-bold text-infaq-DEFAULT">${totalAgents}</span> Agent`;
+                countSpan.innerHTML = `<span class="font-bold text-infaq">${totalLeaders}</span> Leader &nbsp;|&nbsp; <span class="font-bold text-infaq">${totalAgents}</span> Agent`;
             }
         }
 
@@ -2192,8 +2236,8 @@
                 else { row.classList.add('hidden'); isHidden = true; }
             });
             if (icon) {
-                if (isHidden) { icon.classList.remove('fa-square-minus', 'text-infaq-DEFAULT'); icon.classList.add('fa-square-plus', 'text-slate-400'); } 
-                else { icon.classList.remove('fa-square-plus', 'text-slate-400'); icon.classList.add('fa-square-minus', 'text-infaq-DEFAULT'); }
+                if (isHidden) { icon.classList.remove('fa-square-minus', 'text-infaq'); icon.classList.add('fa-square-plus', 'text-slate-400'); } 
+                else { icon.classList.remove('fa-square-plus', 'text-slate-400'); icon.classList.add('fa-square-minus', 'text-infaq'); }
             }
         }
 
@@ -2214,7 +2258,7 @@
                     let remarkClass = "text-slate-500 dark:text-slate-400";
                     if(p.remark && p.remark.toLowerCase().includes('submit')) remarkClass = "text-blue-600 dark:text-blue-400 font-medium";
 
-                    const agentNameLabel = (currentUser && currentUser.role !== 'agent' && p.ownerName) ? `<div class="text-[10px] text-infaq-DEFAULT font-bold mt-1"><i class="fa-solid fa-user-tie mr-1"></i>${p.ownerName}</div>` : '';
+                    const agentNameLabel = (currentUser && currentUser.role !== 'agent' && p.ownerName) ? `<div class="text-[10px] text-infaq font-bold mt-1"><i class="fa-solid fa-user-tie mr-1"></i>${p.ownerName}</div>` : '';
 
                     const tr = document.createElement('tr');
                     tr.className = "hover:bg-slate-50 dark:hover:bg-slate-700/50 transition cursor-pointer";
@@ -2404,7 +2448,7 @@
                     
                     if (activities.length > 0) {
                         cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
-                        cellContent += `<span class="font-bold text-infaq-DEFAULT">${u.name}:</span> `;
+                        cellContent += `<span class="font-bold text-infaq">${u.name}:</span> `;
                         cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
                         cellContent += `</div>`;
                     }
@@ -2472,7 +2516,7 @@
                     const closedLead = leads > 0 ? ((submit / leads) * 100).toFixed(1) + '%' : '0%'; const openClose = openCase > 0 ? ((submit / openCase) * 100).toFixed(1) + '%' : '0%'; const acs = enforce > 0 ? (production / enforce) : 0;
 
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition dark:text-slate-300";
-                    tr.innerHTML = `<td class="p-3 border-r dark:border-slate-700">${ad.date}</td><td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td><td class="p-3 border-r dark:border-slate-700 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${openCase}</td><td class="p-3 border-r dark:border-slate-700 text-center">${submit}</td><td class="p-3 border-r dark:border-slate-700 text-right">${ace.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${closedLead}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${openClose}</td><td class="p-3 border-r dark:border-slate-700 text-center text-infaq-DEFAULT font-bold">${enforce}</td><td class="p-3 border-r dark:border-slate-700 text-right text-infaq-DEFAULT font-bold">${production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 font-bold text-right bg-emerald-50/50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400">${acs.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>`;
+                    tr.innerHTML = `<td class="p-3 border-r dark:border-slate-700">${ad.date}</td><td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td><td class="p-3 border-r dark:border-slate-700 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${openCase}</td><td class="p-3 border-r dark:border-slate-700 text-center">${submit}</td><td class="p-3 border-r dark:border-slate-700 text-right">${ace.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${closedLead}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${openClose}</td><td class="p-3 border-r dark:border-slate-700 text-center text-infaq font-bold">${enforce}</td><td class="p-3 border-r dark:border-slate-700 text-right text-infaq font-bold">${production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 font-bold text-right bg-emerald-50/50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400">${acs.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>`;
                     tkBody.appendChild(tr);
                 });
                 if(sortedTk.length === 0) tkBody.innerHTML = `<tr><td colspan="12" class="p-4 text-center text-slate-400">Tiada rekod Tiktok Ads dimasukkan.</td></tr>`;
