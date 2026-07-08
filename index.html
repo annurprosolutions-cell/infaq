@@ -138,9 +138,16 @@
                     <input type="checkbox" id="remember" class="w-3.5 h-3.5 text-infaq bg-slate-50 border-slate-300 rounded focus:ring-infaq focus:ring-2 cursor-pointer transition-colors">
                     <label for="remember" class="ml-2 text-xs font-medium text-slate-500 dark:text-slate-400 cursor-pointer select-none hover:text-slate-700 dark:hover:text-slate-200 transition-colors">Ingat saya di peranti ini</label>
                 </div>
-                <button type="submit" id="loginBtn" class="w-full py-3 bg-infaq-light hover:bg-infaq text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
+                
+                <button type="submit" id="loginBtn" class="w-full py-3 bg-infaq hover:bg-infaq-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
                     Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>
                 </button>
+
+                <!-- LINK KE SIGNUP.HTML -->
+                <div class="text-center pt-3">
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Belum mempunyai akaun? <a href="/signup" class="text-infaq dark:text-infaq-light font-bold hover:underline transition-colors">Daftar Ejen Baharu</a></p>
+                </div>
+
             </form>
 
             <div class="bg-slate-50 dark:bg-slate-900/40 p-4 text-center border-t border-slate-100 dark:border-slate-700/50">
@@ -199,7 +206,7 @@
             </div>
         </header>
 
-        <!-- Tab Navigation -->
+        <!-- Tab Navigation Divider Layout -->
         <nav class="bg-white dark:bg-slate-800 border-t md:border-t-0 md:border-b border-slate-200 dark:border-slate-700 fixed bottom-0 w-full md:relative md:bottom-auto z-40 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)] md:shadow-none overflow-x-auto">
             <div class="container mx-auto px-0 md:px-8 min-w-max md:min-w-0">
                 <ul class="flex justify-between md:justify-start items-center">
@@ -248,7 +255,6 @@
                             <span class="text-[10px] md:text-sm">Kos Ads</span>
                         </button>
                     </li>
-                    
                 </ul>
             </div>
         </nav>
@@ -277,8 +283,6 @@
 
             <!-- ================= TAB 1: DASHBOARD ================= -->
             <div id="tab-dashboard" class="tab-content active space-y-6 max-w-5xl mx-auto">
-                
-                <!-- Summary Cards -->
                 <div class="grid grid-cols-2 gap-4">
                     <div class="bg-white dark:bg-slate-800 p-5 md:p-8 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 flex flex-col items-center justify-center transition-colors">
                         <p class="text-sm md:text-base text-slate-500 dark:text-slate-400 font-medium mb-1">Jumlah Prospek</p>
@@ -290,13 +294,10 @@
                     </div>
                 </div>
 
-                <!-- ORG SUMMARY (Visible for CEO/Leader) -->
                 <div id="orgSummaryContainer" class="hidden bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
                     <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2 flex justify-between items-center">
                         <span><i class="fa-solid fa-sitemap text-infaq mr-2"></i> Rumusan Organisasi</span>
-                        <span id="orgSummaryCounts" class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full shadow-sm">
-                            <!-- JS Auto Fill -->
-                        </span>
+                        <span id="orgSummaryCounts" class="text-xs font-medium text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-3 py-1 rounded-full shadow-sm"></span>
                     </h3>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
@@ -307,14 +308,11 @@
                                     <th class="p-3 text-center">Bil. Prospek</th>
                                 </tr>
                             </thead>
-                            <tbody id="orgSummaryBody" class="divide-y divide-slate-100 dark:divide-slate-700">
-                                <!-- JS Auto Generate -->
-                            </tbody>
+                            <tbody id="orgSummaryBody" class="divide-y divide-slate-100 dark:divide-slate-700"></tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Charts -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div class="bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors">
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-pie text-infaq mr-2"></i> Analisis Status Polisi</h3>
@@ -324,7 +322,6 @@
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-chart-column text-infaq mr-2"></i> Sumber Lead Terbaik</h3>
                         <div class="relative h-64 w-full flex justify-center"><canvas id="sourceChart"></canvas></div>
                     </div>
-                    <!-- Combination Chart (Ads + Leads) -->
                     <div class="md:col-span-2 bg-white dark:bg-slate-800 p-5 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 transition-colors" id="costAdsChartContainer">
                         <h3 class="text-sm font-bold text-slate-600 dark:text-slate-300 mb-4 border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-money-bill-trend-up text-infaq mr-2"></i> Rumusan Kos Pengiklanan & Tarikan Lead</h3>
                         <div class="relative h-72 w-full flex justify-center"><canvas id="costAdsChart"></canvas></div>
@@ -335,7 +332,6 @@
             <!-- ================= TAB 1.5: KALENDAR CEO ================= -->
             <div id="tab-calendar" class="tab-content max-w-full mx-auto space-y-4">
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors p-4 md:p-6">
-                    
                     <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
                         <div class="flex items-center gap-4">
                             <button onclick="changeCalendarMonth(-1)" class="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-700 dark:hover:bg-slate-600 rounded-lg text-slate-700 dark:text-slate-200 transition"><i class="fa-solid fa-chevron-left"></i></button>
@@ -353,7 +349,6 @@
                             </label>
                         </div>
                     </div>
-                    
                     <div class="w-full overflow-x-auto">
                         <div class="min-w-[1000px]">
                             <div class="grid grid-cols-7 bg-[#789bcc] text-white font-medium text-sm text-center border-b-2 border-[#5c7eb3]">
@@ -365,16 +360,13 @@
                                 <div class="p-2 border-r border-white/20">Sabtu</div>
                                 <div class="p-2">Ahad</div>
                             </div>
-                            <div id="calendarGrid" class="grid grid-cols-7 border-l border-slate-200 dark:border-slate-700">
-                                <!-- JS generated calendar cells -->
-                            </div>
+                            <div id="calendarGrid" class="grid grid-cols-7 border-l border-slate-200 dark:border-slate-700"></div>
                         </div>
                     </div>
-
                 </div>
             </div>
 
-            <!-- ================= TAB 2: PROSPEK BAHARU / KEMASKINI ================= -->
+            <!-- ================= TAB 2: PROSPEK BAHARU ================= -->
             <div id="tab-form" class="tab-content max-w-4xl mx-auto">
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors">
@@ -388,7 +380,6 @@
                             <button type="button" id="btnImportCsv" onclick="document.getElementById('csvImportInput').click()" class="flex-1 md:flex-none text-sm bg-blue-600 hover:bg-blue-700 text-white px-4 py-2.5 rounded-md transition font-medium shadow-sm flex items-center justify-center whitespace-nowrap">
                                 <i class="fa-solid fa-file-import mr-1.5"></i> Import CSV
                             </button>
-                            
                             <!-- RESET BUTTON -->
                             <button type="button" onclick="resetForm()" class="flex-1 md:flex-none text-sm bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-600 px-4 py-2.5 rounded-md transition font-medium shadow-sm flex items-center justify-center">
                                 <i class="fa-solid fa-rotate-right mr-1.5"></i> Reset
@@ -437,7 +428,6 @@
                             </div>
                         </div>
 
-                        <!-- Section 2: Sumber & Tarikh Awal -->
                         <div class="form-section">
                             <h3 class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2 transition-colors">2. Sumber & Tarikh Awal</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -460,7 +450,6 @@
                             </div>
                         </div>
 
-                        <!-- Section 3: Activity Tracking -->
                         <div class="form-section">
                             <h3 class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2 transition-colors">3. Activity Tracking: Case Presentation</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -487,7 +476,6 @@
                             </div>
                         </div>
 
-                        <!-- Section 4: Call & Follow Up -->
                         <div class="form-section">
                             <h3 class="text-sm font-bold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-4 border-b border-slate-200 dark:border-slate-700 pb-2 transition-colors">4. Log Komunikasi & Follow Up</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -532,7 +520,7 @@
                             </div>
                         </div>
 
-                        <!-- Section 5: Status Penutup (Closing) -->
+                        <!-- Section 5: Status Penutup -->
                         <div class="form-section bg-infaq-light/5 dark:bg-infaq-light/10 p-5 rounded-xl border border-infaq-light/20 dark:border-infaq-light/20 shadow-sm transition-colors">
                             <h3 class="text-sm font-bold text-infaq-dark dark:text-infaq-light uppercase tracking-wider mb-4 border-b border-infaq-light/20 pb-2 transition-colors">5. Status Penutup (Closing)</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -730,7 +718,7 @@
 
             <!-- ================= TAB 5: LAPORAN ================= -->
             <div id="tab-reports" class="tab-content max-w-full mx-auto space-y-8">
-                <!-- Source Summary -->
+                <!-- Source Summary PIVOT TABLE -->
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 transition-colors">
                         <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-filter text-infaq mr-2"></i> Laporan Prestasi Mengikut Sumber (Source)</h2>
@@ -739,7 +727,7 @@
                         <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
                             <thead>
                                 <tr class="bg-[#789bcc] text-white font-medium text-xs uppercase text-center tracking-wide">
-                                    <th class="p-3 border-r border-white/20 text-left">Source</th>
+                                    <th class="p-3 border-r border-white/20 text-left">Tagging / Source</th>
                                     <th class="p-3 border-r border-white/20">Leads</th>
                                     <th class="p-3 border-r border-white/20">Open Case</th>
                                     <th class="p-3 border-r border-white/20">Full Present</th>
@@ -748,8 +736,8 @@
                                     <th class="p-3 border-r border-white/20">ACS</th>
                                     <th class="p-3 border-r border-white/20">Enforce</th>
                                     <th class="p-3 border-r border-white/20">Production</th>
-                                    <th class="p-3 border-r border-white/20" title="Open Case / Leads">Open Case : Leads</th>
-                                    <th class="p-3 border-r border-white/20" title="Submit / Open Case">Submit : Open Case</th>
+                                    <th class="p-3 border-r border-white/20" title="Open Case / Leads">OC : Leads</th>
+                                    <th class="p-3 border-r border-white/20" title="Submit / Open Case">Submit : OC</th>
                                     <th class="p-3" title="Submit / Leads">Submit : Lead</th>
                                 </tr>
                             </thead>
@@ -826,7 +814,6 @@
                     <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-id-badge text-infaq mr-2"></i>Profil Saya</h2>
                     
                     <form id="myProfileForm" onsubmit="updateMyProfile(event)" class="flex flex-col md:flex-row gap-8">
-                        <!-- Profile Pic Upload Section -->
                         <div class="flex flex-col items-center gap-3">
                             <div class="relative w-28 h-28 rounded-full overflow-hidden border-4 border-slate-100 dark:border-slate-700 bg-slate-100 dark:bg-slate-900 flex items-center justify-center">
                                 <img id="myAvatarPreview" src="" class="w-full h-full object-cover hidden" alt="Avatar">
@@ -839,7 +826,6 @@
                             <p class="text-[10px] text-slate-400 text-center max-w-[120px]">Disarankan saiz gambar kecil (Bawah 1MB).</p>
                         </div>
                         
-                        <!-- Profile Info Section -->
                         <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">ID Sistem / E-mel</label>
@@ -885,19 +871,17 @@
                                 <input type="text" id="newUserPass" required class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors" placeholder="Tetapkan password (min 6 aksara)">
                             </div>
                             
-                            <!-- Admin Only Fields -->
                             <div id="roleSelectDiv" class="hidden">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Tahap Peranan (Role)</label>
                                 <select id="newUserRole" onchange="handleRoleChange()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
                                     <option value="agent">Agent (Ejen Biasa)</option>
                                     <option value="leader">Leader (Pengurus)</option>
-                                    <!-- Superadmin / CEO options injected dynamically -->
+                                    <!-- Superadmin/CEO options injected via JS -->
                                 </select>
                             </div>
                             <div id="leaderSelectDiv" class="hidden">
                                 <label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1">Di Bawah Pasukan Leader</label>
                                 <select id="newUserLeader" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">
-                                    <!-- Javascript Auto-Fill -->
                                 </select>
                             </div>
 
@@ -907,22 +891,22 @@
                         </form>
                     </div>
                     
-                    <!-- Users Table -->
+                    <!-- Users Table with Activity Logs -->
                     <div class="lg:col-span-2 bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 p-6 transition-colors overflow-hidden flex flex-col">
                         <h2 class="text-lg font-bold mb-4 text-slate-800 dark:text-white border-b border-slate-100 dark:border-slate-700 pb-2"><i class="fa-solid fa-users-gear text-infaq mr-2"></i>Senarai Pengguna Aktif</h2>
                         <div class="overflow-x-auto flex-1">
                             <table class="w-full text-left border-collapse whitespace-nowrap text-sm">
                                 <thead>
-                                    <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider transition-colors border-b border-slate-200 dark:border-slate-700">
-                                        <th class="p-3 font-medium">Nama Paparan</th>
-                                        <th class="p-3 font-medium">E-mel</th>
-                                        <th class="p-3 font-medium">Tahap</th>
-                                        <th class="p-3 font-medium">Pasukan</th>
+                                    <tr class="bg-slate-50 dark:bg-slate-900 text-slate-500 dark:text-slate-400 text-[10px] uppercase tracking-wider transition-colors border-b border-slate-200 dark:border-slate-700">
+                                        <th class="p-3 font-medium">Nama / E-mel</th>
+                                        <th class="p-3 font-medium">Pangkat / Role</th>
+                                        <th class="p-3 font-medium">Pasukan (Leader)</th>
+                                        <th class="p-3 font-medium">Log Masuk Terakhir</th>
+                                        <th class="p-3 font-medium">Kemas Kini Rekod</th>
                                         <th class="p-3 font-medium text-center">Tindakan</th>
                                     </tr>
                                 </thead>
                                 <tbody id="usersTableBody" class="divide-y divide-slate-100 dark:divide-slate-700">
-                                    <!-- JS Auto Generate -->
                                 </tbody>
                             </table>
                         </div>
@@ -952,7 +936,7 @@
             </div>
         </div>
 
-    </div> <!-- END APP CONTENT -->
+    </div>
 
     <!-- ================= FIREBASE & APP LOGIC ================= -->
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
@@ -960,7 +944,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
 
     <script>
-        // 1. Firebase Config
         const firebaseConfig = {
             apiKey: "AIzaSyBIVnK42hjFpXqM6T7Q4UbmOVL-6AHIXPo",
             authDomain: "takafultracker.firebaseapp.com",
@@ -969,34 +952,17 @@
             messagingSenderId: "237848929718",
             appId: "1:237848929718:web:790d12bee4a9492af88d17"
         };
-
-        // 2. Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         const db = firebase.firestore();
 
-        let prospectsData = [];
-        let tiktokAdsData = [];
-        let fbAdsData = [];
-        
-        let filteredProspects = [];
-        let filteredTkAds = [];
-        let filteredFbAds = [];
-
-        let statusChartInstance = null;
-        let sourceChartInstance = null;
-        let costAdsChartInstance = null;
-
-        let currentUser = null;
-        let currentEditId = null;
-        let allUsersData = {}; 
-
+        let prospectsData = []; let tiktokAdsData = []; let fbAdsData = [];
+        let filteredProspects = []; let filteredTkAds = []; let filteredFbAds = [];
+        let statusChartInstance = null; let sourceChartInstance = null; let costAdsChartInstance = null;
+        let currentUser = null; let currentEditId = null; let allUsersData = {}; 
         let calendarDate = new Date();
 
         function parseCSV(csv) {
-            const rows = [];
-            let currentRow = [];
-            let currentCell = '';
-            let inQuotes = false;
+            const rows = []; let currentRow = []; let currentCell = ''; let inQuotes = false;
             for (let i = 0; i < csv.length; i++) {
                 const c = csv[i];
                 if (c === '"' && csv[i+1] === '"') { currentCell += '"'; i++; } 
@@ -1012,13 +978,9 @@
         async function fetchGoogleSheetDropdowns() {
             const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=475370971&single=true&output=csv";
             try {
-                const res = await fetch(url);
-                const csv = await res.text();
-                const rows = parseCSV(csv);
-                
+                const res = await fetch(url); const csv = await res.text(); const rows = parseCSV(csv);
                 const sources1 = new Set(); const sources2 = new Set(); const remarks = new Set();
                 const products = new Set(); const payments = new Set(); const statuses = new Set();
-
                 for (let i = 1; i < rows.length; i++) {
                     const cols = rows[i];
                     if (cols[0] && cols[0].trim()) sources1.add(cols[0].trim());
@@ -1028,199 +990,107 @@
                     if (cols[4] && cols[4].trim()) payments.add(cols[4].trim());
                     if (cols[5] && cols[5].trim()) statuses.add(cols[5].trim());
                 }
-
                 populateDropdown('source1', sources1, 'Pilih Sumber...'); populateDropdown('source2', sources2, 'Pilih Kategori...');
                 populateDropdown('remark', remarks, 'Pilih Remark...'); populateDropdown('product', products, 'Pilih Produk...');
                 populateDropdown('paymentMode', payments, 'Pilih Mod...'); populateDropdown('status', statuses, 'Pilih Status...');
-            } catch (err) { console.error("Gagal memuat turun dropdown Google Sheet", err); }
+            } catch (err) { console.error(err); }
         }
 
         async function fetchProfilePicsFromSheet() {
             const url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTCxLU8QspjN760Af3sLSvknn5F7E61E9VrgBCvmJM62BwQoveQpA_qqBTX9enjQXl3VLakvSjG8lKp/pub?gid=0&single=true&output=csv";
             try {
-                const res = await fetch(url);
-                const csv = await res.text();
-                const rows = parseCSV(csv);
-                
-                let hasUpdates = false;
+                const res = await fetch(url); const csv = await res.text(); const rows = parseCSV(csv);
                 for (let i = 1; i < rows.length; i++) {
-                    const cols = rows[i];
-                    const uid = cols[0] ? cols[0].trim() : null;
-                    let picUrl = cols[2] ? cols[2].trim() : null;
-                    
+                    const cols = rows[i]; const uid = cols[0] ? cols[0].trim() : null; let picUrl = cols[2] ? cols[2].trim() : null;
                     if (uid && picUrl) {
-                        if (picUrl.includes('drive.google.com/file/d/')) {
-                            const match = picUrl.match(/file\/d\/([a-zA-Z0-9_-]+)/);
-                            if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1];
-                        } else if (picUrl.includes('drive.google.com/uc')) {
-                            const match = picUrl.match(/id=([a-zA-Z0-9_-]+)/);
-                            if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1];
-                        }
-
-                        if (allUsersData[uid]) {
-                            allUsersData[uid].profilePic = picUrl;
-                        }
-                        if (currentUser && currentUser.id === uid) {
-                            currentUser.profilePic = picUrl;
-                            hasUpdates = true;
-                        }
+                        if (picUrl.includes('drive.google.com/file/d/')) { const match = picUrl.match(/file\/d\/([a-zA-Z0-9_-]+)/); if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1]; } 
+                        else if (picUrl.includes('drive.google.com/uc')) { const match = picUrl.match(/id=([a-zA-Z0-9_-]+)/); if (match && match[1]) picUrl = "https://lh3.googleusercontent.com/d/" + match[1]; }
+                        if (allUsersData[uid]) allUsersData[uid].profilePic = picUrl;
+                        if (currentUser && currentUser.id === uid) { currentUser.profilePic = picUrl; }
                     }
                 }
-                
                 updateHeaderProfile();
                 if(currentUser && currentUser.role !== 'agent') renderUsersTable();
-                
-            } catch (err) {
-                console.error("Gagal menarik gambar profil dari Google Sheet", err);
-            }
+            } catch (err) { console.error(err); }
         }
 
         function populateDropdown(id, dataSet, placeholder) {
-            const select = document.getElementById(id);
-            if (!select) return;
+            const select = document.getElementById(id); if (!select) return;
             select.innerHTML = `<option value="">${placeholder}</option>`;
             dataSet.forEach(val => select.innerHTML += `<option value="${val}">${val}</option>`);
         }
 
-        // ================= BULK IMPORT CSV =================
+        async function logSystemActivity() {
+            if(!currentUser) return;
+            try { await db.collection('users').doc(currentUser.id).update({ lastUpdate: firebase.firestore.FieldValue.serverTimestamp() }); } 
+            catch(e) { console.log("Failed to log update", e); }
+        }
+
+        function formatFirebaseTime(fbTimestamp) {
+            if (!fbTimestamp) return '<span class="text-slate-400 italic text-[10px]">Tiada rekod</span>';
+            try {
+                const date = fbTimestamp.toDate();
+                return `<span class="text-xs font-mono">${date.toLocaleDateString('ms-MY')} ${date.toLocaleTimeString('ms-MY', {hour: '2-digit', minute:'2-digit'})}</span>`;
+            } catch(e) { return '-'; }
+        }
+
         function downloadCSVTemplate() {
-            // Template columns: Nama Penuh, No Telefon, Sumber, Kategori Produk, Tarikh Lead
             const headers = "Nama Penuh,No Telefon,Sumber Lead,Kategori Produk,Tarikh Lead (YYYY-MM-DD)\n";
             const sampleData = "Ahmad Bin Ali,0123456789,Tiktok Ads,Hibah,2026-03-25\n";
-            
             const blob = new Blob([headers + sampleData], { type: 'text/csv;charset=utf-8;' });
             const url = URL.createObjectURL(blob);
-            const link = document.createElement("a");
-            link.setAttribute("href", url);
-            link.setAttribute("download", "Template_Import_Prospek.csv");
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+            const link = document.createElement("a"); link.setAttribute("href", url); link.setAttribute("download", "Template_Import_Prospek.csv");
+            document.body.appendChild(link); link.click(); document.body.removeChild(link);
         }
 
         async function handleCSVImport(event) {
-            const file = event.target.files[0];
-            if (!file) return;
-
-            const btnImport = document.getElementById('btnImportCsv');
-            const originalBtnHtml = btnImport.innerHTML;
-
+            const file = event.target.files[0]; if (!file) return;
+            const btnImport = document.getElementById('btnImportCsv'); const originalBtnHtml = btnImport.innerHTML;
             const reader = new FileReader();
             reader.onload = async function(e) {
-                const text = e.target.result;
-                const rows = parseCSV(text);
-                
-                if(rows.length < 2) {
-                    alert("Fail CSV kosong atau tiada data untuk diimport (Hanya jumpa barisan tajuk).");
-                    event.target.value = '';
-                    return;
-                }
+                const text = e.target.result; const rows = parseCSV(text);
+                if(rows.length < 2) { alert("Fail CSV kosong."); event.target.value = ''; return; }
+                let validRowsCount = 0; for(let i=1; i<rows.length; i++) { if(rows[i].length > 0 && rows[i][0].trim() !== '') validRowsCount++; }
+                if(validRowsCount === 0) { alert("Tiada rekod prospek dijumpai."); event.target.value = ''; return; }
+                if(!confirm(`Sahkan: Jumpa ${validRowsCount} rekod prospek.\n\nAnda pasti untuk import semua data?`)) { event.target.value = ''; return; }
 
-                // Check basic valid rows count (ignore purely empty rows)
-                let validRowsCount = 0;
-                for(let i=1; i<rows.length; i++) {
-                    if(rows[i].length > 0 && rows[i][0].trim() !== '') validRowsCount++;
-                }
-
-                if(validRowsCount === 0) {
-                    alert("Tiada rekod prospek dijumpai di dalam fail CSV.");
-                    event.target.value = '';
-                    return;
-                }
-
-                if(!confirm(`Sahkan: Jumpa ${validRowsCount} rekod prospek.\n\nAnda pasti untuk import semua data ini ke dalam sistem? Tindakan ini tidak boleh diundur.`)) {
-                    event.target.value = '';
-                    return;
-                }
-
-                btnImport.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Sedang Memproses...`;
-                btnImport.disabled = true;
-
+                btnImport.innerHTML = `<i class="fa-solid fa-spinner fa-spin mr-1.5"></i> Sedang Memproses...`; btnImport.disabled = true;
                 try {
-                    const batch = db.batch();
-                    let batchCount = 0;
-                    let addedCount = 0;
-
+                    const batch = db.batch(); let batchCount = 0; let addedCount = 0;
                     let assignedLeader = 'admin';
                     if (currentUser.role === 'agent') assignedLeader = currentUser.leaderId;
                     else if (currentUser.role === 'leader') assignedLeader = currentUser.id;
 
                     for (let i = 1; i < rows.length; i++) {
-                        const cols = rows[i];
-                        if(!cols || cols.length === 0 || !cols[0] || cols[0].trim() === '') continue; // Skip empty/invalid rows
-
-                        const newId = Date.now() + i; // guarantee unique id by adding index
-                        
+                        const cols = rows[i]; if(!cols || cols.length === 0 || !cols[0] || cols[0].trim() === '') continue; 
+                        const newId = Date.now() + i; 
                         const newProspect = {
-                            id: newId,
-                            ownerId: currentUser.id,         
-                            leaderId: assignedLeader,        
-                            ownerName: currentUser.name,     
-                            name: cols[0] ? cols[0].trim() : '',
-                            phone: cols[1] ? cols[1].replace(/[^0-9]/g, '') : '',
-                            whatsapp: '',
-                            dob: '', age: '', ageRange: '',
-                            source1: cols[2] ? cols[2].trim() : '',
-                            source2: cols[3] ? cols[3].trim() : '',
-                            dateApproach: cols[4] ? cols[4].trim() : new Date().toISOString().split('T')[0], // default today
-                            openCaseDate: '', fullPresentation: '', fullPresentationRating: '',
-                            dialDate: '', reachDate: '', callsRating: '', messageDate: '', followUpDate: '', followUpRating: '',
+                            id: newId, ownerId: currentUser.id, leaderId: assignedLeader, ownerName: currentUser.name,     
+                            name: cols[0] ? cols[0].trim() : '', phone: cols[1] ? cols[1].replace(/[^0-9]/g, '') : '', whatsapp: '',
+                            dob: '', age: '', ageRange: '', source1: cols[2] ? cols[2].trim() : '', source2: cols[3] ? cols[3].trim() : '',
+                            dateApproach: cols[4] ? cols[4].trim() : new Date().toISOString().split('T')[0],
+                            openCaseDate: '', fullPresentation: '', fullPresentationRating: '', dialDate: '', reachDate: '', callsRating: '', messageDate: '', followUpDate: '', followUpRating: '',
                             remark: '', submitDate: '', product: '', ace: '', paymentMode: '', production: 0, status: '', enforceDate: ''
                         };
-
-                        // Autogen Whatsapp
-                        if(newProspect.phone) {
-                            let phoneStr = newProspect.phone;
-                            if (phoneStr.startsWith('0')) phoneStr = '6' + phoneStr; 
-                            if (phoneStr.length > 5) newProspect.whatsapp = `https://wa.me/${phoneStr}`;
-                        }
-
-                        const docRef = db.collection('prospects').doc(newId.toString());
-                        batch.set(docRef, newProspect);
-                        prospectsData.unshift(newProspect); // add locally immediately
-
-                        batchCount++;
-                        addedCount++;
-
-                        // Commit batch every 450 records to stay within Firestore 500 limit
-                        if (batchCount >= 450) {
-                            await batch.commit();
-                            batchCount = 0;
-                        }
+                        if(newProspect.phone) { let phoneStr = newProspect.phone; if (phoneStr.startsWith('0')) phoneStr = '6' + phoneStr; if (phoneStr.length > 5) newProspect.whatsapp = `https://wa.me/${phoneStr}`; }
+                        batch.set(db.collection('prospects').doc(newId.toString()), newProspect);
+                        prospectsData.unshift(newProspect);
+                        batchCount++; addedCount++;
+                        if (batchCount >= 450) { await batch.commit(); batchCount = 0; }
                     }
-
-                    // Commit remaining records in batch
-                    if (batchCount > 0) {
-                        await batch.commit();
-                    }
-
-                    alert(`BERJAYA! ${addedCount} prospek telah berjaya dimuat naik ke dalam sistem.`);
-                    
-                    event.target.value = '';
-                    btnImport.innerHTML = originalBtnHtml;
-                    btnImport.disabled = false;
-                    
-                    applyFilter(); 
-                    switchTab('list');
-
-                } catch (error) {
-                    console.error("Bulk Import Error: ", error);
-                    alert("Ralat berlaku semasa proses muat naik. " + error.message);
-                    btnImport.innerHTML = originalBtnHtml;
-                    btnImport.disabled = false;
-                }
+                    if (batchCount > 0) { await batch.commit(); }
+                    await logSystemActivity();
+                    alert(`BERJAYA! ${addedCount} prospek dimuat naik.`);
+                    event.target.value = ''; btnImport.innerHTML = originalBtnHtml; btnImport.disabled = false;
+                    applyFilter(); switchTab('list');
+                } catch (error) { console.error(error); alert("Ralat: " + error.message); btnImport.innerHTML = originalBtnHtml; btnImport.disabled = false; }
             };
-            
             reader.readAsText(file);
         }
 
-        // ================= AUTH & APP STARTUP =================
         firebase.auth().onAuthStateChanged(async (user) => {
             if (user) {
-                const loginScreen = document.getElementById('loginScreen');
-                const btn = document.getElementById('loginBtn');
-                if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyemak data pengguna...`;
-
+                const btn = document.getElementById('loginBtn'); if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyemak data...`;
                 try {
                     let userDoc = await db.collection('users').doc(user.uid).get();
                     if (!userDoc.exists) {
@@ -1230,35 +1100,28 @@
                             await db.collection('users').doc(user.uid).set({ id: user.uid, email: user.email, name: name, role: role, profilePic: null, leaderId: null });
                             userDoc = await db.collection('users').doc(user.uid).get();
                         } else {
-                            firebase.auth().signOut();
-                            alert("Akaun anda wujud di Authentication tetapi belum dikonfigurasikan di Firestore. Sila lapor kepada Admin.");
-                            return;
+                            firebase.auth().signOut(); alert("Sila lapor kepada Admin."); return;
                         }
                     }
                     currentUser = userDoc.data();
+                    // Rekod Masa Log Masuk (Activity Log)
+                    await db.collection('users').doc(user.uid).update({ lastLogin: firebase.firestore.FieldValue.serverTimestamp() });
                     initApp();
-                } catch (err) { console.error("Auth state error: ", err); alert("Ralat semasa log masuk: " + err.message); }
+                } catch (err) { console.error(err); alert("Ralat: " + err.message); }
             } else {
                 currentUser = null;
-                const loginScreen = document.getElementById('loginScreen');
-                const appContent = document.getElementById('appContent');
+                const loginScreen = document.getElementById('loginScreen'); const appContent = document.getElementById('appContent');
                 if (loginScreen) { loginScreen.classList.remove('hidden'); loginScreen.style.opacity = '1'; }
                 if (appContent) appContent.classList.add('hidden');
             }
         });
 
         document.addEventListener('DOMContentLoaded', () => {
-            fetchGoogleSheetDropdowns(); 
-            updateThemeIcon(); 
-            
-            // Close dropdown when clicking outside
+            fetchGoogleSheetDropdowns(); updateThemeIcon(); 
             document.addEventListener('click', function(event) {
-                const dropdown = document.getElementById('profileDropdown');
-                const profileBtn = document.getElementById('profileBtn');
+                const dropdown = document.getElementById('profileDropdown'); const profileBtn = document.getElementById('profileBtn');
                 if (dropdown && !dropdown.classList.contains('hidden')) {
-                    if (!dropdown.contains(event.target) && !profileBtn.contains(event.target)) {
-                        toggleProfileMenu();
-                    }
+                    if (!dropdown.contains(event.target) && !profileBtn.contains(event.target)) { toggleProfileMenu(); }
                 }
             });
         });
@@ -1267,20 +1130,13 @@
         if (loginFormEl) {
             loginFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                const emailEl = document.getElementById('loginEmail');
-                const passEl = document.getElementById('loginPass');
-                const email = emailEl ? emailEl.value.trim() : '';
-                const pass = passEl ? passEl.value.trim() : '';
-                const errorDiv = document.getElementById('loginError');
-                const btn = document.getElementById('loginBtn');
-
+                const email = document.getElementById('loginEmail').value.trim(); const pass = document.getElementById('loginPass').value.trim();
+                const errorDiv = document.getElementById('loginError'); const btn = document.getElementById('loginBtn');
                 if (btn) btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Sedang log masuk...`;
                 if (errorDiv) errorDiv.classList.add('hidden');
-
                 try { await firebase.auth().signInWithEmailAndPassword(email, pass); } 
                 catch (err) {
-                    console.error("Login Error: ", err);
-                    if (errorDiv) { errorDiv.classList.remove('hidden'); errorDiv.innerHTML = "E-mel atau Kata Laluan salah. <br><span class='text-[10px]'>Jika ini log masuk pertama anda, sila guna butang 'Lupa Kata Laluan'.</span>"; }
+                    if (errorDiv) { errorDiv.classList.remove('hidden'); }
                     if (btn) btn.innerHTML = `Log Masuk Sistem <i class="fa-solid fa-arrow-right-to-bracket text-xs"></i>`;
                 }
             });
@@ -1289,73 +1145,35 @@
         async function forgotPassword() {
             const email = prompt("Sila masukkan e-mel pendaftaran anda:");
             if (email && email.trim() !== "") {
-                const targetEmail = email.trim();
                 try {
-                    if (targetEmail === 'infaqsmartbook@gmail.com' || targetEmail === 'annurprosolutions@gmail.com') {
-                        try {
-                            const tempApp = firebase.initializeApp(firebaseConfig, "TempApp");
-                            const dummyPass = "Temp" + Math.random().toString(36).slice(-8) + "!";
-                            const userCred = await tempApp.auth().createUserWithEmailAndPassword(targetEmail, dummyPass);
-                            const role = targetEmail === 'infaqsmartbook@gmail.com' ? 'ceo' : 'superadmin';
-                            const name = targetEmail === 'infaqsmartbook@gmail.com' ? 'Dato CEO' : 'Superadmin';
-                            await db.collection('users').doc(userCred.user.uid).set({ id: userCred.user.uid, email: targetEmail, name: name, role: role, profilePic: null });
-                            await tempApp.auth().signOut();
-                            tempApp.delete();
-                        } catch (e) { console.log("Bootstrap check: User might already exist."); }
-                    }
-                    await firebase.auth().sendPasswordResetEmail(targetEmail);
-                    alert("Pautan untuk menetapkan semula kata laluan telah dihantar ke e-mel anda. Sila semak peti masuk (inbox) atau kotak spam.");
-                } catch (err) { alert("Gagal menghantar e-mel reset. Pastikan e-mel tersebut sah dan wujud dalam sistem."); console.error(err); }
+                    await firebase.auth().sendPasswordResetEmail(email.trim());
+                    alert("Pautan telah dihantar ke e-mel anda.");
+                } catch (err) { alert("Gagal menghantar e-mel reset."); }
             }
         }
 
         async function fetchAllUsersForOrg() {
             try {
                 const snap = await db.collection('users').get();
-                allUsersData = {};
-                snap.forEach(doc => { allUsersData[doc.id] = doc.data(); });
-            } catch(e) { console.error("Error fetching all users for Org Summary: ", e); }
+                allUsersData = {}; snap.forEach(doc => { allUsersData[doc.id] = doc.data(); });
+            } catch(e) { console.error(e); }
         }
 
         async function initApp() {
-            const loginScreen = document.getElementById('loginScreen');
-            if (loginScreen) loginScreen.style.opacity = '0';
-            
-            const headerUserName = document.getElementById('headerUserName');
-            if(headerUserName) headerUserName.innerText = "Memuatkan data...";
-            
+            const loginScreen = document.getElementById('loginScreen'); if (loginScreen) loginScreen.style.opacity = '0';
+            const headerUserName = document.getElementById('headerUserName'); if(headerUserName) headerUserName.innerText = "Memuatkan data...";
             try {
-                await fetchAllUsersForOrg();
-                await fetchProfilePicsFromSheet();
-
-                const prospectSnap = await db.collection('prospects').get();
-                prospectsData = [];
-                prospectSnap.forEach(doc => prospectsData.push(doc.data()));
-                prospectsData.sort((a, b) => b.id - a.id); 
-
-                const tkSnap = await db.collection('tiktok_ads').get();
-                tiktokAdsData = [];
-                tkSnap.forEach(doc => tiktokAdsData.push(doc.data()));
-
-                const fbSnap = await db.collection('fb_ads').get();
-                fbAdsData = [];
-                fbSnap.forEach(doc => fbAdsData.push(doc.data()));
-
-            } catch (err) {
-                console.error("Gagal memuat turun data", err);
-                alert("Terdapat ralat semasa menarik data dari Firebase.");
-            }
+                await fetchAllUsersForOrg(); await fetchProfilePicsFromSheet();
+                const prospectSnap = await db.collection('prospects').get(); prospectsData = [];
+                prospectSnap.forEach(doc => prospectsData.push(doc.data())); prospectsData.sort((a, b) => b.id - a.id); 
+                const tkSnap = await db.collection('tiktok_ads').get(); tiktokAdsData = []; tkSnap.forEach(doc => tiktokAdsData.push(doc.data()));
+                const fbSnap = await db.collection('fb_ads').get(); fbAdsData = []; fbSnap.forEach(doc => fbAdsData.push(doc.data()));
+            } catch (err) { console.error(err); alert("Terdapat ralat semasa menarik data."); }
 
             setTimeout(() => {
                 if (loginScreen) loginScreen.classList.add('hidden');
-                const appContent = document.getElementById('appContent');
-                if (appContent) appContent.classList.remove('hidden');
-                
-                setupRoleUI();
-                setupManagementUI(); 
-                applyFilter(); 
-                toggleConditionalFields();
-                
+                const appContent = document.getElementById('appContent'); if (appContent) appContent.classList.remove('hidden');
+                setupRoleUI(); setupManagementUI(); applyFilter(); toggleConditionalFields();
                 if (currentUser.role === 'ceo') { switchTab('dashboard'); } 
                 else { if (filteredProspects.length === 0) switchTab('form'); else switchTab('dashboard'); }
             }, 300); 
@@ -1363,26 +1181,14 @@
 
         function logOutApp() {
             if(confirm('Adakah anda pasti mahu log keluar?')) {
-                firebase.auth().signOut().then(() => { window.location.reload(); }).catch((error) => { console.error("Sign out error", error); });
+                firebase.auth().signOut().then(() => { window.location.reload(); }).catch((error) => { console.error(error); });
             }
         }
 
         function toggleProfileMenu() {
-            const dropdown = document.getElementById('profileDropdown');
-            if (!dropdown) return;
-            if (dropdown.classList.contains('hidden')) {
-                dropdown.classList.remove('hidden');
-                setTimeout(() => {
-                    dropdown.classList.remove('opacity-0', 'scale-95');
-                    dropdown.classList.add('opacity-100', 'scale-100');
-                }, 10);
-            } else {
-                dropdown.classList.remove('opacity-100', 'scale-100');
-                dropdown.classList.add('opacity-0', 'scale-95');
-                setTimeout(() => {
-                    dropdown.classList.add('hidden');
-                }, 200);
-            }
+            const dropdown = document.getElementById('profileDropdown'); if (!dropdown) return;
+            if (dropdown.classList.contains('hidden')) { dropdown.classList.remove('hidden'); setTimeout(() => { dropdown.classList.remove('opacity-0', 'scale-95'); dropdown.classList.add('opacity-100', 'scale-100'); }, 10); } 
+            else { dropdown.classList.remove('opacity-100', 'scale-100'); dropdown.classList.add('opacity-0', 'scale-95'); setTimeout(() => { dropdown.classList.add('hidden'); }, 200); }
         }
 
         function togglePassword() {
@@ -1395,159 +1201,90 @@
 
         function toggleTheme() {
             const html = document.documentElement; html.classList.toggle('dark');
-            const isDark = html.classList.contains('dark'); localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
             updateThemeIcon();
-            
-            const tabDash = document.getElementById('tab-dashboard');
-            if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
+            const tabDash = document.getElementById('tab-dashboard'); if(currentUser && tabDash && tabDash.classList.contains('active')) renderCharts(); 
         }
 
         function updateThemeIcon() {
-            // Update Main header icon
-            const icon = document.getElementById('themeIcon');
-            if (icon) {
-                if (document.documentElement.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); } 
-                else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); }
-            }
-            
-            // Update dropdown icon & text
-            const dropdownIcon = document.getElementById('dropdownThemeIcon');
-            const themeText = document.getElementById('themeText');
+            const dropdownIcon = document.getElementById('dropdownThemeIcon'); const themeText = document.getElementById('themeText');
             if (dropdownIcon && themeText) {
-                if (document.documentElement.classList.contains('dark')) { 
-                    dropdownIcon.classList.remove('fa-moon'); 
-                    dropdownIcon.classList.add('fa-sun'); 
-                    themeText.innerText = 'Mod Cerah';
-                } else { 
-                    dropdownIcon.classList.remove('fa-sun'); 
-                    dropdownIcon.classList.add('fa-moon'); 
-                    themeText.innerText = 'Mod Gelap';
-                }
+                if (document.documentElement.classList.contains('dark')) { dropdownIcon.classList.remove('fa-moon'); dropdownIcon.classList.add('fa-sun'); themeText.innerText = 'Mod Cerah'; } 
+                else { dropdownIcon.classList.remove('fa-sun'); dropdownIcon.classList.add('fa-moon'); themeText.innerText = 'Mod Gelap'; }
             }
         }
 
         function updateHeaderProfile() {
             if(!currentUser) return;
-            const headerUserName = document.getElementById('headerUserName');
-            const avatarImg = document.getElementById('headerAvatarImg');
-            const avatarIcon = document.getElementById('headerAvatarIcon');
-            const mobileName = document.getElementById('mobileDropdownName');
-            const mobileRole = document.getElementById('mobileDropdownRole');
-
-            if(headerUserName) headerUserName.innerText = currentUser.name;
-            if(mobileName) mobileName.innerText = currentUser.name;
+            const headerUserName = document.getElementById('headerUserName'); const avatarImg = document.getElementById('headerAvatarImg');
+            const avatarIcon = document.getElementById('headerAvatarIcon'); const mobileName = document.getElementById('mobileDropdownName'); const mobileRole = document.getElementById('mobileDropdownRole');
+            if(headerUserName) headerUserName.innerText = currentUser.name; if(mobileName) mobileName.innerText = currentUser.name;
             if(mobileRole) mobileRole.innerText = currentUser.role === 'ceo' ? 'Dato CEO' : currentUser.role;
-
             if(currentUser.profilePic) {
                 if(avatarImg) { avatarImg.src = currentUser.profilePic; avatarImg.classList.remove('hidden'); }
                 if(avatarIcon) avatarIcon.classList.add('hidden');
             } else {
-                if(avatarImg) avatarImg.classList.add('hidden');
-                if(avatarIcon) avatarIcon.classList.remove('hidden');
+                if(avatarImg) avatarImg.classList.add('hidden'); if(avatarIcon) avatarIcon.classList.remove('hidden');
             }
         }
 
         async function setupRoleUI() {
             updateHeaderProfile();
             const roleFilter = document.getElementById('roleBasedFilter');
-            const liForm = document.getElementById('li-form'); 
-            const liAds = document.getElementById('li-ads'); 
-            const liList = document.getElementById('li-list');
-            const liCalendar = document.getElementById('li-calendar');
-            const liDivider = document.getElementById('li-divider');
+            const liForm = document.getElementById('li-form'); const liAds = document.getElementById('li-ads'); 
+            const liList = document.getElementById('li-list'); const liCalendar = document.getElementById('li-calendar'); const liDivider = document.getElementById('li-divider');
 
-            if (liForm) liForm.style.display = 'block'; 
-            if (liAds) liAds.style.display = 'block'; 
-            if (liList) liList.style.display = 'block';
-            if (liCalendar) liCalendar.style.display = 'none';
-            if (liDivider) liDivider.style.display = 'flex';
+            if (liForm) liForm.style.display = 'block'; if (liAds) liAds.style.display = 'block'; 
+            if (liList) liList.style.display = 'block'; if (liCalendar) liCalendar.style.display = 'none'; if (liDivider) liDivider.style.display = 'flex';
 
             if (!roleFilter) return;
 
             let allUsers = Object.values(allUsersData);
             if (currentUser.role === 'ceo') {
-                if (liForm) liForm.style.display = 'none'; 
-                if (liAds) liAds.style.display = 'none'; 
-                if (liList) liList.style.display = 'none';
-                if (liDivider) liDivider.style.display = 'none';
-                if (liCalendar) liCalendar.style.display = 'block';
-                
-                roleFilter.classList.remove('hidden');
-                let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
+                if (liForm) liForm.style.display = 'none'; if (liAds) liAds.style.display = 'none'; 
+                if (liList) liList.style.display = 'none'; if (liDivider) liDivider.style.display = 'none'; if (liCalendar) liCalendar.style.display = 'block';
+                roleFilter.classList.remove('hidden'); let options = `<option value="all">Semua Pasukan (Syarikat)</option>`;
                 allUsers.forEach(u => { if(u.role === 'leader') options += `<option value="${u.id}">Manager: ${u.name}</option>`; });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Pengurus / Pasukan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
             } else if (currentUser.role === 'superadmin') {
-                roleFilter.classList.remove('hidden');
-                let options = `<option value="all">Semua Cawangan (Global)</option>`;
-                allUsers.forEach(u => {
-                    if(u.role === 'leader') options += `<option value="${u.id}">Pasukan ${u.name} (Leader)</option>`;
-                    if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`;
-                });
+                roleFilter.classList.remove('hidden'); let options = `<option value="all">Semua Cawangan (Global)</option>`;
+                allUsers.forEach(u => { if(u.role === 'leader') options += `<option value="${u.id}">Pasukan ${u.name} (Leader)</option>`; if(u.role === 'agent') options += `<option value="${u.id}">Ejen ${u.name}</option>`; });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Organisasi</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
                 if (liCalendar) liCalendar.style.display = 'block';
             } else if (currentUser.role === 'leader') {
-                roleFilter.classList.remove('hidden');
-                let options = `<option value="all">Semua Pasukan Saya</option>`;
+                roleFilter.classList.remove('hidden'); let options = `<option value="all">Semua Pasukan Saya</option>`;
                 allUsers.forEach(u => { if(u.role === 'agent' && u.leaderId === currentUser.id) { options += `<option value="${u.id}">Ejen ${u.name}</option>`; } });
                 roleFilter.innerHTML = `<label class="block text-xs font-medium text-slate-500 dark:text-slate-400 mb-1 transition-colors">Tapis Ejen Seliaan</label><select id="orgFilter" onchange="applyFilter()" class="w-full px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm outline-none focus:border-infaq dark:text-white transition-colors">${options}</select>`;
-            } else {
-                roleFilter.classList.add('hidden'); roleFilter.innerHTML = ''; 
-            }
+            } else { roleFilter.classList.add('hidden'); roleFilter.innerHTML = ''; }
         }
 
-        // ================= USER MANAGEMENT & PROFILE =================
         async function setupManagementUI() {
             if(!currentUser) return;
             const myId = document.getElementById('myId'); if(myId) myId.value = currentUser.email; 
             const myName = document.getElementById('myName'); if(myName) myName.value = currentUser.name;
-            if(currentUser.profilePic) {
-                const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon');
-                if(imgPrev && imgIcon) { imgPrev.src = currentUser.profilePic; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
-            }
+            if(currentUser.profilePic) { const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon'); if(imgPrev && imgIcon) { imgPrev.src = currentUser.profilePic; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); } }
 
-            const adminSection = document.getElementById('adminLeaderManagementSection');
-            if(!adminSection) return;
+            const adminSection = document.getElementById('adminLeaderManagementSection'); if(!adminSection) return;
 
-            if(currentUser.role === 'agent') {
-                adminSection.classList.add('hidden');
-            } else {
+            if(currentUser.role === 'agent') { adminSection.classList.add('hidden'); } 
+            else {
                 adminSection.classList.remove('hidden');
-                const roleDiv = document.getElementById('roleSelectDiv'); const leaderDiv = document.getElementById('leaderSelectDiv'); const leaderSelect = document.getElementById('newUserLeader');
-                const roleSelect = document.getElementById('newUserRole');
+                const roleDiv = document.getElementById('roleSelectDiv'); const leaderDiv = document.getElementById('leaderSelectDiv'); 
+                const leaderSelect = document.getElementById('newUserLeader'); const roleSelect = document.getElementById('newUserRole');
                 
                 if (currentUser.role === 'ceo') {
-                    if(roleDiv) roleDiv.classList.remove('hidden');
-                    if(leaderDiv) leaderDiv.classList.remove('hidden');
-                    if(roleSelect) {
-                        roleSelect.innerHTML = `
-                            <option value="agent">Agent (Ejen Biasa)</option>
-                            <option value="leader">Leader (Pengurus)</option>
-                            <option value="superadmin">Superadmin (Pentadbir Sistem)</option>
-                            <option value="ceo">CEO (Pengarah)</option>
-                        `;
-                    }
+                    if(roleDiv) roleDiv.classList.remove('hidden'); if(leaderDiv) leaderDiv.classList.remove('hidden');
+                    if(roleSelect) { roleSelect.innerHTML = `<option value="agent">Agent (Ejen Biasa)</option><option value="leader">Leader (Pengurus)</option><option value="superadmin">Superadmin (Pentadbir Sistem)</option><option value="ceo">CEO (Pengarah)</option>`; }
                     if(leaderSelect) {
                         leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Pengurusan Utama)</option>`;
-                        try {
-                            const snap = await db.collection('users').where('role', '==', 'leader').get();
-                            snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; });
-                        } catch(e) { console.error(e); }
+                        try { const snap = await db.collection('users').where('role', '==', 'leader').get(); snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; }); } catch(e) {}
                     }
                 } else if(currentUser.role === 'superadmin') {
-                    if(roleDiv) roleDiv.classList.remove('hidden'); 
-                    if(leaderDiv) leaderDiv.classList.remove('hidden');
-                    if(roleSelect) {
-                        roleSelect.innerHTML = `
-                            <option value="agent">Agent (Ejen Biasa)</option>
-                            <option value="leader">Leader (Pengurus)</option>
-                        `;
-                    }
+                    if(roleDiv) roleDiv.classList.remove('hidden'); if(leaderDiv) leaderDiv.classList.remove('hidden');
+                    if(roleSelect) { roleSelect.innerHTML = `<option value="agent">Agent (Ejen Biasa)</option><option value="leader">Leader (Pengurus)</option>`; }
                     if(leaderSelect) {
                         leaderSelect.innerHTML = `<option value="admin">Tiada Leader (Pengurusan Utama)</option>`;
-                        try {
-                            const snap = await db.collection('users').where('role', '==', 'leader').get();
-                            snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; });
-                        } catch(e) { console.error(e); }
+                        try { const snap = await db.collection('users').where('role', '==', 'leader').get(); snap.forEach(doc => { leaderSelect.innerHTML += `<option value="${doc.id}">${doc.data().name}</option>`; }); } catch(e) {}
                     }
                 } else if (currentUser.role === 'leader') {
                     if(roleDiv) roleDiv.classList.add('hidden'); if(leaderDiv) leaderDiv.classList.add('hidden');
@@ -1556,31 +1293,112 @@
             }
         }
 
+        async function renderUsersTable() {
+            const tbody = document.getElementById('usersTableBody'); if(!tbody) return;
+            tbody.innerHTML = '<tr><td colspan="6" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
+            try {
+                const snap = await db.collection('users').get();
+                let usersList = []; const allUsersMap = {};
+                snap.forEach(doc => { const u = doc.data(); allUsersMap[u.id] = u; usersList.push(u); });
+
+                if(currentUser.role === 'leader') { usersList = usersList.filter(u => u.leaderId === currentUser.id); } 
+                else if (currentUser.role === 'superadmin') { usersList = usersList.filter(u => u.role !== 'ceo'); }
+                
+                if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
+
+                tbody.innerHTML = '';
+                usersList.forEach(u => {
+                    let leaderSelectHtml = '-';
+                    if (u.role === 'agent') {
+                        let leaderName = 'Pengurusan Utama';
+                        if (u.leaderId && allUsersMap[u.leaderId]) leaderName = allUsersMap[u.leaderId].name;
+                        if (currentUser.role === 'ceo' || currentUser.role === 'superadmin') {
+                            let options = `<option value="admin">- Pilih Leader -</option>`;
+                            Object.values(allUsersMap).filter(user => user.role === 'leader').forEach(ldr => { options += `<option value="${ldr.id}" ${u.leaderId === ldr.id ? 'selected' : ''}>${ldr.name}</option>`; });
+                            options += `<option value="admin" ${u.leaderId === 'admin' || !u.leaderId ? 'selected' : ''}>Direct Admin</option>`;
+                            leaderSelectHtml = `<select onchange="updateUserLeader('${u.id}', this.value)" class="max-w-[120px] text-[10px] font-medium rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors text-slate-700 dark:text-slate-300 truncate">${options}</select>`;
+                        } else { leaderSelectHtml = `<span class="text-slate-600 dark:text-slate-400 text-xs">${leaderName}</span>`; }
+                    } else { leaderSelectHtml = `<span class="text-slate-400 italic text-[10px]">Pengurusan Utama</span>`; }
+                    
+                    let roleBadge = '';
+                    if(u.role === 'ceo') roleBadge = '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>';
+                    else if(u.role === 'superadmin') roleBadge = '<span class="bg-red-100 text-red-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Superadmin</span>';
+                    else if(u.role === 'leader') roleBadge = '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>';
+                    else roleBadge = '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>';
+
+                    let roleSelectHtml = roleBadge;
+                    if (u.id !== currentUser.id) { 
+                        if (currentUser.role === 'ceo') {
+                            roleSelectHtml = `<select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'ceo' ? 'text-purple-600' : (u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600'))}"><option value="ceo" ${u.role === 'ceo' ? 'selected' : ''}>CEO</option><option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option><option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option><option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option></select>`;
+                        } else if (currentUser.role === 'superadmin' && u.role !== 'ceo') {
+                            roleSelectHtml = `<select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600')}"><option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option><option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option><option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option></select>`;
+                        }
+                    }
+
+                    const lastLoginText = formatFirebaseTime(u.lastLogin);
+                    const lastUpdateText = formatFirebaseTime(u.lastUpdate);
+
+                    const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
+                    tr.innerHTML = `
+                        <td class="p-3 text-slate-800 dark:text-slate-200 font-medium">
+                            <div class="flex items-center gap-2">
+                                ${u.profilePic ? `<img src="${u.profilePic}" class="w-6 h-6 rounded-full object-cover border border-slate-200 dark:border-slate-600">` : `<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>`}
+                                <div><div class="text-sm">${u.name}</div><div class="text-[10px] text-slate-500 font-mono">${u.email || u.id}</div></div>
+                            </div>
+                        </td>
+                        <td class="p-3">${roleSelectHtml}</td>
+                        <td class="p-3">${leaderSelectHtml}</td>
+                        <td class="p-3">${lastLoginText}</td>
+                        <td class="p-3">${lastUpdateText}</td>
+                        <td class="p-3 text-center">
+                            ${u.id !== currentUser.id ? `<button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna"><i class="fa-solid fa-trash"></i></button>` : '-'}
+                        </td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="6" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
+        }
+
+        async function updateUserRole(userId, newRole) {
+            if(confirm("Adakah anda pasti mahu menukar tahap peranan pengguna ini?")) {
+                try {
+                    let updateData = { role: newRole }; if(newRole !== 'agent') updateData.leaderId = null; 
+                    await db.collection('users').doc(userId).update(updateData);
+                    await fetchAllUsersForOrg(); setupRoleUI(); renderUsersTable(); alert("Tahap pengguna berjaya dikemas kini.");
+                } catch(e) { console.error(e); alert("Gagal mengemas kini tahap pengguna."); renderUsersTable(); }
+            } else { renderUsersTable(); }
+        }
+
+        async function updateUserLeader(userId, newLeaderId) {
+            if(confirm("Adakah anda pasti mahu menukar Leader untuk ejen ini?")) {
+                try {
+                    await db.collection('users').doc(userId).update({ leaderId: newLeaderId });
+                    await fetchAllUsersForOrg(); setupRoleUI(); renderUsersTable(); alert("Leader berjaya dikemas kini.");
+                } catch(e) { console.error(e); alert("Gagal mengemas kini Leader."); renderUsersTable(); }
+            } else { renderUsersTable(); }
+        }
+
+        async function deleteUser(userId) {
+            if(confirm("Adakah anda pasti mahu memadam pengguna ini? Tindakan ini tidak boleh diundur.")) {
+                try { await db.collection('users').doc(userId).delete(); fetchAllUsersForOrg(); setupRoleUI(); setupManagementUI(); alert("Pengguna telah dipadam."); } catch(e) { console.error(e); alert("Gagal memadam."); }
+            }
+        }
+
         function previewProfilePic(event) {
             const file = event.target.files[0];
             if (file) {
                 if (file.size > 2 * 1024 * 1024) alert("Amaran: Saiz gambar terlalu besar. Sila guna gambar di bawah 2MB.");
                 const reader = new FileReader();
-                reader.onload = function(e) {
-                    const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon');
-                    if(imgPrev && imgIcon) { imgPrev.src = e.target.result; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); }
-                }
+                reader.onload = function(e) { const imgPrev = document.getElementById('myAvatarPreview'); const imgIcon = document.getElementById('myAvatarIcon'); if(imgPrev && imgIcon) { imgPrev.src = e.target.result; imgPrev.classList.remove('hidden'); imgIcon.classList.add('hidden'); } }
                 reader.readAsDataURL(file);
             }
         }
 
         async function updateMyProfile(e) {
             e.preventDefault();
-            const newName = document.getElementById('myName').value.trim();
-            const oldPass = document.getElementById('myOldPass').value.trim();
-            const newPass = document.getElementById('myNewPass').value.trim();
-            const picInput = document.getElementById('myProfilePic');
-
-            const updates = {};
-            if(newName) { currentUser.name = newName; updates.name = newName; }
-
-            const submitBtn = document.getElementById('profileSaveBtn');
-            const originalBtnText = submitBtn.innerHTML;
+            const newName = document.getElementById('myName').value.trim(); const oldPass = document.getElementById('myOldPass').value.trim(); const newPass = document.getElementById('myNewPass').value.trim(); const picInput = document.getElementById('myProfilePic');
+            const updates = {}; if(newName) { currentUser.name = newName; updates.name = newName; }
+            const submitBtn = document.getElementById('profileSaveBtn'); const originalBtnText = submitBtn.innerHTML;
             
             try {
                 if (oldPass || newPass) {
@@ -1589,71 +1407,42 @@
                     if (authUser) {
                         submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Mengesahkan...`; submitBtn.disabled = true;
                         const credential = firebase.auth.EmailAuthProvider.credential(authUser.email, oldPass);
-                        try {
-                            await authUser.reauthenticateWithCredential(credential); await authUser.updatePassword(newPass);
-                        } catch (err) {
-                            console.error("Re-auth error: ", err); alert("Kata laluan semasa yang dimasukkan adalah salah. Sila cuba lagi.");
-                            submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; return;
-                        }
+                        try { await authUser.reauthenticateWithCredential(credential); await authUser.updatePassword(newPass); } 
+                        catch (err) { console.error(err); alert("Kata laluan semasa yang dimasukkan salah."); submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; return; }
                     }
                 }
 
                 submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...`; submitBtn.disabled = true;
-
                 if(picInput.files && picInput.files[0]) {
                     const file = picInput.files[0]; const reader = new FileReader();
                     reader.onload = async function(e) {
-                        const base64Data = e.target.result.split(',')[1]; const mimeType = file.type;
-                        const fileName = currentUser.id + "_" + Date.now() + "_" + file.name;
+                        const base64Data = e.target.result.split(',')[1]; const mimeType = file.type; const fileName = currentUser.id + "_" + Date.now() + "_" + file.name;
                         submitBtn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memuat naik ke Drive...`;
-
                         try {
                             const scriptUrl = "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI"; 
-                            if (scriptUrl === "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI") {
-                                alert("Sila kemas kini URL Google Apps Script di dalam fail HTML terlebih dahulu untuk membolehkan muat naik ke Google Drive.");
-                                throw new Error("Script URL not configured");
-                            }
-
-                            const response = await fetch(scriptUrl, {
-                                method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
-                                body: JSON.stringify({ uid: currentUser.id, nama: currentUser.name, fileName: fileName, mimeType: mimeType, data: base64Data })
-                            });
+                            if (scriptUrl === "MASUKKAN_URL_GOOGLE_APPS_SCRIPT_DI_SINI") { alert("Kemas kini URL Google Apps Script di dalam fail HTML."); throw new Error("Script URL not configured"); }
+                            const response = await fetch(scriptUrl, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ uid: currentUser.id, nama: currentUser.name, fileName: fileName, mimeType: mimeType, data: base64Data }) });
                             const result = await response.json();
-                            
-                            if (result.status === 'success') {
-                                const driveImageUrl = "https://lh3.googleusercontent.com/d/" + result.fileId;
-                                currentUser.profilePic = driveImageUrl;
-                                updates.profilePic = driveImageUrl;
-                                await saveProfileToFirebase(updates);
-                            } else { throw new Error(result.message); }
-                        } catch (uploadError) { console.error("Upload error:", uploadError); alert("Ralat semasa memuat naik gambar ke Google Drive."); } 
-                        finally { submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
+                            if (result.status === 'success') { const driveImageUrl = "https://lh3.googleusercontent.com/d/" + result.fileId; currentUser.profilePic = driveImageUrl; updates.profilePic = driveImageUrl; await saveProfileToFirebase(updates); } else { throw new Error(result.message); }
+                        } catch (err) { console.error(err); alert("Ralat memuat naik gambar."); } finally { submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
                     };
                     reader.readAsDataURL(file);
-                } else {
-                    await saveProfileToFirebase(updates);
-                    submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false;
-                }
-            } catch (error) { console.error("Update profile error: ", error); alert("Berlaku ralat semasa mengemaskini profil."); submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
+                } else { await saveProfileToFirebase(updates); submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
+            } catch (error) { console.error(error); alert("Ralat mengemaskini profil."); submitBtn.innerHTML = originalBtnText; submitBtn.disabled = false; }
         }
 
         async function saveProfileToFirebase(updates) {
             try {
                 await db.collection('users').doc(currentUser.id).update(updates);
-                alert('Profil berjaya dikemas kini!'); setupRoleUI(); 
-                if(currentUser.role !== 'agent') renderUsersTable();
-                const oldPassEl = document.getElementById('myOldPass'); if (oldPassEl) oldPassEl.value = '';
-                const newPassEl = document.getElementById('myNewPass'); if (newPassEl) newPassEl.value = '';
+                alert('Profil berjaya dikemas kini!'); setupRoleUI(); if(currentUser.role !== 'agent') renderUsersTable();
+                const oldPassEl = document.getElementById('myOldPass'); if (oldPassEl) oldPassEl.value = ''; const newPassEl = document.getElementById('myNewPass'); if (newPassEl) newPassEl.value = '';
             } catch(e) { console.error(e); alert('Gagal menyimpan profil.'); }
         }
 
         function handleRoleChange() {
             const roleEl = document.getElementById('newUserRole'); const role = roleEl ? roleEl.value : '';
             const leaderDiv = document.getElementById('leaderSelectDiv');
-            if(leaderDiv) { 
-                if(role === 'leader' || role === 'superadmin' || role === 'ceo') leaderDiv.classList.add('hidden'); 
-                else leaderDiv.classList.remove('hidden'); 
-            }
+            if(leaderDiv) { if(role === 'leader' || role === 'superadmin' || role === 'ceo') leaderDiv.classList.add('hidden'); else leaderDiv.classList.remove('hidden'); }
         }
 
         const addUserFormEl = document.getElementById('addUserForm');
@@ -1665,10 +1454,7 @@
                 
                 if(currentUser.role === 'superadmin' || currentUser.role === 'ceo') {
                     const roleEl = document.getElementById('newUserRole'); role = roleEl ? roleEl.value : 'agent';
-                    if(role === 'agent') { 
-                        const leaderEl = document.getElementById('newUserLeader'); 
-                        leaderId = leaderEl ? leaderEl.value : null; 
-                    } else { leaderId = null; }
+                    if(role === 'agent') { const leaderEl = document.getElementById('newUserLeader'); leaderId = leaderEl ? leaderEl.value : null; } else { leaderId = null; }
                 }
 
                 try {
@@ -1677,126 +1463,14 @@
                     const newUid = userCredential.user.uid;
                     await db.collection('users').doc(newUid).set({ id: newUid, email: email, name: name, role: role, leaderId: leaderId, profilePic: null });
                     await secondaryApp.auth().signOut(); secondaryApp.delete();
-                    alert("Berjaya: Pengguna baharu didaftarkan!");
-                    this.reset(); fetchAllUsersForOrg(); setupRoleUI(); setupManagementUI(); 
+                    alert("Pengguna baharu didaftarkan!"); this.reset(); fetchAllUsersForOrg(); setupRoleUI(); setupManagementUI(); 
                 } catch(err) { console.error(err); alert("Gagal mendaftar pengguna. " + err.message); }
             });
         }
 
-        async function renderUsersTable() {
-            const tbody = document.getElementById('usersTableBody');
-            if(!tbody) return;
-            tbody.innerHTML = '<tr><td colspan="5" class="p-4 text-center text-slate-400">Memuatkan...</td></tr>';
-            try {
-                const snap = await db.collection('users').get();
-                let usersList = []; const allUsersMap = {};
-                snap.forEach(doc => { const u = doc.data(); allUsersMap[u.id] = u; usersList.push(u); });
-
-                if(currentUser.role === 'leader') {
-                    usersList = usersList.filter(u => u.leaderId === currentUser.id);
-                } else if (currentUser.role === 'superadmin') {
-                    usersList = usersList.filter(u => u.role !== 'ceo');
-                }
-                
-                if(usersList.length === 0) { tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-slate-400">Tiada pengguna dijumpai.</td></tr>`; return; }
-
-                tbody.innerHTML = '';
-                usersList.forEach(u => {
-                    let leaderName = '-';
-                    if (u.role === 'agent') {
-                        if (u.leaderId && allUsersMap[u.leaderId]) leaderName = allUsersMap[u.leaderId].name;
-                        else if (u.leaderId === 'admin' || u.leaderId === 'ceo') leaderName = 'Pengurusan Utama';
-                        else leaderName = 'Pengurusan Utama';
-                    }
-                    
-                    let roleBadge = '';
-                    if(u.role === 'ceo') roleBadge = '<span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold uppercase">CEO</span>';
-                    else if(u.role === 'superadmin') roleBadge = '<span class="bg-red-100 text-red-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Superadmin</span>';
-                    else if(u.role === 'leader') roleBadge = '<span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Leader</span>';
-                    else roleBadge = '<span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded text-[10px] font-bold uppercase">Agent</span>';
-
-                    // Dropdown untuk tukar role (Hanya untuk CEO dan Superadmin)
-                    let roleSelectHtml = roleBadge;
-                    if (u.id !== currentUser.id) { // Tak boleh tukar pangkat sendiri dari sini
-                        if (currentUser.role === 'ceo') {
-                            roleSelectHtml = `
-                                <select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'ceo' ? 'text-purple-600' : (u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600'))}">
-                                    <option value="ceo" ${u.role === 'ceo' ? 'selected' : ''}>CEO</option>
-                                    <option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option>
-                                    <option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option>
-                                    <option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option>
-                                </select>
-                            `;
-                        } else if (currentUser.role === 'superadmin' && u.role !== 'ceo') {
-                            roleSelectHtml = `
-                                <select onchange="updateUserRole('${u.id}', this.value)" class="text-[10px] font-bold uppercase rounded px-2 py-1 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-600 outline-none cursor-pointer focus:ring-1 focus:ring-infaq transition-colors ${u.role === 'superadmin' ? 'text-red-600' : (u.role === 'leader' ? 'text-blue-600' : 'text-emerald-600')}">
-                                    <option value="superadmin" ${u.role === 'superadmin' ? 'selected' : ''}>SUPERADMIN</option>
-                                    <option value="leader" ${u.role === 'leader' ? 'selected' : ''}>LEADER</option>
-                                    <option value="agent" ${u.role === 'agent' ? 'selected' : ''}>AGENT</option>
-                                </select>
-                            `;
-                        }
-                    }
-
-                    const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition border-b border-slate-100 dark:border-slate-700";
-                    tr.innerHTML = `
-                        <td class="p-3 text-slate-800 dark:text-slate-200 font-medium flex items-center gap-2">
-                            ${u.profilePic ? `<img src="${u.profilePic}" class="w-6 h-6 rounded-full object-cover border border-slate-200 dark:border-slate-600">` : `<div class="w-6 h-6 rounded-full bg-slate-200 dark:bg-slate-700 flex items-center justify-center"><i class="fa-solid fa-user text-[10px] text-slate-400"></i></div>`}
-                            ${u.name}
-                        </td>
-                        <td class="p-3 text-slate-500 dark:text-slate-400 font-mono text-xs">${u.email || u.id}</td>
-                        <td class="p-3">${roleSelectHtml}</td>
-                        <td class="p-3 text-slate-600 dark:text-slate-400 text-xs">${leaderName}</td>
-                        <td class="p-3 text-center">
-                            ${u.id !== currentUser.id ? `<button onclick="deleteUser('${u.id}')" class="text-red-500 hover:text-red-700 transition" title="Padam Pengguna"><i class="fa-solid fa-trash"></i></button>` : '-'}
-                        </td>
-                    `;
-                    tbody.appendChild(tr);
-                });
-            } catch (err) { console.error(err); tbody.innerHTML = `<tr><td colspan="5" class="p-4 text-center text-red-400">Ralat memuat senarai pengguna.</td></tr>`; }
-        }
-
-        async function updateUserRole(userId, newRole) {
-            if(confirm("Adakah anda pasti mahu menukar tahap peranan pengguna ini?")) {
-                try {
-                    let updateData = { role: newRole };
-                    // Reset leaderId jika dia diupgrade jadi leader/superadmin/ceo
-                    if(newRole !== 'agent') updateData.leaderId = null; 
-                    
-                    await db.collection('users').doc(userId).update(updateData);
-                    await fetchAllUsersForOrg(); // Reload user map in memory
-                    setupRoleUI(); // Refresh filters just in case
-                    renderUsersTable(); // Re-render table smoothly
-                    alert("Tahap pengguna berjaya dikemas kini.");
-                } catch(e) {
-                    console.error(e);
-                    alert("Gagal mengemas kini tahap pengguna.");
-                    renderUsersTable(); // revert dropdown visual
-                }
-            } else {
-                renderUsersTable(); // cancel visual
-            }
-        }
-
-        async function deleteUser(userId) {
-            if(confirm("Adakah anda pasti mahu memadam pengguna ini? Tindakan ini tidak boleh diundur.")) {
-                try {
-                    await db.collection('users').doc(userId).delete();
-                    fetchAllUsersForOrg();
-                    setupRoleUI(); setupManagementUI();
-                    alert("Pengguna telah dipadam.");
-                } catch(e) {
-                    console.error(e); alert("Gagal memadam.");
-                }
-            }
-        }
-
-        // ================= FILTER & FORM LOGIC =================
         function isDateInRange(dateStr, start, end) {
-            if (!start && !end) return true; 
-            if (!dateStr) return false;      
-            if (start && dateStr < start) return false;
-            if (end && dateStr > end) return false;
+            if (!start && !end) return true; if (!dateStr) return false;      
+            if (start && dateStr < start) return false; if (end && dateStr > end) return false;
             return true;
         }
 
@@ -1835,66 +1509,43 @@
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
             const filterDiv = document.getElementById('global-date-filter');
-            if (filterDiv) {
-                if(tabId === 'form' || tabId === 'management') filterDiv.style.display = 'none'; 
-                else filterDiv.style.display = 'flex';
-            }
-
+            if (filterDiv) { if(tabId === 'form' || tabId === 'management') filterDiv.style.display = 'none'; else filterDiv.style.display = 'flex'; }
             const activeTab = document.getElementById('tab-' + tabId); if(activeTab) activeTab.classList.add('active');
             const navTab = document.getElementById('nav-' + tabId); if(navTab) navTab.classList.add('active');
-
-            if(tabId === 'dashboard') renderCharts();
-            if(tabId === 'calendar') renderCalendar();
+            if(tabId === 'dashboard') renderCharts(); if(tabId === 'calendar') renderCalendar();
             window.scrollTo(0, 0);
         }
 
         function toggleConditionalFields() {
             const remarkEl = document.getElementById('remark'); const statusEl = document.getElementById('status');
             const remark = remarkEl ? remarkEl.value.toLowerCase() : ''; const status = statusEl ? statusEl.value.toLowerCase() : '';
-
             const divSubmitDate = document.getElementById('divSubmitDate'); const submitDate = document.getElementById('submitDate');
-            if (divSubmitDate && submitDate) {
-                if (remark.includes('submit')) divSubmitDate.classList.remove('hidden');
-                else { divSubmitDate.classList.add('hidden'); submitDate.value = ''; }
-            }
-
+            if (divSubmitDate && submitDate) { if (remark.includes('submit')) divSubmitDate.classList.remove('hidden'); else { divSubmitDate.classList.add('hidden'); submitDate.value = ''; } }
             const divEnforceDate = document.getElementById('divEnforceDate'); const enforceDate = document.getElementById('enforceDate');
-            if (divEnforceDate && enforceDate) {
-                if (status.includes('enforce')) divEnforceDate.classList.remove('hidden');
-                else { divEnforceDate.classList.add('hidden'); enforceDate.value = ''; }
-            }
+            if (divEnforceDate && enforceDate) { if (status.includes('enforce')) divEnforceDate.classList.remove('hidden'); else { divEnforceDate.classList.add('hidden'); enforceDate.value = ''; } }
         }
 
         function calculateAge() {
-            const dobInput = document.getElementById('dob');
-            if (!dobInput || !dobInput.value) return;
+            const dobInput = document.getElementById('dob'); if (!dobInput || !dobInput.value) return;
             const dob = new Date(dobInput.value); const today = new Date();
-            let age = today.getFullYear() - dob.getFullYear();
-            const m = today.getMonth() - dob.getMonth();
+            let age = today.getFullYear() - dob.getFullYear(); const m = today.getMonth() - dob.getMonth();
             if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) age--;
-            
             const ageEl = document.getElementById('age'); if (ageEl) ageEl.value = age;
-            let range = "";
-            if (age < 20) range = "Bawah 20"; else if (age <= 30) range = "20 - 30"; else if (age <= 40) range = "31 - 40"; else if (age <= 50) range = "41 - 50"; else range = "Atas 50";
+            let range = ""; if (age < 20) range = "Bawah 20"; else if (age <= 30) range = "20 - 30"; else if (age <= 40) range = "31 - 40"; else if (age <= 50) range = "41 - 50"; else range = "Atas 50";
             const ageRangeEl = document.getElementById('ageRange'); if (ageRangeEl) ageRangeEl.value = range;
         }
 
         function generateWhatsapp() {
-            const phoneEl = document.getElementById('phone'); const waEl = document.getElementById('whatsapp');
-            if (!phoneEl || !waEl) return;
-            let phone = phoneEl.value.replace(/\D/g, ''); 
-            if (phone.startsWith('0')) phone = '6' + phone; 
-            if (phone.length > 5) waEl.value = `https://wa.me/${phone}`;
-            else waEl.value = '';
+            const phoneEl = document.getElementById('phone'); const waEl = document.getElementById('whatsapp'); if (!phoneEl || !waEl) return;
+            let phone = phoneEl.value.replace(/\D/g, ''); if (phone.startsWith('0')) phone = '6' + phone; 
+            if (phone.length > 5) waEl.value = `https://wa.me/${phone}`; else waEl.value = '';
         }
 
         const prospectFormEl = document.getElementById('prospectForm');
         if (prospectFormEl) {
             prospectFormEl.addEventListener('submit', async function(e) {
                 e.preventDefault();
-                
                 let assignedLeader = 'admin';
                 if (currentUser.role === 'agent') assignedLeader = currentUser.leaderId;
                 else if (currentUser.role === 'leader') assignedLeader = currentUser.id;
@@ -1903,63 +1554,38 @@
 
                 const updatedProspect = {
                     id: currentEditId || Date.now(),
-                    ownerId: currentUser.id,         
-                    leaderId: assignedLeader,        
-                    ownerName: currentUser.name,     
-                    name: getVal('name'),
-                    phone: getVal('phone'),
-                    whatsapp: getVal('whatsapp'),
-                    dob: getVal('dob'),
-                    age: getVal('age'),
-                    ageRange: getVal('ageRange'),
-                    source1: getVal('source1'),
-                    source2: getVal('source2'),
-                    dateApproach: getVal('dateApproach'),
-                    openCaseDate: getVal('openCaseDate'),
-                    fullPresentation: getVal('fullPresentation'),
-                    fullPresentationRating: getVal('fullPresentationRating'),
-                    dialDate: getVal('dialDate'),
-                    reachDate: getVal('reachDate'),
-                    callsRating: getVal('callsRating'),
-                    messageDate: getVal('messageDate'),
-                    followUpDate: getVal('followUpDate'),
-                    followUpRating: getVal('followUpRating'),
-                    remark: getVal('remark'),
-                    submitDate: getVal('submitDate'),
-                    product: getVal('product'),
-                    ace: getVal('ace'),
-                    paymentMode: getVal('paymentMode'),
-                    production: parseFloat(getVal('production') || 0),
-                    status: getVal('status'),
-                    enforceDate: getVal('enforceDate')
+                    ownerId: currentUser.id, leaderId: assignedLeader, ownerName: currentUser.name,     
+                    name: getVal('name'), phone: getVal('phone'), whatsapp: getVal('whatsapp'),
+                    dob: getVal('dob'), age: getVal('age'), ageRange: getVal('ageRange'),
+                    source1: getVal('source1'), source2: getVal('source2'), dateApproach: getVal('dateApproach'),
+                    openCaseDate: getVal('openCaseDate'), fullPresentation: getVal('fullPresentation'), fullPresentationRating: getVal('fullPresentationRating'),
+                    dialDate: getVal('dialDate'), reachDate: getVal('reachDate'), callsRating: getVal('callsRating'),
+                    messageDate: getVal('messageDate'), followUpDate: getVal('followUpDate'), followUpRating: getVal('followUpRating'),
+                    remark: getVal('remark'), submitDate: getVal('submitDate'), product: getVal('product'),
+                    ace: getVal('ace'), paymentMode: getVal('paymentMode'), production: parseFloat(getVal('production') || 0),
+                    status: getVal('status'), enforceDate: getVal('enforceDate')
                 };
 
                 const pIdStr = updatedProspect.id.toString();
+                const btnSubmit = document.getElementById('submitProspectBtn');
+                const btnHtml = btnSubmit.innerHTML;
+                btnSubmit.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Menyimpan...`;
                 
                 try {
                     await db.collection('prospects').doc(pIdStr).set(updatedProspect);
+                    await logSystemActivity(); // Trigger Activity Log Update!
                     
                     if (currentEditId) {
                         const index = prospectsData.findIndex(x => x.id === currentEditId);
                         if (index !== -1) {
-                            updatedProspect.ownerId = prospectsData[index].ownerId;
-                            updatedProspect.leaderId = prospectsData[index].leaderId;
-                            updatedProspect.ownerName = prospectsData[index].ownerName;
-                            prospectsData[index] = updatedProspect;
-                            alert('Data Prospek Berjaya Dikemaskini di Server!');
+                            updatedProspect.ownerId = prospectsData[index].ownerId; updatedProspect.leaderId = prospectsData[index].leaderId; updatedProspect.ownerName = prospectsData[index].ownerName;
+                            prospectsData[index] = updatedProspect; alert('Prospek Berjaya Dikemaskini!');
                         }
-                    } else {
-                        prospectsData.unshift(updatedProspect); 
-                        alert('Data Prospek Berjaya Disimpan di Server!');
-                    }
+                    } else { prospectsData.unshift(updatedProspect); alert('Prospek Berjaya Disimpan!'); }
                     
-                    resetForm();
-                    applyFilter(); 
-                    switchTab('list'); 
-                } catch (error) {
-                    console.error("Error saving prospect: ", error);
-                    alert("Ralat semasa menyimpan. Sila cuba lagi.");
-                }
+                    resetForm(); applyFilter(); switchTab('list'); 
+                } catch (error) { console.error(error); alert("Ralat menyimpan. Cuba lagi."); }
+                finally { btnSubmit.innerHTML = btnHtml; }
             });
         }
 
@@ -1971,21 +1597,13 @@
             toggleConditionalFields();
 
             currentEditId = null;
-            const formTitle = document.getElementById('formTitleText');
-            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-user-plus text-infaq mr-2"></i> Daftar Prospek Baru`;
-            
+            const formTitle = document.getElementById('formTitleText'); if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-user-plus text-infaq mr-2"></i> Daftar Prospek Baru`;
             const submitBtn = document.getElementById('submitProspectBtn');
-            if(submitBtn) {
-                submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK`;
-                submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                submitBtn.classList.add('bg-infaq', 'hover:bg-infaq-dark');
-            }
+            if(submitBtn) { submitBtn.innerHTML = `<i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN REKOD PROSPEK`; submitBtn.classList.remove('bg-blue-600', 'hover:bg-blue-700'); submitBtn.classList.add('bg-infaq', 'hover:bg-infaq-dark'); }
         }
 
         function viewProspect(id) {
-            const p = prospectsData.find(x => x.id === id);
-            if(!p) return;
-
+            const p = prospectsData.find(x => x.id === id); if(!p) return;
             const content = document.getElementById('viewProspectContent');
             const getVal = (val, suffix='') => val ? `<span class="font-medium text-slate-800 dark:text-slate-200">${val} ${suffix}</span>` : `<span class="text-slate-400 italic">Tiada Rekod</span>`;
             const getRating = (val) => val ? `<span class="font-medium text-yellow-500">${'⭐'.repeat(parseInt(val))}</span>` : `<span class="text-slate-400 italic">Tiada Rekod</span>`;
@@ -2037,217 +1655,82 @@
                     </div>
                 </div>
             `;
-            
             const editBtn = document.getElementById('modalEditBtn');
-            if(editBtn) {
-                editBtn.onclick = function() {
-                    closeViewModal();
-                    editProspect(id);
-                };
-            }
-
-            const modal = document.getElementById('viewProspectModal');
-            modal.classList.remove('hidden');
-            setTimeout(() => { 
-                modal.style.opacity = '1'; 
-                modal.firstElementChild.classList.remove('scale-95'); 
-            }, 10);
+            if(editBtn) { editBtn.onclick = function() { closeViewModal(); editProspect(id); }; }
+            const modal = document.getElementById('viewProspectModal'); modal.classList.remove('hidden');
+            setTimeout(() => { modal.style.opacity = '1'; modal.firstElementChild.classList.remove('scale-95'); }, 10);
         }
 
         function closeViewModal() {
-            const modal = document.getElementById('viewProspectModal');
-            modal.style.opacity = '0';
-            modal.firstElementChild.classList.add('scale-95');
+            const modal = document.getElementById('viewProspectModal'); modal.style.opacity = '0'; modal.firstElementChild.classList.add('scale-95');
             setTimeout(() => { modal.classList.add('hidden'); }, 300);
         }
 
         function editProspect(id, event) {
-            if(event) event.stopPropagation(); 
-            const p = prospectsData.find(x => x.id === id);
-            if(!p) return;
-
-            currentEditId = id;
-            const setVal = (fid, val) => { if(document.getElementById(fid)) document.getElementById(fid).value = val || ''; };
-            
-            setVal('name', p.name); setVal('phone', p.phone); setVal('whatsapp', p.whatsapp);
-            setVal('dob', p.dob); setVal('age', p.age); setVal('ageRange', p.ageRange);
+            if(event) event.stopPropagation(); const p = prospectsData.find(x => x.id === id); if(!p) return;
+            currentEditId = id; const setVal = (fid, val) => { if(document.getElementById(fid)) document.getElementById(fid).value = val || ''; };
+            setVal('name', p.name); setVal('phone', p.phone); setVal('whatsapp', p.whatsapp); setVal('dob', p.dob); setVal('age', p.age); setVal('ageRange', p.ageRange);
             setVal('source1', p.source1); setVal('source2', p.source2); setVal('dateApproach', p.dateApproach);
             setVal('openCaseDate', p.openCaseDate); setVal('fullPresentation', p.fullPresentation); setVal('fullPresentationRating', p.fullPresentationRating);
             setVal('dialDate', p.dialDate); setVal('reachDate', p.reachDate); setVal('callsRating', p.callsRating);
             setVal('messageDate', p.messageDate); setVal('followUpDate', p.followUpDate); setVal('followUpRating', p.followUpRating);
             setVal('remark', p.remark); setVal('submitDate', p.submitDate); setVal('product', p.product);
-            setVal('ace', p.ace); setVal('paymentMode', p.paymentMode); setVal('production', p.production);
-            setVal('status', p.status); setVal('enforceDate', p.enforceDate);
-
+            setVal('ace', p.ace); setVal('paymentMode', p.paymentMode); setVal('production', p.production); setVal('status', p.status); setVal('enforceDate', p.enforceDate);
             toggleConditionalFields();
-
-            const formTitle = document.getElementById('formTitleText');
-            if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-pen-to-square text-infaq mr-2"></i> Kemaskini Prospek`;
-            
+            const formTitle = document.getElementById('formTitleText'); if(formTitle) formTitle.innerHTML = `<i class="fa-solid fa-pen-to-square text-infaq mr-2"></i> Kemaskini Prospek`;
             const submitBtn = document.getElementById('submitProspectBtn');
-            if(submitBtn) {
-                submitBtn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i> KEMASKINI REKOD PROSPEK`;
-                submitBtn.classList.remove('bg-infaq', 'hover:bg-infaq-dark');
-                submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700');
-            }
+            if(submitBtn) { submitBtn.innerHTML = `<i class="fa-solid fa-floppy-disk"></i> KEMASKINI REKOD PROSPEK`; submitBtn.classList.remove('bg-infaq', 'hover:bg-infaq-dark'); submitBtn.classList.add('bg-blue-600', 'hover:bg-blue-700'); }
             switchTab('form');
         }
 
-        // ================= DASHBOARD & CHARTS =================
         function updateDashboard() {
-            renderTable(); 
-            renderAdsTables(); 
-            renderReports(); 
-            renderCharts();
-            renderOrgTable(); 
-            
-            const totalProspects = document.getElementById('totalProspects');
-            if (totalProspects) totalProspects.innerText = filteredProspects.length; 
+            renderTable(); renderAdsTables(); renderReports(); renderCharts(); renderOrgTable(); 
+            const totalProspects = document.getElementById('totalProspects'); if (totalProspects) totalProspects.innerText = filteredProspects.length; 
             const enforceProduction = filteredProspects.filter(p => p.status && p.status.toLowerCase().includes('enforce')).reduce((sum, p) => sum + p.production, 0);
-            const totalProduction = document.getElementById('totalProduction');
-            if (totalProduction) totalProduction.innerText = 'RM ' + enforceProduction.toLocaleString('en-MY', { minimumFractionDigits: 2 });
+            const totalProduction = document.getElementById('totalProduction'); if (totalProduction) totalProduction.innerText = 'RM ' + enforceProduction.toLocaleString('en-MY', { minimumFractionDigits: 2 });
         }
 
         function renderOrgTable() {
-            const container = document.getElementById('orgSummaryContainer');
-            const tbody = document.getElementById('orgSummaryBody');
-            const countSpan = document.getElementById('orgSummaryCounts');
+            const container = document.getElementById('orgSummaryContainer'); const tbody = document.getElementById('orgSummaryBody'); const countSpan = document.getElementById('orgSummaryCounts');
             if(!container || !tbody) return;
+            if(currentUser.role === 'agent') { container.classList.add('hidden'); return; }
 
-            if(currentUser.role === 'agent') {
-                container.classList.add('hidden');
-                return;
-            }
-
-            container.classList.remove('hidden');
-            tbody.innerHTML = '';
-
-            const prospectCounts = {};
-            filteredProspects.forEach(p => {
-                const owner = p.ownerId || 'admin';
-                prospectCounts[owner] = (prospectCounts[owner] || 0) + 1;
-            });
-
-            const allUsers = Object.values(allUsersData);
-            let totalLeaders = 0;
-            let totalAgents = 0;
+            container.classList.remove('hidden'); tbody.innerHTML = '';
+            const prospectCounts = {}; filteredProspects.forEach(p => { const owner = p.ownerId || 'admin'; prospectCounts[owner] = (prospectCounts[owner] || 0) + 1; });
+            const allUsers = Object.values(allUsersData); let totalLeaders = 0; let totalAgents = 0;
 
             if (currentUser.role === 'ceo' || currentUser.role === 'superadmin') {
-                const leaders = allUsers.filter(u => u.role === 'leader');
-                totalLeaders = leaders.length;
-                
+                const leaders = allUsers.filter(u => u.role === 'leader'); totalLeaders = leaders.length;
                 leaders.forEach(leader => {
-                    const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === leader.id);
-                    totalAgents += agents.length;
-                    const leaderProps = prospectCounts[leader.id] || 0;
-                    
-                    tbody.innerHTML += `
-                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${leader.id}')">
-                            <td class="p-3 flex items-center select-none">
-                                <i id="icon-${leader.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
-                                <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)
-                            </td>
-                            <td class="p-3 text-center">${agents.length}</td>
-                            <td class="p-3 text-center text-infaq">${leaderProps}</td>
-                        </tr>
-                    `;
-                    
-                    agents.forEach(agent => {
-                        const agentProps = prospectCounts[agent.id] || 0;
-                        tbody.innerHTML += `
-                            <tr class="text-slate-600 dark:text-slate-400 group-${leader.id} hidden bg-white dark:bg-slate-800 transition-all">
-                                <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                                <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
-                                <td class="p-3 text-center font-medium">${agentProps}</td>
-                            </tr>
-                        `;
-                    });
+                    const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === leader.id); totalAgents += agents.length; const leaderProps = prospectCounts[leader.id] || 0;
+                    tbody.innerHTML += `<tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${leader.id}')"><td class="p-3 flex items-center select-none"><i id="icon-${leader.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>${leader.name} (Leader)</td><td class="p-3 text-center">${agents.length}</td><td class="p-3 text-center text-infaq">${leaderProps}</td></tr>`;
+                    agents.forEach(agent => { const agentProps = prospectCounts[agent.id] || 0; tbody.innerHTML += `<tr class="text-slate-600 dark:text-slate-400 group-${leader.id} hidden bg-white dark:bg-slate-800 transition-all"><td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td><td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td><td class="p-3 text-center font-medium">${agentProps}</td></tr>`; });
                 });
-                
                 const others = allUsers.filter(u => u.role === 'agent' && (u.leaderId === 'admin' || !u.leaderId));
                 if(others.length > 0) {
                      totalAgents += others.length;
-                     tbody.innerHTML += `
-                        <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('admin_group')">
-                            <td class="p-3 flex items-center select-none">
-                                <i id="icon-admin_group" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
-                                <i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin
-                            </td>
-                            <td class="p-3 text-center">${others.length}</td>
-                            <td class="p-3 text-center text-infaq">-</td>
-                        </tr>
-                    `;
-                    others.forEach(agent => {
-                        const agentProps = prospectCounts[agent.id] || 0;
-                        tbody.innerHTML += `
-                            <tr class="text-slate-600 dark:text-slate-400 group-admin_group hidden bg-white dark:bg-slate-800 transition-all">
-                                <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                                <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
-                                <td class="p-3 text-center font-medium">${agentProps}</td>
-                            </tr>
-                        `;
-                    });
+                     tbody.innerHTML += `<tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('admin_group')"><td class="p-3 flex items-center select-none"><i id="icon-admin_group" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i><i class="fa-solid fa-building text-slate-500 mr-2"></i>Pengurusan / Direct Admin</td><td class="p-3 text-center">${others.length}</td><td class="p-3 text-center text-infaq">-</td></tr>`;
+                    others.forEach(agent => { const agentProps = prospectCounts[agent.id] || 0; tbody.innerHTML += `<tr class="text-slate-600 dark:text-slate-400 group-admin_group hidden bg-white dark:bg-slate-800 transition-all"><td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td><td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td><td class="p-3 text-center font-medium">${agentProps}</td></tr>`; });
                 }
-
-                if (leaders.length === 0 && others.length === 0) {
-                    tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-400">Tiada rekod organisasi dijumpai.</td></tr>`;
-                }
-
+                if (leaders.length === 0 && others.length === 0) { tbody.innerHTML = `<tr><td colspan="3" class="p-4 text-center text-slate-400">Tiada rekod organisasi dijumpai.</td></tr>`; }
             } else if (currentUser.role === 'leader') {
-                totalLeaders = 1;
-                const leaderProps = prospectCounts[currentUser.id] || 0;
-                const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === currentUser.id);
-                totalAgents = agents.length;
-
-                tbody.innerHTML += `
-                    <tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${currentUser.id}')">
-                        <td class="p-3 flex items-center select-none">
-                            <i id="icon-${currentUser.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i>
-                            <i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})
-                        </td>
-                        <td class="p-3 text-center">${agents.length}</td>
-                        <td class="p-3 text-center text-infaq">${leaderProps}</td>
-                    </tr>
-                `;
-                
-                agents.forEach(agent => {
-                    const agentProps = prospectCounts[agent.id] || 0;
-                    tbody.innerHTML += `
-                        <tr class="text-slate-600 dark:text-slate-400 group-${currentUser.id} hidden bg-white dark:bg-slate-800 transition-all">
-                            <td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td>
-                            <td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td>
-                            <td class="p-3 text-center font-medium">${agentProps}</td>
-                        </tr>
-                    `;
-                });
+                totalLeaders = 1; const leaderProps = prospectCounts[currentUser.id] || 0; const agents = allUsers.filter(u => u.role === 'agent' && u.leaderId === currentUser.id); totalAgents = agents.length;
+                tbody.innerHTML += `<tr class="bg-slate-50 dark:bg-slate-800/50 font-semibold text-slate-800 dark:text-slate-200 cursor-pointer hover:bg-slate-100 dark:hover:bg-slate-700 transition" onclick="toggleOrgGroup('${currentUser.id}')"><td class="p-3 flex items-center select-none"><i id="icon-${currentUser.id}" class="fa-solid fa-square-plus text-slate-400 mr-2 text-lg transition-colors"></i><i class="fa-solid fa-user-tie text-blue-500 mr-2"></i>Saya (${currentUser.name})</td><td class="p-3 text-center">${agents.length}</td><td class="p-3 text-center text-infaq">${leaderProps}</td></tr>`;
+                agents.forEach(agent => { const agentProps = prospectCounts[agent.id] || 0; tbody.innerHTML += `<tr class="text-slate-600 dark:text-slate-400 group-${currentUser.id} hidden bg-white dark:bg-slate-800 transition-all"><td class="p-3 pl-10 flex items-center border-l-2 border-slate-200 dark:border-slate-700 ml-4"><i class="fa-solid fa-user text-emerald-500 mr-2 text-xs"></i>${agent.name}</td><td class="p-3 text-center text-slate-300 dark:text-slate-600">-</td><td class="p-3 text-center font-medium">${agentProps}</td></tr>`; });
             }
-
-            if(countSpan) {
-                countSpan.innerHTML = `<span class="font-bold text-infaq">${totalLeaders}</span> Leader &nbsp;|&nbsp; <span class="font-bold text-infaq">${totalAgents}</span> Agent`;
-            }
+            if(countSpan) { countSpan.innerHTML = `<span class="font-bold text-infaq">${totalLeaders}</span> Leader &nbsp;|&nbsp; <span class="font-bold text-infaq">${totalAgents}</span> Agent`; }
         }
 
         function toggleOrgGroup(groupId) {
-            const rows = document.querySelectorAll('.group-' + groupId);
-            const icon = document.getElementById('icon-' + groupId);
-            let isHidden = true;
-            rows.forEach(row => {
-                if (row.classList.contains('hidden')) { row.classList.remove('hidden'); isHidden = false; } 
-                else { row.classList.add('hidden'); isHidden = true; }
-            });
-            if (icon) {
-                if (isHidden) { icon.classList.remove('fa-square-minus', 'text-infaq'); icon.classList.add('fa-square-plus', 'text-slate-400'); } 
-                else { icon.classList.remove('fa-square-plus', 'text-slate-400'); icon.classList.add('fa-square-minus', 'text-infaq'); }
-            }
+            const rows = document.querySelectorAll('.group-' + groupId); const icon = document.getElementById('icon-' + groupId); let isHidden = true;
+            rows.forEach(row => { if (row.classList.contains('hidden')) { row.classList.remove('hidden'); isHidden = false; } else { row.classList.add('hidden'); isHidden = true; } });
+            if (icon) { if (isHidden) { icon.classList.remove('fa-square-minus', 'text-infaq'); icon.classList.add('fa-square-plus', 'text-slate-400'); } else { icon.classList.remove('fa-square-plus', 'text-slate-400'); icon.classList.add('fa-square-minus', 'text-infaq'); } }
         }
 
         function renderTable() {
-            const tbody = document.getElementById('dataTableBody');
-            const emptyState = document.getElementById('emptyState');
+            const tbody = document.getElementById('dataTableBody'); const emptyState = document.getElementById('emptyState');
             if(!tbody) return; tbody.innerHTML = '';
-            if (filteredProspects.length === 0) { 
-                if(emptyState) emptyState.classList.remove('hidden');
-            } else {
+            if (filteredProspects.length === 0) { if(emptyState) emptyState.classList.remove('hidden'); } else {
                 if(emptyState) emptyState.classList.add('hidden');
                 filteredProspects.forEach(p => { 
                     let statusClass = "bg-slate-100 text-slate-600 dark:bg-slate-700 dark:text-slate-300";
@@ -2255,217 +1738,94 @@
                     if(p.status && p.status.toLowerCase().includes('pending')) statusClass = "bg-yellow-100 text-yellow-700 dark:bg-yellow-900/50 dark:text-yellow-400";
                     if(p.status && (p.status.toLowerCase().includes('cancel') || p.status.toLowerCase().includes('batal') || p.status.toLowerCase().includes('tolak'))) statusClass = "bg-red-100 text-red-700 dark:bg-red-900/50 dark:text-red-400";
 
-                    let remarkClass = "text-slate-500 dark:text-slate-400";
-                    if(p.remark && p.remark.toLowerCase().includes('submit')) remarkClass = "text-blue-600 dark:text-blue-400 font-medium";
-
+                    let remarkClass = "text-slate-500 dark:text-slate-400"; if(p.remark && p.remark.toLowerCase().includes('submit')) remarkClass = "text-blue-600 dark:text-blue-400 font-medium";
                     const agentNameLabel = (currentUser && currentUser.role !== 'agent' && p.ownerName) ? `<div class="text-[10px] text-infaq font-bold mt-1"><i class="fa-solid fa-user-tie mr-1"></i>${p.ownerName}</div>` : '';
 
-                    const tr = document.createElement('tr');
-                    tr.className = "hover:bg-slate-50 dark:hover:bg-slate-700/50 transition cursor-pointer";
-                    tr.innerHTML = `
-                        <td class="px-6 py-4" onclick="viewProspect(${p.id})">
-                            <div class="font-medium text-slate-800 dark:text-slate-200">${p.name}</div>
-                            <div class="text-xs text-slate-400 dark:text-slate-500">${p.product || '-'}</div>
-                            ${agentNameLabel}
-                        </td>
-                        <td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.phone} ${p.whatsapp ? `<a href="${p.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="ml-2 text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400"><i class="fa-brands fa-whatsapp"></i></a>` : ''}</td>
-                        <td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.age || '-'} <span class="text-xs text-slate-400 dark:text-slate-500">(${p.ageRange || '-'})</span></td>
-                        <td class="px-6 py-4 text-xs" onclick="viewProspect(${p.id})"><span class="block dark:text-slate-300">${p.source1 || '-'}</span><span class="text-slate-400 dark:text-slate-500">${p.source2 || '-'}</span></td>
-                        <td class="px-6 py-4 ${remarkClass}" onclick="viewProspect(${p.id})">${p.remark || '-'}</td>
-                        <td class="px-6 py-4" onclick="viewProspect(${p.id})"><span class="px-2.5 py-1 rounded-full text-xs ${statusClass}">${p.status || '-'}</span></td>
-                        <td class="px-6 py-4 font-semibold text-slate-700 dark:text-slate-200" onclick="viewProspect(${p.id})">RM ${p.production ? p.production.toLocaleString('en-MY', {minimumFractionDigits: 2}) : '0.00'}</td>
-                        <td class="px-6 py-4 text-center">
-                            <button onclick="editProspect(${p.id}, event)" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 transition px-3 py-1.5 rounded-lg text-xs font-bold" title="Kemaskini Rekod">
-                                <i class="fa-solid fa-pen-to-square mr-1"></i> Edit
-                            </button>
-                        </td>
-                    `;
+                    const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-700/50 transition cursor-pointer";
+                    tr.innerHTML = `<td class="px-6 py-4" onclick="viewProspect(${p.id})"><div class="font-medium text-slate-800 dark:text-slate-200">${p.name}</div><div class="text-xs text-slate-400 dark:text-slate-500">${p.product || '-'}</div>${agentNameLabel}</td><td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.phone} ${p.whatsapp ? `<a href="${p.whatsapp}" target="_blank" onclick="event.stopPropagation()" class="ml-2 text-emerald-500 hover:text-emerald-600 dark:hover:text-emerald-400"><i class="fa-brands fa-whatsapp"></i></a>` : ''}</td><td class="px-6 py-4 dark:text-slate-300" onclick="viewProspect(${p.id})">${p.age || '-'} <span class="text-xs text-slate-400 dark:text-slate-500">(${p.ageRange || '-'})</span></td><td class="px-6 py-4 text-xs" onclick="viewProspect(${p.id})"><span class="block dark:text-slate-300">${p.source1 || '-'}</span><span class="text-slate-400 dark:text-slate-500">${p.source2 || '-'}</span></td><td class="px-6 py-4 ${remarkClass}" onclick="viewProspect(${p.id})">${p.remark || '-'}</td><td class="px-6 py-4" onclick="viewProspect(${p.id})"><span class="px-2.5 py-1 rounded-full text-xs ${statusClass}">${p.status || '-'}</span></td><td class="px-6 py-4 font-semibold text-slate-700 dark:text-slate-200" onclick="viewProspect(${p.id})">RM ${p.production ? p.production.toLocaleString('en-MY', {minimumFractionDigits: 2}) : '0.00'}</td><td class="px-6 py-4 text-center"><button onclick="editProspect(${p.id}, event)" class="text-blue-500 hover:text-blue-700 bg-blue-50 hover:bg-blue-100 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 transition px-3 py-1.5 rounded-lg text-xs font-bold" title="Kemaskini Rekod"><i class="fa-solid fa-pen-to-square mr-1"></i> Edit</button></td>`;
                     tbody.appendChild(tr);
                 });
             }
         }
 
         function renderCharts() {
-            const isDark = document.documentElement.classList.contains('dark');
-            const chartTextColor = isDark ? '#94a3b8' : '#64748b'; 
-            const gridColor = isDark ? '#334155' : '#f1f5f9'; 
-
+            const isDark = document.documentElement.classList.contains('dark'); const chartTextColor = isDark ? '#94a3b8' : '#64748b'; const gridColor = isDark ? '#334155' : '#f1f5f9'; 
             const statusCounts = {}; const sourceCounts = {};
             filteredProspects.forEach(p => { 
-                const statusStr = p.status || 'Tiada Status';
-                if(statusCounts[statusStr] === undefined) statusCounts[statusStr] = 0; statusCounts[statusStr]++;
+                const statusStr = p.status || 'Tiada Status'; if(statusCounts[statusStr] === undefined) statusCounts[statusStr] = 0; statusCounts[statusStr]++;
                 const src = p.source1 || 'Lain-lain'; sourceCounts[src] = (sourceCounts[src] || 0) + 1;
             });
 
-            if(statusChartInstance) statusChartInstance.destroy();
-            if(sourceChartInstance) sourceChartInstance.destroy();
-            if(costAdsChartInstance) costAdsChartInstance.destroy();
+            if(statusChartInstance) statusChartInstance.destroy(); if(sourceChartInstance) sourceChartInstance.destroy(); if(costAdsChartInstance) costAdsChartInstance.destroy();
 
             const statusCtxEl = document.getElementById('statusChart');
             if (statusCtxEl) {
                 const labels = Object.keys(statusCounts); const data = Object.values(statusCounts);
-                const colors = labels.map(l => {
-                    let L = l.toLowerCase();
-                    if(L.includes('enforce')) return '#006b49'; if(L.includes('pending')) return '#facc15'; if(L.includes('cancel') || L.includes('tolak')) return '#ef4444'; return '#94a3b8';
-                });
-                statusChartInstance = new Chart(statusCtxEl.getContext('2d'), {
-                    type: 'doughnut', data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderWidth: isDark ? 2 : 0, borderColor: isDark ? '#1e293b' : '#fff' }] },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: {family: 'Inter'}, color: chartTextColor } } }, cutout: '70%' }
-                });
+                const colors = labels.map(l => { let L = l.toLowerCase(); if(L.includes('enforce')) return '#006b49'; if(L.includes('pending')) return '#facc15'; if(L.includes('cancel') || L.includes('tolak')) return '#ef4444'; return '#94a3b8'; });
+                statusChartInstance = new Chart(statusCtxEl.getContext('2d'), { type: 'doughnut', data: { labels: labels, datasets: [{ data: data, backgroundColor: colors, borderWidth: isDark ? 2 : 0, borderColor: isDark ? '#1e293b' : '#fff' }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right', labels: { boxWidth: 12, font: {family: 'Inter'}, color: chartTextColor } } }, cutout: '70%' } });
             }
 
             const sourceCtxEl = document.getElementById('sourceChart');
-            if (sourceCtxEl) {
-                sourceChartInstance = new Chart(sourceCtxEl.getContext('2d'), {
-                    type: 'bar', data: { labels: Object.keys(sourceCounts), datasets: [{ label: 'Bil. Prospek', data: Object.values(sourceCounts), backgroundColor: '#006b49', borderRadius: 4 }] },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0, color: chartTextColor }, grid: { color: gridColor } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } } }
-                });
-            }
+            if (sourceCtxEl) { sourceChartInstance = new Chart(sourceCtxEl.getContext('2d'), { type: 'bar', data: { labels: Object.keys(sourceCounts), datasets: [{ label: 'Bil. Prospek', data: Object.values(sourceCounts), backgroundColor: '#006b49', borderRadius: 4 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true, ticks: { precision: 0, color: chartTextColor }, grid: { color: gridColor } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } } } }); }
 
             const costCtxEl = document.getElementById('costAdsChart');
             if (costCtxEl) {
                 const adDates = [...new Set([...filteredTkAds.map(a => a.date), ...filteredFbAds.map(a => a.date)])].sort();
-                
                 const tkCostArray = adDates.map(d => { const tk = filteredTkAds.find(a => a.date === d); return tk ? parseFloat(tk.cost) : 0; });
                 const fbCostArray = adDates.map(d => { const fb = filteredFbAds.find(a => a.date === d); return fb ? parseFloat(fb.cost) : 0; });
-                
-                const leadsArray = adDates.map(d => { 
-                    const tk = filteredTkAds.find(a => a.date === d); 
-                    const fb = filteredFbAds.find(a => a.date === d); 
-                    const tkL = tk ? parseInt(tk.leads) : 0;
-                    const fbL = fb ? parseInt(fb.leads) : 0;
-                    return tkL + fbL;
-                });
+                const leadsArray = adDates.map(d => { const tk = filteredTkAds.find(a => a.date === d); const fb = filteredFbAds.find(a => a.date === d); const tkL = tk ? parseInt(tk.leads) : 0; const fbL = fb ? parseInt(fb.leads) : 0; return tkL + fbL; });
 
-                costAdsChartInstance = new Chart(costCtxEl.getContext('2d'), {
-                    data: { 
-                        labels: adDates.length > 0 ? adDates : ['Tiada Data'], 
-                        datasets: [ 
-                            { type: 'line', label: 'Jumlah Lead Dihasilkan', data: adDates.length > 0 ? leadsArray : [0], borderColor: '#f59e0b', backgroundColor: '#f59e0b', borderWidth: 3, tension: 0.3, yAxisID: 'y1' },
-                            { type: 'bar', label: 'Tiktok Ads Cost (RM)', data: adDates.length > 0 ? tkCostArray : [0], backgroundColor: '#0f172a', borderRadius: 4, yAxisID: 'y' }, 
-                            { type: 'bar', label: 'FB Ads Cost (RM)', data: adDates.length > 0 ? fbCostArray : [0], backgroundColor: '#2563eb', borderRadius: 4, yAxisID: 'y' } 
-                        ] 
-                    },
-                    options: { 
-                        responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, 
-                        scales: { 
-                            y: { type: 'linear', position: 'left', title: { display: true, text: 'Kos Pengiklanan (RM)', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { color: gridColor } }, 
-                            y1: { type: 'linear', position: 'right', title: { display: true, text: 'Bilangan Leads', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { drawOnChartArea: false } },
-                            x: { ticks: { color: chartTextColor }, grid: { display: false } } 
-                        } 
-                    }
-                });
+                costAdsChartInstance = new Chart(costCtxEl.getContext('2d'), { data: { labels: adDates.length > 0 ? adDates : ['Tiada Data'], datasets: [ { type: 'line', label: 'Jumlah Lead Dihasilkan', data: adDates.length > 0 ? leadsArray : [0], borderColor: '#f59e0b', backgroundColor: '#f59e0b', borderWidth: 3, tension: 0.3, yAxisID: 'y1' }, { type: 'bar', label: 'Tiktok Ads Cost (RM)', data: adDates.length > 0 ? tkCostArray : [0], backgroundColor: '#0f172a', borderRadius: 4, yAxisID: 'y' }, { type: 'bar', label: 'FB Ads Cost (RM)', data: adDates.length > 0 ? fbCostArray : [0], backgroundColor: '#2563eb', borderRadius: 4, yAxisID: 'y' } ] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'top', labels: {color: chartTextColor} } }, scales: { y: { type: 'linear', position: 'left', title: { display: true, text: 'Kos Pengiklanan (RM)', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { color: gridColor } }, y1: { type: 'linear', position: 'right', title: { display: true, text: 'Bilangan Leads', color: chartTextColor }, beginAtZero: true, ticks: { color: chartTextColor }, grid: { drawOnChartArea: false } }, x: { ticks: { color: chartTextColor }, grid: { display: false } } } } });
             }
         }
 
-        // ================= CALENDAR LOGIC (CEO/ADMIN ONLY) =================
-        function changeCalendarMonth(offset) {
-            calendarDate.setMonth(calendarDate.getMonth() + offset);
-            renderCalendar();
-        }
-
-        function toggleCalendarFilters() {
-            renderCalendar();
-        }
+        function changeCalendarMonth(offset) { calendarDate.setMonth(calendarDate.getMonth() + offset); renderCalendar(); }
+        function toggleCalendarFilters() { renderCalendar(); }
 
         function renderCalendar() {
-            const monthYearEl = document.getElementById('calendarMonthYear');
-            const gridEl = document.getElementById('calendarGrid');
-            if (!monthYearEl || !gridEl) return;
-
-            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true;
-            const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
-
-            const year = calendarDate.getFullYear();
-            const month = calendarDate.getMonth();
-            
+            const monthYearEl = document.getElementById('calendarMonthYear'); const gridEl = document.getElementById('calendarGrid'); if (!monthYearEl || !gridEl) return;
+            const showLeaders = document.getElementById('calShowLeaders') ? document.getElementById('calShowLeaders').checked : true; const showAgents = document.getElementById('calShowAgents') ? document.getElementById('calShowAgents').checked : true;
+            const year = calendarDate.getFullYear(); const month = calendarDate.getMonth();
             const monthNames = ["Januari", "Februari", "Mac", "April", "Mei", "Jun", "Julai", "Ogos", "September", "Oktober", "November", "Disember"];
             monthYearEl.innerText = `${monthNames[month]} ${year}`;
 
             const calData = {};
-            
             prospectsData.forEach(p => {
-                const ownerId = p.ownerId || 'admin';
-                const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' };
-                const role = ownerObj.role;
-
-                if (role === 'leader' && !showLeaders) return;
-                if (role === 'agent' && !showAgents) return;
-                if (role === 'superadmin' || role === 'ceo') return; 
+                const ownerId = p.ownerId || 'admin'; const ownerObj = allUsersData[ownerId] || { name: p.ownerName || 'Unknown', role: 'agent' }; const role = ownerObj.role;
+                if (role === 'leader' && !showLeaders) return; if (role === 'agent' && !showAgents) return; if (role === 'superadmin' || role === 'ceo') return; 
 
                 const updateMap = (dateStr, type) => {
-                    if (!dateStr) return;
-                    const d = new Date(dateStr);
-                    if (isNaN(d)) return;
-                    const ymd = dateStr.substring(0, 10);
-                    
+                    if (!dateStr) return; const d = new Date(dateStr); if (isNaN(d)) return; const ymd = dateStr.substring(0, 10);
                     if (!calData[ymd]) calData[ymd] = {};
-                    if (!calData[ymd][ownerId]) {
-                        calData[ymd][ownerId] = {
-                            name: ownerObj.name.split(' ')[0], 
-                            leads: 0, openCase: 0, submit: 0, enforce: 0
-                        };
-                    }
+                    if (!calData[ymd][ownerId]) { calData[ymd][ownerId] = { name: ownerObj.name.split(' ')[0], leads: 0, openCase: 0, submit: 0, enforce: 0 }; }
                     calData[ymd][ownerId][type]++;
                 };
 
-                updateMap(p.dateApproach, 'leads');
-                updateMap(p.openCaseDate, 'openCase');
-                if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) {
-                    if (p.submitDate) updateMap(p.submitDate, 'submit');
-                }
+                updateMap(p.dateApproach, 'leads'); updateMap(p.openCaseDate, 'openCase');
+                if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { if (p.submitDate) updateMap(p.submitDate, 'submit'); }
                 updateMap(p.enforceDate, 'enforce');
             });
 
-            gridEl.innerHTML = '';
-            const firstDay = new Date(year, month, 1);
-            const lastDay = new Date(year, month + 1, 0);
-            
-            let startDayOfWeek = firstDay.getDay(); 
-            startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
-
+            gridEl.innerHTML = ''; const firstDay = new Date(year, month, 1); const lastDay = new Date(year, month + 1, 0);
+            let startDayOfWeek = firstDay.getDay(); startDayOfWeek = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1; 
             const totalDays = lastDay.getDate();
             
-            for (let i = 0; i < startDayOfWeek; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
-
+            for (let i = 0; i < startDayOfWeek; i++) { gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`; }
             for (let day = 1; day <= totalDays; day++) {
-                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-                const dayData = calData[dateStr] || {};
-                
-                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50">`;
-                cellContent += `<span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span>`;
-                cellContent += `<div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
-
+                const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`; const dayData = calData[dateStr] || {};
+                let cellContent = `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 min-h-[120px] relative transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50"><span class="absolute top-1 right-2 text-xs font-bold text-slate-400">${day}</span><div class="mt-4 space-y-1.5 text-[9px] leading-tight">`;
                 for (const uid in dayData) {
-                    const u = dayData[uid];
-                    let activities = [];
-                    if (u.leads > 0) activities.push(`${u.leads} LEADS`);
-                    if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
-                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`);
-                    if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
-                    
-                    if (activities.length > 0) {
-                        cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1">`;
-                        cellContent += `<span class="font-bold text-infaq">${u.name}:</span> `;
-                        cellContent += `<span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span>`;
-                        cellContent += `</div>`;
-                    }
+                    const u = dayData[uid]; let activities = [];
+                    if (u.leads > 0) activities.push(`${u.leads} LEADS`); if (u.openCase > 0) activities.push(`${u.openCase} OPEN CASE`);
+                    if (u.submit > 0) activities.push(`${u.submit} SUBMIT`); if (u.enforce > 0) activities.push(`${u.enforce} ENFORCE`);
+                    if (activities.length > 0) { cellContent += `<div class="border-b border-slate-100 dark:border-slate-700 pb-1 mb-1"><span class="font-bold text-infaq">${u.name}:</span> <span class="text-slate-600 dark:text-slate-300">${activities.join(' / ')}</span></div>`; }
                 }
-
-                cellContent += `</div></div>`;
-                gridEl.innerHTML += cellContent;
+                cellContent += `</div></div>`; gridEl.innerHTML += cellContent;
             }
-
-            let totalCells = startDayOfWeek + totalDays;
-            let remainingCells = (7 - (totalCells % 7)) % 7;
-            for (let i = 0; i < remainingCells; i++) {
-                gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`;
-            }
+            let totalCells = startDayOfWeek + totalDays; let remainingCells = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < remainingCells; i++) { gridEl.innerHTML += `<div class="p-2 border-r border-b border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/30 min-h-[120px]"></div>`; }
         }
 
-        // ================= ADS LOGIC =================
         const tkAdsFormEl = document.getElementById('tiktokAdsForm');
         if (tkAdsFormEl) {
             tkAdsFormEl.addEventListener('submit', async function(e) {
@@ -2473,11 +1833,10 @@
                 const dateEl = document.getElementById('tkDate'); const costEl = document.getElementById('tkCost'); const leadsEl = document.getElementById('tkLeads');
                 const newData = { id: Date.now(), date: dateEl ? dateEl.value : '', cost: costEl ? costEl.value : 0, leads: leadsEl ? leadsEl.value : 0 };
                 const existingIndex = tiktokAdsData.findIndex(a => a.date === newData.date);
-
                 try {
                     await db.collection('tiktok_ads').doc(newData.id.toString()).set(newData);
-                    if(existingIndex >= 0) tiktokAdsData[existingIndex] = newData;
-                    else tiktokAdsData.push(newData);
+                    await logSystemActivity();
+                    if(existingIndex >= 0) tiktokAdsData[existingIndex] = newData; else tiktokAdsData.push(newData);
                     this.reset(); applyFilter(); alert('Rekod Tiktok Ads Disimpan di Firebase!');
                 } catch(err) { console.error(err); alert("Ralat menyimpan Tiktok Ads."); }
             });
@@ -2491,8 +1850,8 @@
                 const newData = { id: Date.now(), date: dateEl ? dateEl.value : '', product: productEl ? productEl.value : '', cost: costEl ? costEl.value : 0, leads: leadsEl ? leadsEl.value : 0 };
                 try {
                     await db.collection('fb_ads').doc(newData.id.toString()).set(newData);
-                    fbAdsData.push(newData);
-                    this.reset(); applyFilter(); alert('Rekod FB Ads Disimpan di Firebase!');
+                    await logSystemActivity();
+                    fbAdsData.push(newData); this.reset(); applyFilter(); alert('Rekod FB Ads Disimpan di Firebase!');
                 } catch(err) { console.error(err); alert("Ralat menyimpan FB Ads."); }
             });
         }
@@ -2500,21 +1859,16 @@
         function renderAdsTables() {
             const tkBody = document.getElementById('tkAdsTableBody');
             if(tkBody) {
-                tkBody.innerHTML = '';
-                const sortedTk = [...filteredTkAds].sort((a,b) => new Date(b.date) - new Date(a.date)); 
+                tkBody.innerHTML = ''; const sortedTk = [...filteredTkAds].sort((a,b) => new Date(b.date) - new Date(a.date)); 
                 sortedTk.forEach(ad => {
                     const cost = parseFloat(ad.cost); const leads = parseInt(ad.leads); const cpl = leads > 0 ? (cost / leads) : 0;
-                    
                     const matchedProspects = filteredProspects.filter(p => p.source1 && p.source1.toLowerCase().includes('tiktok') && p.dateApproach === ad.date); 
-                    
                     let openCase = 0, submit = 0, ace = 0, enforce = 0, production = 0;
                     matchedProspects.forEach(p => {
-                        if (p.openCaseDate) openCase++;
-                        if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { submit++; ace += parseFloat(p.ace || 0); }
+                        if (p.openCaseDate) openCase++; if ((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { submit++; ace += parseFloat(p.ace || 0); }
                         if (p.status && p.status.toLowerCase().includes('enforce')) { enforce++; production += parseFloat(p.production || 0); }
                     });
                     const closedLead = leads > 0 ? ((submit / leads) * 100).toFixed(1) + '%' : '0%'; const openClose = openCase > 0 ? ((submit / openCase) * 100).toFixed(1) + '%' : '0%'; const acs = enforce > 0 ? (production / enforce) : 0;
-
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition dark:text-slate-300";
                     tr.innerHTML = `<td class="p-3 border-r dark:border-slate-700">${ad.date}</td><td class="p-3 border-r dark:border-slate-700 text-right">${cost.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${leads}</td><td class="p-3 border-r dark:border-slate-700 text-right font-medium text-blue-600 dark:text-blue-400 bg-blue-50/30 dark:bg-blue-900/10">${cpl.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center">${openCase}</td><td class="p-3 border-r dark:border-slate-700 text-center">${submit}</td><td class="p-3 border-r dark:border-slate-700 text-right">${ace.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${closedLead}</td><td class="p-3 border-r dark:border-slate-700 text-center text-xs">${openClose}</td><td class="p-3 border-r dark:border-slate-700 text-center text-infaq font-bold">${enforce}</td><td class="p-3 border-r dark:border-slate-700 text-right text-infaq font-bold">${production.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td><td class="p-3 font-bold text-right bg-emerald-50/50 dark:bg-emerald-900/10 text-emerald-700 dark:text-emerald-400">${acs.toLocaleString('en-MY', {minimumFractionDigits: 2})}</td>`;
                     tkBody.appendChild(tr);
@@ -2524,8 +1878,7 @@
 
             const fbBody = document.getElementById('fbAdsTableBody');
             if(fbBody) {
-                fbBody.innerHTML = '';
-                const sortedFb = [...filteredFbAds].sort((a,b) => new Date(b.date) - new Date(a.date)); 
+                fbBody.innerHTML = ''; const sortedFb = [...filteredFbAds].sort((a,b) => new Date(b.date) - new Date(a.date)); 
                 sortedFb.forEach(ad => {
                     const cost = parseFloat(ad.cost); const leads = parseInt(ad.leads); const cpl = leads > 0 ? (cost / leads) : 0;
                     const tr = document.createElement('tr'); tr.className = "hover:bg-slate-50 dark:hover:bg-slate-800/50 transition dark:text-slate-300";
@@ -2536,7 +1889,12 @@
             }
         }
 
-        // ================= REPORTS LOGIC =================
+        function toggleSourceReport(groupId) {
+            const rows = document.querySelectorAll('.rep-group-' + groupId); const icon = document.getElementById('icon-rep-' + groupId); let isHidden = true;
+            rows.forEach(row => { if (row.classList.contains('hidden')) { row.classList.remove('hidden'); isHidden = false; } else { row.classList.add('hidden'); isHidden = true; } });
+            if (icon) { if (isHidden) { icon.classList.remove('fa-square-minus'); icon.classList.add('fa-square-plus'); } else { icon.classList.remove('fa-square-plus'); icon.classList.add('fa-square-minus'); } }
+        }
+
         function renderReports() {
             const srcBody = document.getElementById('reportSourceBody'); const srcFoot = document.getElementById('reportSourceFoot');
             const prodBody = document.getElementById('reportProductBody'); const prodFoot = document.getElementById('reportProductFoot');
@@ -2552,39 +1910,48 @@
                 return;
             }
 
-            let srcMap = {}; let tLeads=0, tOpen=0, tFull=0, tSubmit=0, tAce=0, tEnf=0, tProd=0;
-            filteredProspects.forEach(p => { 
-                const src = p.source1 || 'Tiada Sumber';
-                if(!srcMap[src]) srcMap[src] = { leads:0, open:0, full:0, submit:0, ace:0, enf:0, prod:0 };
-                srcMap[src].leads++; tLeads++;
-                if(p.openCaseDate) { srcMap[src].open++; tOpen++; }
-                if(p.fullPresentation) { srcMap[src].full++; tFull++; }
-                if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { srcMap[src].submit++; tSubmit++; srcMap[src].ace += parseFloat(p.ace || 0); tAce += parseFloat(p.ace || 0); }
-                if(p.status && p.status.toLowerCase().includes('enforce')) { srcMap[src].enf++; tEnf++; srcMap[src].prod += parseFloat(p.production || 0); tProd += parseFloat(p.production || 0); }
+            // Pivot Table Logic for Source
+            let agentMap = {}; let tLeads=0, tOpen=0, tFull=0, tSubmit=0, tAce=0, tEnf=0, tProd=0;
+
+            filteredProspects.forEach(p => {
+                const ownerId = p.ownerId || 'admin'; const ownerName = p.ownerName || 'Admin / Pengurusan'; const src = p.source1 || 'Lain-lain / Tiada Sumber';
+                if(!agentMap[ownerId]) { agentMap[ownerId] = { name: ownerName, total: { leads:0, open:0, full:0, submit:0, ace:0, enf:0, prod:0 }, sources: {} }; }
+                if(!agentMap[ownerId].sources[src]) { agentMap[ownerId].sources[src] = { leads:0, open:0, full:0, submit:0, ace:0, enf:0, prod:0 }; }
+
+                agentMap[ownerId].total.leads++; tLeads++; agentMap[ownerId].sources[src].leads++;
+                if(p.openCaseDate) { agentMap[ownerId].total.open++; agentMap[ownerId].sources[src].open++; tOpen++; }
+                if(p.fullPresentation) { agentMap[ownerId].total.full++; agentMap[ownerId].sources[src].full++; tFull++; }
+                if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) {
+                    agentMap[ownerId].total.submit++; agentMap[ownerId].sources[src].submit++; tSubmit++;
+                    const aceVal = parseFloat(p.ace || 0); agentMap[ownerId].total.ace += aceVal; agentMap[ownerId].sources[src].ace += aceVal; tAce += aceVal;
+                }
+                if(p.status && p.status.toLowerCase().includes('enforce')) {
+                    agentMap[ownerId].total.enf++; agentMap[ownerId].sources[src].enf++; tEnf++;
+                    const prodVal = parseFloat(p.production || 0); agentMap[ownerId].total.prod += prodVal; agentMap[ownerId].sources[src].prod += prodVal; tProd += prodVal;
+                }
             });
 
-            const tAcs = tEnf > 0 ? tProd / tEnf : 0;
-            const tOpenLead = tLeads > 0 ? Math.round((tOpen / tLeads)*100) + '%' : '0%';
-            const tSubOpen = tOpen > 0 ? Math.round((tSubmit / tOpen)*100) + '%' : '0%';
-            const tSubLead = tLeads > 0 ? Math.round((tSubmit / tLeads)*100) + '%' : '0%';
+            const tAcs = tEnf > 0 ? tProd / tEnf : 0; const tOpenLead = tLeads > 0 ? Math.round((tOpen / tLeads)*100) + '%' : '0%'; const tSubOpen = tOpen > 0 ? Math.round((tSubmit / tOpen)*100) + '%' : '0%'; const tSubLead = tLeads > 0 ? Math.round((tSubmit / tLeads)*100) + '%' : '0%';
 
             if(srcBody && srcFoot) {
-                for (const [sName, sData] of Object.entries(srcMap)) {
-                    const acs = sData.enf > 0 ? sData.prod / sData.enf : 0;
-                    const rOpenLead = sData.leads > 0 ? Math.round((sData.open / sData.leads)*100) + '%' : '0%';
-                    const rSubOpen = sData.open > 0 ? Math.round((sData.submit / sData.open)*100) + '%' : '0%';
-                    const rSubLead = sData.leads > 0 ? Math.round((sData.submit / sData.leads)*100) + '%' : '0%';
+                srcBody.innerHTML = '';
+                for (const [aId, aData] of Object.entries(agentMap)) {
+                    const aT = aData.total; const aAcs = aT.enf > 0 ? aT.prod / aT.enf : 0; const aOpenLead = aT.leads > 0 ? Math.round((aT.open / aT.leads)*100) + '%' : '0%'; const aSubOpen = aT.open > 0 ? Math.round((aT.submit / aT.open)*100) + '%' : '0%'; const aSubLead = aT.leads > 0 ? Math.round((aT.submit / aT.leads)*100) + '%' : '0%';
+                    srcBody.innerHTML += `<tr class="bg-slate-100 dark:bg-slate-800/80 hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer font-bold text-slate-800 dark:text-slate-100" onclick="toggleSourceReport('${aId}')"><td class="p-3 text-left flex items-center select-none"><i id="icon-rep-${aId}" class="fa-solid fa-square-plus text-infaq mr-2 text-lg"></i>${aData.name} Total</td><td class="p-3">${aT.leads}</td><td class="p-3">${aT.open}</td><td class="p-3">${aT.full}</td><td class="p-3">${aT.submit}</td><td class="p-3">RM ${aT.ace.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${aAcs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${aT.enf}</td><td class="p-3">RM ${aT.prod.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${aOpenLead}</td><td class="p-3">${aSubOpen}</td><td class="p-3">${aSubLead}</td></tr>`;
 
-                    srcBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left font-medium">${sName}</td><td class="p-3">${sData.leads}</td><td class="p-3">${sData.open}</td><td class="p-3">${sData.full}</td><td class="p-3">${sData.submit}</td><td class="p-3">RM ${sData.ace.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${acs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${sData.enf}</td><td class="p-3">RM ${sData.prod.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${rOpenLead}</td><td class="p-3">${rSubOpen}</td><td class="p-3">${rSubLead}</td></tr>`;
+                    for (const [sName, sData] of Object.entries(aData.sources)) {
+                        const sAcs = sData.enf > 0 ? sData.prod / sData.enf : 0; const sOpenLead = sData.leads > 0 ? Math.round((sData.open / sData.leads)*100) + '%' : '0%'; const sSubOpen = sData.open > 0 ? Math.round((sData.submit / sData.open)*100) + '%' : '0%'; const sSubLead = sData.leads > 0 ? Math.round((sData.submit / sData.leads)*100) + '%' : '0%';
+                        srcBody.innerHTML += `<tr class="rep-group-${aId} hidden hover:bg-slate-50 dark:hover:bg-slate-800/50 bg-white dark:bg-slate-900 transition-all text-slate-600 dark:text-slate-300"><td class="p-3 text-left pl-8 border-l-2 border-slate-200 dark:border-slate-700">${sName}</td><td class="p-3">${sData.leads}</td><td class="p-3">${sData.open}</td><td class="p-3">${sData.full}</td><td class="p-3">${sData.submit}</td><td class="p-3">RM ${sData.ace.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${sAcs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${sData.enf}</td><td class="p-3">RM ${sData.prod.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${sOpenLead}</td><td class="p-3">${sSubOpen}</td><td class="p-3">${sSubLead}</td></tr>`;
+                    }
                 }
                 srcFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tFull}</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">RM ${tAcs.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:0})}</td><td class="p-3">${tOpenLead}</td><td class="p-3">${tSubOpen}</td><td class="p-3">${tSubLead}</td></tr>`;
             }
 
+            // Products Report
             let prodMap = {};
             filteredProspects.forEach(p => { 
                 const prod = p.product || 'Tiada Produk Diset';
                 if(!p.product && (!p.remark || !p.remark.toLowerCase().includes('submit')) && (!p.status || !p.status.toLowerCase().includes('enforce'))) return; 
-                
                 if(!prodMap[prod]) prodMap[prod] = { submit:0, ace:0, enf:0, prod:0 };
                 if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { prodMap[prod].submit++; prodMap[prod].ace += parseFloat(p.ace || 0); }
                 if(p.status && p.status.toLowerCase().includes('enforce')) { prodMap[prod].enf++; prodMap[prod].prod += parseFloat(p.production || 0); }
@@ -2593,41 +1960,33 @@
             if (prodBody && prodFoot) {
                 for (const [pName, pData] of Object.entries(prodMap)) {
                     if(pData.submit === 0 && pData.enf === 0) continue; 
-                    const pAcs = pData.enf > 0 ? pData.prod / pData.enf : 0;
-                    const avgProd = pData.enf > 0 ? pData.prod / pData.enf : 0; 
+                    const pAcs = pData.enf > 0 ? pData.prod / pData.enf : 0; const avgProd = pData.enf > 0 ? pData.prod / pData.enf : 0; 
                     prodBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left font-medium">${pName}</td><td class="p-3">${pData.submit}</td><td class="p-3">RM ${pData.ace.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${pAcs.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">${pData.enf}</td><td class="p-3">RM ${pData.prod.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${avgProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td></tr>`;
                 }
                 prodFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY', {minimumFractionDigits:2})}</td><td class="p-3">RM ${tAcs > 0 ? tAcs.toLocaleString('en-MY', {minimumFractionDigits:2}) : 0}</td></tr>`;
             }
 
+            // Daily Report
             let dailyMap = {};
             filteredProspects.forEach(p => { 
                 const dates = [p.dateApproach, p.dialDate, p.reachDate, p.messageDate, p.followUpDate];
                 dates.forEach(d => { if(d) { if(!dailyMap[d]) dailyMap[d] = { leads:0, open:0, submit:0, ace:0, enf:0, prod:0, dial:0, reach:0, msg:0, fup:0 }; } });
             });
-
             filteredProspects.forEach(p => { 
                 if(p.dateApproach && dailyMap[p.dateApproach]) {
-                    dailyMap[p.dateApproach].leads++;
-                    if(p.openCaseDate) dailyMap[p.dateApproach].open++;
+                    dailyMap[p.dateApproach].leads++; if(p.openCaseDate) dailyMap[p.dateApproach].open++;
                     if((p.remark && p.remark.toLowerCase().includes('submit')) || p.submitDate) { dailyMap[p.dateApproach].submit++; dailyMap[p.dateApproach].ace += parseFloat(p.ace || 0); }
                     if(p.status && p.status.toLowerCase().includes('enforce')) { dailyMap[p.dateApproach].enf++; dailyMap[p.dateApproach].prod += parseFloat(p.production || 0); }
                 }
-                if(p.dialDate && dailyMap[p.dialDate]) dailyMap[p.dialDate].dial++;
-                if(p.reachDate && dailyMap[p.reachDate]) dailyMap[p.reachDate].reach++;
-                if(p.messageDate && dailyMap[p.messageDate]) dailyMap[p.messageDate].msg++;
-                if(p.followUpDate && dailyMap[p.followUpDate]) dailyMap[p.followUpDate].fup++;
+                if(p.dialDate && dailyMap[p.dialDate]) dailyMap[p.dialDate].dial++; if(p.reachDate && dailyMap[p.reachDate]) dailyMap[p.reachDate].reach++;
+                if(p.messageDate && dailyMap[p.messageDate]) dailyMap[p.messageDate].msg++; if(p.followUpDate && dailyMap[p.followUpDate]) dailyMap[p.followUpDate].fup++;
             });
-
-            const sortedDates = Object.keys(dailyMap).sort((a,b) => new Date(b) - new Date(a));
-            let dtDial=0, dtReach=0, dtMsg=0, dtFup=0;
+            const sortedDates = Object.keys(dailyMap).sort((a,b) => new Date(b) - new Date(a)); let dtDial=0, dtReach=0, dtMsg=0, dtFup=0;
 
             if (dailyBody && dailyFoot) {
                 sortedDates.forEach(date => {
-                    const d = dailyMap[date];
-                    dtDial += d.dial; dtReach += d.reach; dtMsg += d.msg; dtFup += d.fup;
-                    const dateObj = new Date(date);
-                    const dateStr = dateObj.toLocaleDateString('en-MY', { month: 'short', day: 'numeric', year: 'numeric' });
+                    const d = dailyMap[date]; dtDial += d.dial; dtReach += d.reach; dtMsg += d.msg; dtFup += d.fup;
+                    const dateObj = new Date(date); const dateStr = dateObj.toLocaleDateString('en-MY', { month: 'short', day: 'numeric', year: 'numeric' });
                     dailyBody.innerHTML += `<tr class="hover:bg-slate-50 dark:hover:bg-slate-800/50"><td class="p-3 text-left">${dateStr}</td><td class="p-3">${d.leads}</td><td class="p-3">${d.open}</td><td class="p-3">${d.submit}</td><td class="p-3">${d.ace > 0 ? 'RM '+d.ace.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.enf}</td><td class="p-3">${d.prod > 0 ? 'RM '+d.prod.toLocaleString('en-MY') : '-'}</td><td class="p-3">${d.dial}</td><td class="p-3">${d.reach}</td><td class="p-3">${d.msg}</td><td class="p-3">${d.fup}</td></tr>`;
                 });
                 dailyFoot.innerHTML = `<tr><td class="p-3 text-left">Grand Total</td><td class="p-3">${tLeads}</td><td class="p-3">${tOpen}</td><td class="p-3">${tSubmit}</td><td class="p-3">RM ${tAce.toLocaleString('en-MY')}</td><td class="p-3">${tEnf}</td><td class="p-3">RM ${tProd.toLocaleString('en-MY')}</td><td class="p-3">${dtDial}</td><td class="p-3">${dtReach}</td><td class="p-3">${dtMsg}</td><td class="p-3">${dtFup}</td></tr>`;
@@ -2637,38 +1996,21 @@
         async function clearData() {
             if(confirm("Adakah anda pasti mahu memadam SEMUA rekod (Prospek & Kos Ads)? Tindakan ini tidak boleh diundur.")) {
                 try {
-                    const pSnap = await db.collection('prospects').get();
-                    pSnap.forEach(doc => doc.ref.delete());
-                    const tkSnap = await db.collection('tiktok_ads').get();
-                    tkSnap.forEach(doc => doc.ref.delete());
-                    const fbSnap = await db.collection('fb_ads').get();
-                    fbSnap.forEach(doc => doc.ref.delete());
-
-                    prospectsData = []; tiktokAdsData = []; fbAdsData = [];
-                    applyFilter(); 
-                    alert("Semua data telah dipadam dari pangkalan data.");
-                } catch(err) {
-                    console.error(err);
-                    alert("Ralat semasa memadam data.");
-                }
+                    const pSnap = await db.collection('prospects').get(); pSnap.forEach(doc => doc.ref.delete());
+                    const tkSnap = await db.collection('tiktok_ads').get(); tkSnap.forEach(doc => doc.ref.delete());
+                    const fbSnap = await db.collection('fb_ads').get(); fbSnap.forEach(doc => doc.ref.delete());
+                    prospectsData = []; tiktokAdsData = []; fbAdsData = []; applyFilter(); 
+                    await logSystemActivity(); alert("Semua data telah dipadam.");
+                } catch(err) { console.error(err); alert("Ralat semasa memadam data."); }
             }
         }
 
         // ================= SERVICE WORKER REGISTRATION (PWA) =================
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                const swContent = `
-                    self.addEventListener('install', (e) => { self.skipWaiting(); });
-                    self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); });
-                    self.addEventListener('fetch', (e) => { });
-                `;
-                const blob = new Blob([swContent], { type: 'application/javascript' });
-                const swUrl = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swUrl).then(registration => {
-                    console.log('ServiceWorker registration successful');
-                }).catch(err => {
-                    console.log('ServiceWorker registration failed: ', err);
-                });
+                const swContent = `self.addEventListener('install', (e) => { self.skipWaiting(); }); self.addEventListener('activate', (e) => { e.waitUntil(clients.claim()); }); self.addEventListener('fetch', (e) => { });`;
+                const blob = new Blob([swContent], { type: 'application/javascript' }); const swUrl = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swUrl).then(registration => { console.log('ServiceWorker registered'); }).catch(err => { console.log('SW registration failed: ', err); });
             });
         }
     </script>
