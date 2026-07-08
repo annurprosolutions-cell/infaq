@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pendaftaran Ejen Takaful | Infaq Consultancy</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" href="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" type="image/png">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Konfigurasi Tailwind Khusus Infaq -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        infaq: {
+                            light: '#00a676',
+                            DEFAULT: '#006b49', 
+                            dark: '#004731',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .bg-infaq-gradient { background: linear-gradient(135deg, #00a676 0%, #004731 100%); }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans antialiased min-h-screen flex items-center justify-center p-4">
+
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-[400px] overflow-hidden flex flex-col transform transition-transform hover:scale-[1.01]">
+        
+        <!-- Header Banner -->
+        <div class="bg-infaq-gradient px-8 py-8 text-center flex flex-col items-center justify-center relative">
+            <div class="absolute top-0 left-0 w-full h-full bg-white opacity-10 rounded-tr-full rounded-bl-full pointer-events-none" style="clip-path: polygon(0 0, 100% 0, 100% 30%, 0 70%);"></div>
+            <div class="bg-white/95 backdrop-blur-sm p-4 rounded-xl shadow-lg mb-3 inline-block relative z-10 border border-white/20">
+                <img src="https://lh3.googleusercontent.com/d/1WSYuJivsVnfLyZltaN12I51RTb_dYwT2" alt="Logo Infaq" class="h-12 w-auto mx-auto object-contain">
+            </div>
+            <h2 class="text-lg font-bold text-white mb-1 relative z-10 shadow-sm">Pendaftaran Ejen Baharu</h2>
+            <p class="text-[10px] text-white/90 font-medium relative z-10">Takaful Sales Tracker - Infaq Consultancy</p>
+        </div>
+        
+        <!-- Borang Pendaftaran -->
+        <form id="signupForm" class="p-8 space-y-4">
+            
+            <!-- Ruangan Mesej Ralat -->
+            <div id="signupMsg" class="hidden text-center p-3 rounded-lg text-xs font-medium border mb-2"></div>
+            
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Nama Penuh</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-regular fa-user text-slate-400 group-focus-within:text-infaq transition-colors"></i>
+                    </div>
+                    <input type="text" id="regName" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg focus:ring-2 focus:ring-infaq focus:border-infaq outline-none text-sm transition-all" placeholder="Nama paparan anda">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">E-mel (Sebagai ID Log Masuk)</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-regular fa-envelope text-slate-400 group-focus-within:text-infaq transition-colors"></i>
+                    </div>
+                    <input type="email" id="regEmail" required class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg focus:ring-2 focus:ring-infaq focus:border-infaq outline-none text-sm transition-all" placeholder="E-mel rasmi">
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-semibold text-slate-600 mb-1.5">Kata Laluan Baru</label>
+                <div class="relative group">
+                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <i class="fa-solid fa-lock text-slate-400 text-sm group-focus-within:text-infaq transition-colors"></i>
+                    </div>
+                    <input type="password" id="regPass" required minlength="6" class="w-full pl-10 pr-3 py-2.5 bg-slate-50 border border-slate-200 text-slate-800 rounded-lg focus:ring-2 focus:ring-infaq focus:border-infaq outline-none text-sm transition-all" placeholder="Minima 6 aksara">
+                </div>
+            </div>
+
+            <button type="submit" id="btnSubmit" class="w-full py-3 mt-4 bg-infaq hover:bg-infaq-dark text-white font-bold rounded-lg shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 text-sm flex justify-center items-center gap-2">
+                Daftar Sebagai Ejen <i class="fa-solid fa-user-plus text-xs"></i>
+            </button>
+            
+            <div class="text-center mt-4">
+                <p class="text-xs text-slate-500 font-medium">Sudah mempunyai akaun? <a href="/" class="text-infaq hover:text-infaq-dark hover:underline transition-colors font-bold">Log Masuk di sini</a></p>
+            </div>
+        </form>
+
+        <!-- Bahagian Berjaya Daftar (Akan muncul selepas berjaya daftar) -->
+        <div id="successView" class="hidden p-8 text-center space-y-4">
+            <div class="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-2 text-emerald-500 text-2xl shadow-sm">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <h3 class="text-lg font-bold text-slate-800">Pendaftaran Berjaya!</h3>
+            <p class="text-sm text-slate-500">Akaun anda telah selamat didaftarkan sebagai Ejen. Pengurusan utama akan menetapkan pasukan anda sebentar lagi.</p>
+            <a href="index.html" class="inline-flex justify-center items-center gap-2 w-full py-3 mt-4 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-lg shadow-md transition-all text-sm">
+                Ke Halaman Log Masuk <i class="fa-solid fa-arrow-right"></i>
+            </a>
+        </div>
+        
+        <div class="bg-slate-50 p-4 text-center border-t border-slate-100">
+            <p class="text-[10px] font-medium text-slate-400">© 2026 Infaq Consultancy. Hak Cipta Terpelihara.</p>
+        </div>
+    </div>
+
+    <!-- ================= FIREBASE LOGIC ================= -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore-compat.js"></script>
+
+    <script>
+        // 1. Firebase Config (Mesti sama dengan index.html)
+        const firebaseConfig = {
+            apiKey: "AIzaSyBIVnK42hjFpXqM6T7Q4UbmOVL-6AHIXPo",
+            authDomain: "takafultracker.firebaseapp.com",
+            projectId: "takafultracker",
+            storageBucket: "takafultracker.firebasestorage.app",
+            messagingSenderId: "237848929718",
+            appId: "1:237848929718:web:790d12bee4a9492af88d17"
+        };
+
+        // 2. Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
+
+        // 3. Logic Submit Pendaftaran
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const pass = document.getElementById('regPass').value;
+            const btn = document.getElementById('btnSubmit');
+            const msg = document.getElementById('signupMsg');
+            
+            // Ubah butang ke mode loading
+            btn.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Memproses Pendaftaran...`;
+            btn.disabled = true;
+            msg.classList.add('hidden'); // Sorok mesej ralat jika ada
+
+            try {
+                // Buat akaun di Firebase Authentication
+                const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, pass);
+                const uid = userCredential.user.uid;
+                
+                // Simpan profil di Firestore Database sebagai Agent default (Tanpa Leader)
+                await db.collection('users').doc(uid).set({
+                    id: uid,
+                    email: email,
+                    name: name,
+                    role: 'agent',       // Default ke pangkat agent
+                    leaderId: null,      // Belum ada pasukan
+                    profilePic: null
+                });
+
+                // Sign out serta merta supaya tidak auto-login di halaman ini
+                await firebase.auth().signOut();
+                
+                // Sorok borang pendaftaran, tunjuk UI Berjaya
+                document.getElementById('signupForm').classList.add('hidden');
+                document.getElementById('successView').classList.remove('hidden');
+
+            } catch (error) {
+                console.error("Ralat pendaftaran:", error);
+                
+                // Paparkan Mesej Ralat kepada pengguna
+                msg.classList.remove('hidden');
+                msg.classList.add('bg-red-50', 'text-red-600', 'border-red-200');
+                
+                if (error.code === 'auth/email-already-in-use') {
+                    msg.innerText = "E-mel ini telah digunakan. Sila log masuk.";
+                } else if (error.code === 'auth/weak-password') {
+                    msg.innerText = "Kata laluan terlalu lemah. Guna sekurang-kurangnya 6 aksara.";
+                } else {
+                    msg.innerText = "Gagal mendaftar: " + error.message;
+                }
+
+                // Kembalikan butang ke asal
+                btn.innerHTML = `Daftar Sebagai Ejen <i class="fa-solid fa-user-plus text-xs"></i>`;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
