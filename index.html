@@ -145,7 +145,7 @@
 
                 <!-- LINK KE SIGNUP.HTML -->
                 <div class="text-center pt-3">
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Belum mempunyai akaun? <a href="https://annurprosolutions-cell.github.io/infaq/signup" class="text-infaq dark:text-infaq-light font-bold hover:underline transition-colors">Daftar Ejen Baharu</a></p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Belum mempunyai akaun? <a href="/signup" class="text-infaq dark:text-infaq-light font-bold hover:underline transition-colors">Daftar Ejen Baharu</a></p>
                 </div>
 
             </form>
@@ -689,7 +689,14 @@
                 <div class="bg-white dark:bg-slate-800 rounded-2xl shadow-sm border border-slate-100 dark:border-slate-700 overflow-hidden transition-colors">
                     <div class="p-4 md:p-6 border-b border-slate-100 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-800/50 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 transition-colors">
                         <h2 class="text-lg font-semibold text-slate-800 dark:text-white"><i class="fa-solid fa-table-list text-infaq mr-2"></i> Senarai Prospek & Jualan</h2>
-                        <button onclick="clearData()" class="w-full md:w-auto text-xs bg-red-500 text-white font-medium px-4 py-2 rounded hover:bg-red-600 shadow-sm transition"><i class="fa-solid fa-trash mr-1"></i> Padam Semua Data</button>
+                        <div class="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
+                            <button onclick="exportToCSV()" class="w-full sm:w-auto text-xs bg-emerald-600 text-white font-medium px-4 py-2 rounded hover:bg-emerald-700 shadow-sm transition flex items-center justify-center">
+                                <i class="fa-solid fa-file-csv mr-1.5"></i> Export CSV
+                            </button>
+                            <button onclick="clearData()" class="w-full sm:w-auto text-xs bg-red-500 text-white font-medium px-4 py-2 rounded hover:bg-red-600 shadow-sm transition flex items-center justify-center">
+                                <i class="fa-solid fa-trash mr-1.5"></i> Padam Semua Data
+                            </button>
+                        </div>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse whitespace-nowrap">
@@ -1996,13 +2003,66 @@
         async function clearData() {
             if(confirm("Adakah anda pasti mahu memadam SEMUA rekod (Prospek & Kos Ads)? Tindakan ini tidak boleh diundur.")) {
                 try {
-                    const pSnap = await db.collection('prospects').get(); pSnap.forEach(doc => doc.ref.delete());
-                    const tkSnap = await db.collection('tiktok_ads').get(); tkSnap.forEach(doc => doc.ref.delete());
-                    const fbSnap = await db.collection('fb_ads').get(); fbSnap.forEach(doc => doc.ref.delete());
-                    prospectsData = []; tiktokAdsData = []; fbAdsData = []; applyFilter(); 
-                    await logSystemActivity(); alert("Semua data telah dipadam.");
-                } catch(err) { console.error(err); alert("Ralat semasa memadam data."); }
+                    const pSnap = await db.collection('prospects').get();
+                    pSnap.forEach(doc => doc.ref.delete());
+                    const tkSnap = await db.collection('tiktok_ads').get();
+                    tkSnap.forEach(doc => doc.ref.delete());
+                    const fbSnap = await db.collection('fb_ads').get();
+                    fbSnap.forEach(doc => doc.ref.delete());
+
+                    prospectsData = []; tiktokAdsData = []; fbAdsData = [];
+                    applyFilter(); 
+                    alert("Semua data telah dipadam dari pangkalan data.");
+                } catch(err) {
+                    console.error(err);
+                    alert("Ralat semasa memadam data.");
+                }
             }
+        }
+
+        function exportToCSV() {
+            if (filteredProspects.length === 0) {
+                alert("Tiada data prospek untuk dieksport berdasarkan tapisan (filter) semasa.");
+                return;
+            }
+
+            const headers = [
+                "Nama Penuh", "No. Telefon", "Link WhatsApp", "Tarikh Lahir", "Umur", "Kategori Umur",
+                "Source 1 (Punca Lead)", "Source 2 (Kategori Produk)", "Tarikh Lead Masuk",
+                "Tarikh Buka Kes", "Tarikh Full Presentation", "Rating Full Presentation",
+                "Tarikh Dial", "Tarikh Reach", "Call Rating", "Tarikh Mesej", "Tarikh Follow Up", "Follow Up Rating",
+                "Remark Kes", "Tarikh Submit", "Nama Produk", "Mod Bayaran", "ACE/APE (RM)", 
+                "Jumlah Production (RM)", "Status Polisi", "Tarikh Enforce", "Pemilik Rekod"
+            ];
+
+            let csvContent = headers.join(",") + "\n";
+
+            filteredProspects.forEach(p => {
+                const row = [
+                    p.name || '', p.phone || '', p.whatsapp || '', p.dob || '', p.age || '', p.ageRange || '',
+                    p.source1 || '', p.source2 || '', p.dateApproach || '',
+                    p.openCaseDate || '', p.fullPresentation || '', p.fullPresentationRating || '',
+                    p.dialDate || '', p.reachDate || '', p.callsRating || '', p.messageDate || '', p.followUpDate || '', p.followUpRating || '',
+                    p.remark || '', p.submitDate || '', p.product || '', p.paymentMode || '', p.ace || '0',
+                    p.production || '0', p.status || '', p.enforceDate || '', p.ownerName || ''
+                ];
+                
+                // Tambah quotation marks (") untuk halang isu koma (comma) di dalam tulisan ejen memecahkan susunan excel
+                const escapedRow = row.map(field => `"${String(field).replace(/"/g, '""')}"`);
+                csvContent += escapedRow.join(",") + "\n";
+            });
+
+            // \uFEFF ditambah supaya Microsoft Excel dapat membaca huruf dan nombor dengan tepat tanpa "tulisan pelik" (UTF-8 BOM)
+            const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8;' }); 
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement("a");
+            const dateStr = new Date().toISOString().slice(0,10);
+            
+            link.setAttribute("href", url);
+            link.setAttribute("download", `Data_Prospek_${dateStr}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
 
         // ================= SERVICE WORKER REGISTRATION (PWA) =================
